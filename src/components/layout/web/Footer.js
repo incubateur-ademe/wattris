@@ -45,7 +45,7 @@ export default function Footer(props) {
           <Datagir />
         </Logos>
       </LogosWrapper>
-      <Accessibility>Accessibilité : partiellement conforme</Accessibility>
+      <Accessibility>Accessibilité : non conforme</Accessibility>
     </>
   )
 }
