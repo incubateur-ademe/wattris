@@ -1,0 +1,110 @@
+[
+  {
+    "slug": "four",
+    "name": "Four électrique",
+    "color": "red",
+    "power": 2000,
+    "occurences": [
+      {
+        "start": 19,
+        "duration": 2
+      }
+    ]
+  },
+  {
+    "slug": "aspirateur",
+    "name": "Aspirateur",
+    "color": "chocolate",
+    "power": 700,
+    "occurences": [
+      {
+        "start": 19,
+        "duration": 2
+      }
+    ]
+  },
+  {
+    "slug": "lavelinge",
+    "name": "Lave linge",
+    "color": "pink",
+    "initialPower": 2000,
+    "initialPowerLength": 40,
+    "power": 64,
+    "occurences": [
+      {
+        "start": 9,
+        "duration": 3
+      }
+    ]
+  },
+  {
+    "slug": "lavevaisselle",
+    "name": "Lave vaisselle",
+    "color": "blue",
+    "initialPower": 2000,
+    "initialPowerLength": 25,
+    "power": 140,
+    "occurences": [
+      {
+        "start": 14,
+        "duration": 3
+      }
+    ]
+  },
+  {
+    "slug": "sechelinge",
+    "name": "Sèche linge",
+    "color": "orange",
+    "power": 1800,
+    "occurences": [
+      {
+        "start": 12,
+        "duration": 1
+      }
+    ]
+  },
+  {
+    "slug": "microonde",
+    "name": "Micro-onde",
+    "color": "green",
+    "power": 1000,
+    "occurences": []
+  },
+  {
+    "slug": "plaquesvitroceramiques",
+    "name": "Plaques vitrocéramiques",
+    "color": "cyan",
+    "power": 1500,
+    "occurences": [
+      {
+        "start": 19,
+        "duration": 0.5
+      },
+      {
+        "start": 12,
+        "duration": 0.5
+      }
+    ]
+  },
+  {
+    "slug": "bouilloire",
+    "name": "Bouilloire",
+    "color": "grey",
+    "power": 1300,
+    "occurences": []
+  },
+  {
+    "slug": "ferarepasser",
+    "name": "Fer à repasser",
+    "color": "magenta",
+    "power": 2000,
+    "occurences": []
+  },
+  {
+    "slug": "sechecheveux",
+    "name": "Sèche cheveux",
+    "color": "violet",
+    "power": 2000,
+    "occurences": []
+  }
+]

@@ -60,15 +60,14 @@ export default function MagicLink(props) {
       )}
     </a>
   ) : (
-    <Link href={props.to}>
-      <a
-        className={props.className}
-        onClick={props.onClick || null}
-        aria-label={props['aria-label']}
-        {...props}
-      >
-        {props.children}
-      </a>
+    <Link
+      href={props.to}
+      className={props.className}
+      onClick={props.onClick || null}
+      aria-label={props['aria-label']}
+      {...props}
+    >
+      {props.children}
     </Link>
   )
 }

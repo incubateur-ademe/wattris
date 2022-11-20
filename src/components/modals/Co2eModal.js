@@ -7,7 +7,7 @@ import Modal from 'components/base/Modal'
 const Title = styled.h2``
 const Text = styled.p``
 export default function Co2eModal() {
-  const { Co2e: open, setCo2e: setOpen } = useContext(ModalContext)
+  const { co2e: open, setCo2e: setOpen } = useContext(ModalContext)
   return (
     <Modal open={open} setOpen={setOpen}>
       <Title>
