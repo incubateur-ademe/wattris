@@ -52,7 +52,6 @@ export function useAllPowerOfPeaks() {
         .reduce((acc, cur) => acc + cur, 0),
     [appliances]
   )
-
   return power
 }
 

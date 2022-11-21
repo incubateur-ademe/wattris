@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useMemo } from 'react'
 import styled from 'styled-components'
 
 import DataContext from 'components/providers/DataProvider'
@@ -9,7 +9,8 @@ const Wrapper = styled.div`
   position: relative;
   padding: 0.875rem 1rem 0.625rem;
   color: ${(props) => props.theme.colors.background};
-  background-color: ${(props) => props.theme.colors.main};
+  background-color: ${(props) =>
+    props.theme.colors[props.peak ? 'error' : 'main']};
   border-radius: 1rem;
   opacity: ${(props) => (props.discret ? 0.4 : 1)};
   transition: opacity ${(props) => props.discret && '200ms'} ease-out;
@@ -41,12 +42,19 @@ export default function Occurence(props) {
   const { hover, setHover, editApplianceOccurence, deleteApplianceOccurence } =
     useContext(DataContext)
 
+  const peak = useMemo(
+    () =>
+      (props.occurence.start >= 8 && props.occurence.start < 13) ||
+      (props.occurence.start >= 18 && props.occurence.start < 20),
+    [props.occurence]
+  )
   return (
     <Wrapper
       color={props.appliance.color}
       discret={
         hover && (hover.slug !== props.slug || hover.occurence !== props.index)
       }
+      peak={peak}
       onMouseEnter={() =>
         setHover({
           slug: props.slug,
