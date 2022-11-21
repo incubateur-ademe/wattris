@@ -7,8 +7,8 @@ import Occurence from './appliance/Occurence'
 const Wrapper = styled.div`
   position: relative;
   margin-bottom: 0.5rem;
-  border-radius: 1rem 1rem 2rem 2rem;
-  transition: border 300ms ease-out;
+  border-bottom: 0.125rem solid
+    ${(props) => props.theme.colors[props.separation ? 'main' : 'background']};
 `
 const Background = styled.div`
   position: absolute;
@@ -53,7 +53,7 @@ export default function Appliance(props) {
   const { addApplianceOccurence } = useContext(DataContext)
 
   return (
-    <Wrapper hover={hover}>
+    <Wrapper separation={!props.appliance.occurences.length}>
       <Background hover={hover} color={props.appliance.color} />
       <Title>
         {props.appliance.name}
