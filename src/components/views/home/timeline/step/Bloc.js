@@ -2,6 +2,8 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 
 import DataContext from 'components/providers/DataProvider'
+import ModalContext from 'components/providers/ModalProvider'
+
 const Wrapper = styled.div`
   display: flex;
   justify-content: center;
@@ -14,11 +16,15 @@ const Wrapper = styled.div`
   color: ${(props) => props.theme.colors.background};
   background-color: ${(props) =>
     props.theme.colors[props.peak ? 'error' : 'main']};
-  opacity: ${(props) => (props.discret ? 0.4 : 1)};
   overflow: hidden;
+  opacity: ${(props) => (props.discret ? 0.4 : 1)};
+  transition: opacity ${(props) => props.discret && '200ms'} ease-out;
+  cursor: pointer;
 `
 export default function Bloc(props) {
   const { hover, setHover } = useContext(DataContext)
+
+  const { setAdvice } = useContext(ModalContext)
 
   return (
     <Wrapper
@@ -36,6 +42,7 @@ export default function Bloc(props) {
         })
       }
       onMouseLeave={() => setHover(null)}
+      onClick={() => setAdvice(props.bloc.appliance.slug)}
     ></Wrapper>
   )
 }

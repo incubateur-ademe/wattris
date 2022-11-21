@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   background-color: ${(props) => props.theme.colors.main};
   border-radius: 1rem;
   opacity: ${(props) => (props.discret ? 0.4 : 1)};
+  transition: opacity ${(props) => props.discret && '200ms'} ease-out;
 `
 const Text = styled.p`
   display: flex;
