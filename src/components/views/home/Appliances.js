@@ -7,10 +7,7 @@ import Button from 'components/base/Button'
 import Appliance from './appliances/Appliance'
 
 const Wrapper = styled.div`
-  min-width: 16rem;
-  padding: 1.5rem 1rem;
-  background-color: ${(props) => props.theme.colors.second};
-  border-radius: 1rem;
+  width: 16rem;
 `
 const Title = styled.h2``
 const MyAppliances = styled.div``
@@ -21,7 +18,7 @@ export default function Appliances() {
 
   return (
     <Wrapper>
-      <Title>Mes appareils</Title>
+      <Title>Mes Appareils</Title>
       <MyAppliances>
         {appliances.map((appliance) => (
           <Appliance appliance={appliance} />

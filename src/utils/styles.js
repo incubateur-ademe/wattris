@@ -5,7 +5,7 @@ export const themes = {
   default: {
     name: 'Clair',
     colors: {
-      main: '#26827C',
+      main: '#476C9B',
       mainLight: '#DFECEB',
       mainDark: '#1D625E',
       second: '#EFF4F9',

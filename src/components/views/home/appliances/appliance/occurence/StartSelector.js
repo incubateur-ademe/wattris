@@ -35,7 +35,7 @@ export default function Slider(props) {
     <Wrapper className={props.className}>
       <Range
         allowOverlap
-        step={1}
+        step={0.5}
         min={0}
         max={24}
         values={[props.start]}

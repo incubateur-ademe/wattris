@@ -1,30 +1,25 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 
-import { getAllBlocsForHour } from 'utils/appliances'
-import DataContext from 'components/providers/DataProvider'
-import Hour from './timeline/Hour'
+import { useAllBlocsByStep } from 'hooks/useAppliances'
+import Step from './timeline/Step'
 
 const Wrapper = styled.div`
+  flex: 1;
   display: flex;
-  gap: 0.25rem;
+  gap: 0.0625rem;
 `
 export default function Timeline() {
-  const { appliances } = useContext(DataContext)
-
-  const [hours, setHours] = useState([])
-  useEffect(() => {
-    setHours(
-      Array.from(Array(24)).map((hour, index) =>
-        getAllBlocsForHour(appliances, index)
-      )
-    )
-  }, [appliances])
+  const { steps, stepDurationInMinute } = useAllBlocsByStep()
 
   return (
     <Wrapper>
-      {hours.map((hour) => (
-        <Hour hour={hour} />
+      {steps.map((step, index) => (
+        <Step
+          step={step}
+          hour={(index / 60) * stepDurationInMinute}
+          width={(100 / 24) * (60 / stepDurationInMinute)}
+        />
       ))}
     </Wrapper>
   )

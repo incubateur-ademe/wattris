@@ -12,8 +12,6 @@ export function DataProvider(props) {
       value={{
         appliances,
         editApplianceOccurence: ({ slug, occurenceIndex, newOccurence }) => {
-          console.log(slug, occurenceIndex)
-          console.log(newOccurence)
           setAppliances((prevAppliances) =>
             prevAppliances.map((appliance) =>
               appliance.slug === slug
