@@ -7,7 +7,6 @@ import Step from './timeline/Step'
 const Wrapper = styled.div`
   flex: 1;
   display: flex;
-  gap: 0.0625rem;
 `
 export default function Timeline() {
   const { steps, stepDurationInMinute } = useAllBlocsByStep()

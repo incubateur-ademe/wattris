@@ -7,10 +7,14 @@ const DataContext = React.createContext({})
 export function DataProvider(props) {
   const [appliances, setAppliances] = useState(appliancesData)
 
+  const [hover, setHover] = useState(null)
+
   return (
     <DataContext.Provider
       value={{
         appliances,
+        hover,
+        setHover,
         editApplianceOccurence: ({ slug, occurenceIndex, newOccurence }) => {
           setAppliances((prevAppliances) =>
             prevAppliances.map((appliance) =>

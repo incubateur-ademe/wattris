@@ -9,8 +9,9 @@ const Wrapper = styled.div`
   position: relative;
   padding: 0.875rem 1rem 0.625rem;
   color: ${(props) => props.theme.colors.background};
-  background-color: ${(props) => props.color || props.theme.colors.main};
+  background-color: ${(props) => props.theme.colors.main};
   border-radius: 1rem;
+  opacity: ${(props) => (props.discret ? 0.4 : 1)};
 `
 const Text = styled.p`
   display: flex;
@@ -36,11 +37,23 @@ const DeleteButton = styled.button`
   }
 `
 export default function Occurence(props) {
-  const { editApplianceOccurence, deleteApplianceOccurence } =
+  const { hover, setHover, editApplianceOccurence, deleteApplianceOccurence } =
     useContext(DataContext)
 
   return (
-    <Wrapper color={props.appliance.color}>
+    <Wrapper
+      color={props.appliance.color}
+      discret={
+        hover && (hover.slug !== props.slug || hover.occurence !== props.index)
+      }
+      onMouseEnter={() =>
+        setHover({
+          slug: props.slug,
+          occurence: props.index,
+        })
+      }
+      onMouseLeave={() => setHover(null)}
+    >
       <DeleteButton
         onClick={() =>
           deleteApplianceOccurence({

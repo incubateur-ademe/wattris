@@ -8,8 +8,7 @@ const Wrapper = styled.div`
   position: relative;
   display: flex;
   flex-direction: column-reverse;
-  gap: 0.0625rem;
-  width: calc(${(props) => props.width}% - 0.125rem);
+  width: calc(${(props) => props.width}%);
   background-color: ${(props) =>
     props.peak ? props.theme.colors.errorLight : 'transparent'};
 `
@@ -25,14 +24,21 @@ export default function Step(props) {
       (props.hour >= 18 && props.hour < 20),
     [props.hour]
   )
-
+  const first = useMemo(
+    () => props.hour === 8 || props.hour === 18,
+    [props.hour]
+  )
+  const last = useMemo(
+    () => props.hour === 12.5 || props.hour === 19.5,
+    [props.hour]
+  )
   return (
-    <Wrapper width={props.width} peak={peak}>
+    <Wrapper width={props.width} peak={peak} first={first} last={last}>
       {props.hour % 1 === 0 && (
         <Time>{getRealHoursFromDecimalHours(props.hour)}</Time>
       )}
       {props.step.map((bloc) => (
-        <Bloc bloc={bloc} />
+        <Bloc bloc={bloc} peak={peak} />
       ))}
     </Wrapper>
   )
