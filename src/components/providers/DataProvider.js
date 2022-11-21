@@ -25,6 +25,35 @@ export function DataProvider(props) {
             )
           )
         },
+        addApplianceOccurence: ({ slug }) => {
+          setAppliances((prevAppliances) =>
+            prevAppliances.map((appliance) =>
+              appliance.slug === slug
+                ? {
+                    ...appliance,
+                    occurences: [
+                      ...appliance.occurences,
+                      { ...appliance.defaultOccurence },
+                    ],
+                  }
+                : appliance
+            )
+          )
+        },
+        deleteApplianceOccurence: ({ slug, occurenceIndex }) => {
+          setAppliances((prevAppliances) =>
+            prevAppliances.map((appliance) =>
+              appliance.slug === slug
+                ? {
+                    ...appliance,
+                    occurences: appliance.occurences.filter(
+                      (occurence, index) => index !== occurenceIndex
+                    ),
+                  }
+                : appliance
+            )
+          )
+        },
       }}
     >
       {props.children}

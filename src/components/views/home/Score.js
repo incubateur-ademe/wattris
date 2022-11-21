@@ -1,9 +1,12 @@
 import React from 'react'
+import styled from 'styled-components'
 
 import { useAllPowerOfPeaks } from 'hooks/useAppliances'
 
+const Wrapper = styled.h2`
+  text-align: right;
+`
 export default function Score() {
   const power = useAllPowerOfPeaks()
-  console.log(power)
-  return <div>Score : {power}kW</div>
+  return <Wrapper>Score : {power}</Wrapper>
 }
