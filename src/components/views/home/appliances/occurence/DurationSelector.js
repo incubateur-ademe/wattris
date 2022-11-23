@@ -6,10 +6,10 @@ import { getRealHoursFromDecimalHours } from 'utils/formatters'
 const Wrapper = styled.select`
   padding: 0;
   font-size: 0.75rem;
-  color: ${(props) => props.theme.colors.main};
+  color: ${(props) => props.theme.colors.background};
   background-color: transparent;
   border: none;
-  border-bottom: 0.0625rem solid ${(props) => props.theme.colors.main};
+  border-bottom: 0.0625rem solid ${(props) => props.theme.colors.background};
   appearance: none;
   cursor: pointer;
 `

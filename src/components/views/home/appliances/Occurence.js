@@ -7,18 +7,26 @@ import DurationSelector from './occurence/DurationSelector'
 
 const Wrapper = styled.div`
   position: relative;
-  padding: 0.875rem 0.75rem 0.625rem;
+  width: calc(20% - 0.4rem);
+  padding: 0.75rem 0.75rem;
+  color: ${(props) => props.theme.colors.background};
   background-color: ${(props) =>
-    props.theme.colors[props.peak ? 'errorLight' : 'textLight']};
-  border-left: 0.125rem solid
-    ${(props) => props.theme.colors[props.peak ? 'error' : 'main']};
-  border-radius: 0 0.5rem 0.5rem 0;
+    props.theme.colors[props.peak ? 'error' : 'main']};
+  border-radius: 0.75rem;
   opacity: ${(props) => (props.discret ? 0.4 : 1)};
   transition: opacity ${(props) => props.discret && '200ms'} ease-out;
 `
+const Title = styled.p`
+  position: relative;
+  margin-bottom: 0.375rem;
+  font-size: 0.875rem;
+  text-align: center;
+`
 const Text = styled.p`
   display: flex;
+  justify-content: center;
   gap: 0.375rem;
+  margin-bottom: 0.375rem;
   font-size: 0.75rem;
 `
 const DeleteButton = styled.button`
@@ -37,7 +45,7 @@ const DeleteButton = styled.button`
     height: auto;
   }
   path {
-    fill: ${(props) => props.theme.colors.main};
+    fill: ${(props) => props.theme.colors.background};
   }
 `
 export default function Occurence(props) {
@@ -54,24 +62,28 @@ export default function Occurence(props) {
     <Wrapper
       color={props.appliance.color}
       discret={
-        hover && (hover.slug !== props.slug || hover.occurence !== props.index)
+        hover &&
+        (hover.slug !== props.appliance.slug || hover.occurence !== props.index)
       }
       peak={peak}
       onMouseEnter={() =>
         setHover({
-          slug: props.slug,
+          slug: props.appliance.slug,
           occurence: props.index,
         })
       }
       onMouseLeave={() => setHover(null)}
     >
+      <Title>{props.appliance.name}</Title>
       <DeleteButton
         visible={
-          hover && hover.slug === props.slug && hover.occurence === props.index
+          hover &&
+          hover.slug === props.appliance.slug &&
+          hover.occurence === props.index
         }
         onClick={() =>
           deleteApplianceOccurence({
-            slug: props.slug,
+            slug: props.appliance.slug,
             occurenceIndex: props.index,
           })
         }
@@ -94,12 +106,12 @@ export default function Occurence(props) {
       <Text>
         À
         <DurationSelector
-          slug={props.slug}
+          slug={props.appliance.slug}
           index={props.index}
           value={props.occurence.start}
           onChange={(start) => {
             editApplianceOccurence({
-              slug: props.slug,
+              slug: props.appliance.slug,
               occurenceIndex: props.index,
               newOccurence: { ...props.occurence, start },
             })
@@ -107,12 +119,12 @@ export default function Occurence(props) {
         />
         pendant
         <DurationSelector
-          slug={props.slug}
+          slug={props.appliance.slug}
           index={props.index}
           value={props.occurence.duration}
           onChange={(duration) => {
             editApplianceOccurence({
-              slug: props.slug,
+              slug: props.appliance.slug,
               occurenceIndex: props.index,
               newOccurence: { ...props.occurence, duration },
             })
@@ -123,7 +135,7 @@ export default function Occurence(props) {
         start={props.occurence.start}
         onChange={([start]) => {
           editApplianceOccurence({
-            slug: props.slug,
+            slug: props.appliance.slug,
             occurenceIndex: props.index,
             newOccurence: { ...props.occurence, start },
           })

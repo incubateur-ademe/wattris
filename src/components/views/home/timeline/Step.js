@@ -9,13 +9,20 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column-reverse;
   width: calc(${(props) => props.width}%);
+  height: 28rem;
+  margin-bottom: 1rem;
   background-color: ${(props) =>
     props.peak ? props.theme.colors.errorLight : 'transparent'};
 `
 const Time = styled.div`
   position: absolute;
   top: calc(100% + 0.25rem);
-  font-size: 0.5rem;
+  font-size: 0.75rem;
+`
+const Indicator = styled.div`
+  position: absolute;
+  bottom: calc(100% + 0.25rem);
+  font-size: 0.75rem;
 `
 export default function Step(props) {
   const peak = useMemo(
@@ -29,17 +36,19 @@ export default function Step(props) {
     [props.hour]
   )
   const last = useMemo(
-    () => props.hour === 12.5 || props.hour === 19.5,
+    () => props.hour === 13 || props.hour === 20,
     [props.hour]
   )
+
   return (
     <Wrapper width={props.width} peak={peak} first={first} last={last}>
-      {props.hour % 1 === 0 && (
-        <Time>{getRealHoursFromDecimalHours(props.hour)}</Time>
+      {first || last ? <Time>{props.hour}h</Time> : null}
+      {props.step.map(
+        (bloc, index) => index < 28 && <Bloc bloc={bloc} peak={peak} />
       )}
-      {props.step.map((bloc) => (
-        <Bloc bloc={bloc} peak={peak} />
-      ))}
+      {props.step.length > 28 ? (
+        <Indicator>+ {props.step.length - 28}</Indicator>
+      ) : null}
     </Wrapper>
   )
 }

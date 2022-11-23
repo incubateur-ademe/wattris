@@ -21,13 +21,13 @@ const Track = styled.div`
     bottom: 0;
     left: -0.625rem;
     right: -0.625rem;
-    background-color: ${(props) => props.theme.colors.main};
+    background-color: ${(props) => props.theme.colors.background};
   }
 `
 const Thumb = styled.div`
   width: 1rem;
   height: 1rem;
-  background-color: ${(props) => props.color || props.theme.colors.main};
+  background-color: ${(props) => props.color || props.theme.colors.background};
   border-radius: 1rem;
 `
 export default function Slider(props) {

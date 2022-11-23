@@ -4,9 +4,17 @@ import styled from 'styled-components'
 import { useAllPowerOfPeaks } from 'hooks/useAppliances'
 
 const Wrapper = styled.h2`
-  text-align: right;
+  position: absolute;
+  top: 0;
+  left: 0;
 `
 export default function Score() {
   const power = useAllPowerOfPeaks()
-  return <Wrapper>Score : {power}</Wrapper>
+  return (
+    <Wrapper>
+      Score
+      <br />
+      {power}
+    </Wrapper>
+  )
 }

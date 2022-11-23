@@ -119,8 +119,8 @@
     "occurences": []
   },
   {
-    "slug": "plaquesvitroceramiques",
-    "name": "Plaques vitrocéramiques",
+    "slug": "plaques",
+    "name": "Plaques électriques",
     "color": "#158389",
     "power": 1500,
     "defaultOccurence": {
