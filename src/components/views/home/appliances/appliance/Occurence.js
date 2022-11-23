@@ -7,35 +7,37 @@ import DurationSelector from './occurence/DurationSelector'
 
 const Wrapper = styled.div`
   position: relative;
-  padding: 0.875rem 1rem 0.625rem;
-  color: ${(props) => props.theme.colors.background};
+  padding: 0.875rem 0.75rem 0.625rem;
   background-color: ${(props) =>
-    props.theme.colors[props.peak ? 'error' : 'main']};
-  border-radius: 1rem;
+    props.theme.colors[props.peak ? 'errorLight' : 'textLight']};
+  border-left: 0.125rem solid
+    ${(props) => props.theme.colors[props.peak ? 'error' : 'main']};
+  border-radius: 0 0.5rem 0.5rem 0;
   opacity: ${(props) => (props.discret ? 0.4 : 1)};
   transition: opacity ${(props) => props.discret && '200ms'} ease-out;
 `
 const Text = styled.p`
   display: flex;
   gap: 0.375rem;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
 `
 const DeleteButton = styled.button`
   position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
+  top: 0.5rem;
+  right: 0.5rem;
   display: flex;
   padding: 0;
   background: transparent;
   border: none;
   cursor: pointer;
-
+  opacity: ${(props) => (props.visible ? 1 : 0)};
+  transition: opacity ${(props) => props.visible && '200ms'} ease-out;
   svg {
-    width: 0.75rem;
+    width: 0.625rem;
     height: auto;
   }
   path {
-    fill: ${(props) => props.theme.colors.background};
+    fill: ${(props) => props.theme.colors.main};
   }
 `
 export default function Occurence(props) {
@@ -64,6 +66,9 @@ export default function Occurence(props) {
       onMouseLeave={() => setHover(null)}
     >
       <DeleteButton
+        visible={
+          hover && hover.slug === props.slug && hover.occurence === props.index
+        }
         onClick={() =>
           deleteApplianceOccurence({
             slug: props.slug,

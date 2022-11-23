@@ -12,9 +12,9 @@ export const themes = {
       secondDark: '#B1D4F6',
       background: '#ffffff',
       text: '#383838',
-      textLight: '#FBFBFC',
+      textLight: '#f6f6f6',
       error: '#FA1E43',
-      errorLight: '#FEE1E6',
+      errorLight: '#FEEBEF',
       warning: '#fc5d00',
     },
     fonts: {
@@ -23,7 +23,7 @@ export const themes = {
     },
     mq: {
       small: `@media screen and (max-width: ${36}em)`,
-      medium: `@media screen and (max-width: ${73}em)`,
+      medium: `@media screen and (max-width: ${57}em)`,
     },
   },
 }

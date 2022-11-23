@@ -6,7 +6,7 @@ import Occurence from './appliance/Occurence'
 
 const Wrapper = styled.div`
   position: relative;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   border-bottom: 0.125rem solid
     ${(props) => props.theme.colors[props.separation ? 'main' : 'background']};
 `
@@ -17,7 +17,7 @@ const Background = styled.div`
   left: 0;
   right: 0;
   background-color: ${(props) => props.color};
-  border-radius: 1rem;
+  border-radius: 0.25rem;
   opacity: ${(props) => (props.hover ? 0.1 : 0)};
   transition: opacity 300ms ease-out;
 `
@@ -26,18 +26,22 @@ const Title = styled.p`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.25rem;
-  padding: 0.5rem 0.75rem 0;
+  margin-bottom: 0.125rem;
+  font-size: 0.875rem;
 `
 const AddButton = styled.button`
   position: relative;
   display: flex;
-  padding: 0.25rem;
+  padding: 0.125rem;
   background: transparent;
-  border: 0.125rem solid ${(props) => props.theme.colors.main};
+  border: 0.0625rem solid ${(props) => props.theme.colors.main};
   border-radius: 2rem;
   cursor: pointer;
 
+  svg {
+    width: 0.5rem;
+    height: 0.5rem;
+  }
   path {
     fill: ${(props) => props.theme.colors.main};
   }

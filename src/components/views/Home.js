@@ -6,19 +6,20 @@ import Appliances from './home/Appliances'
 import Score from './home/Score'
 import Timeline from './home/Timeline'
 
-const Wrapper = styled.div`
-  flex: 1;
-`
 export default function Home() {
   return (
-    <Section>
-      <Section.Content flex>
-        <Appliances />
-        <Wrapper>
+    <>
+      <Section>
+        <Section.Content flex>
           <Score />
+        </Section.Content>
+      </Section>
+      <Section>
+        <Section.Content flex>
+          <Appliances />
           <Timeline />
-        </Wrapper>
-      </Section.Content>
-    </Section>
+        </Section.Content>
+      </Section>
+    </>
   )
 }

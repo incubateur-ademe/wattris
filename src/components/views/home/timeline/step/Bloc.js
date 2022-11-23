@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 1.5rem;
+  height: 1rem;
   font-size: 0.75rem;
   font-weight: bold;
   text-transform: uppercase;
@@ -17,7 +17,7 @@ const Wrapper = styled.div`
   background-color: ${(props) =>
     props.theme.colors[props.peak ? 'error' : 'main']};
   overflow: hidden;
-  opacity: ${(props) => (props.discret ? 0.4 : 1)};
+  opacity: ${(props) => (props.discret ? 0.3 : 1)};
   transition: opacity ${(props) => props.discret && '200ms'} ease-out;
   cursor: pointer;
 `
