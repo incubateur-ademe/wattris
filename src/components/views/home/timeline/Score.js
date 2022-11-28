@@ -10,6 +10,7 @@ const Wrapper = styled.h2`
 `
 export default function Score() {
   const power = useAllPowerOfPeaks()
+
   return (
     <Wrapper>
       Score

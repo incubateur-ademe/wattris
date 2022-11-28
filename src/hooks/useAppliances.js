@@ -48,7 +48,8 @@ export function useAllPowerOfPeaks() {
             )
             .reduce((acc, cur) => acc + cur, 0)
         )
-        .reduce((acc, cur) => acc + cur, 0)[(appliances, occurences)]
+        .reduce((acc, cur) => acc + cur, 0),
+    [appliances, occurences]
   )
   return power
 }
