@@ -22,27 +22,20 @@ const Wrapper = styled.div`
   cursor: pointer;
 `
 export default function Bloc(props) {
-  const { hover, setHover } = useContext(DataContext)
-
-  const { setAdvice } = useContext(ModalContext)
+  const { hover, setHover, active, setActive } = useContext(DataContext)
 
   return (
     <Wrapper
       color={props.bloc.appliance.color}
       peak={props.peak}
       discret={
-        hover &&
-        (hover.slug !== props.bloc.appliance.slug ||
-          hover.occurence !== props.bloc.index)
+        active
+          ? active !== props.bloc.index
+          : hover && hover !== props.bloc.index
       }
-      onMouseEnter={() =>
-        setHover({
-          slug: props.bloc.appliance.slug,
-          occurence: props.bloc.index,
-        })
-      }
+      onMouseEnter={() => setHover(props.bloc.index)}
       onMouseLeave={() => setHover(null)}
-      onClick={() => setAdvice(props.bloc.appliance.slug)}
+      onClick={() => setActive(props.bloc.index)}
     ></Wrapper>
   )
 }

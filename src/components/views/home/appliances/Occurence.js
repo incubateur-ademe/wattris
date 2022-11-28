@@ -49,8 +49,20 @@ const DeleteButton = styled.button`
   }
 `
 export default function Occurence(props) {
-  const { hover, setHover, editApplianceOccurence, deleteApplianceOccurence } =
-    useContext(DataContext)
+  const {
+    appliances,
+    hover,
+    setHover,
+    active,
+    editOccurence,
+    deleteOccurence,
+  } = useContext(DataContext)
+
+  const appliance = useMemo(
+    () =>
+      appliances.find((appliance) => appliance.slug === props.occurence.slug),
+    [props.occurence]
+  )
 
   const peak = useMemo(
     () =>
@@ -60,30 +72,17 @@ export default function Occurence(props) {
   )
   return (
     <Wrapper
-      color={props.appliance.color}
-      discret={
-        hover &&
-        (hover.slug !== props.appliance.slug || hover.occurence !== props.index)
-      }
+      color={appliance.color}
+      discret={active ? active !== props.index : hover && hover !== props.index}
       peak={peak}
-      onMouseEnter={() =>
-        setHover({
-          slug: props.appliance.slug,
-          occurence: props.index,
-        })
-      }
+      onMouseEnter={() => setHover(props.index)}
       onMouseLeave={() => setHover(null)}
     >
-      <Title>{props.appliance.name}</Title>
+      <Title>{appliance.name}</Title>
       <DeleteButton
-        visible={
-          hover &&
-          hover.slug === props.appliance.slug &&
-          hover.occurence === props.index
-        }
+        visible={hover && hover === props.index}
         onClick={() =>
-          deleteApplianceOccurence({
-            slug: props.appliance.slug,
+          deleteOccurence({
             occurenceIndex: props.index,
           })
         }
@@ -106,12 +105,11 @@ export default function Occurence(props) {
       <Text>
         À
         <DurationSelector
-          slug={props.appliance.slug}
+          slug={appliance.slug}
           index={props.index}
           value={props.occurence.start}
           onChange={(start) => {
-            editApplianceOccurence({
-              slug: props.appliance.slug,
+            editOccurence({
               occurenceIndex: props.index,
               newOccurence: { ...props.occurence, start },
             })
@@ -119,12 +117,11 @@ export default function Occurence(props) {
         />
         pendant
         <DurationSelector
-          slug={props.appliance.slug}
+          slug={appliance.slug}
           index={props.index}
           value={props.occurence.duration}
           onChange={(duration) => {
-            editApplianceOccurence({
-              slug: props.appliance.slug,
+            editOccurence({
               occurenceIndex: props.index,
               newOccurence: { ...props.occurence, duration },
             })
@@ -134,8 +131,7 @@ export default function Occurence(props) {
       <StartSelector
         start={props.occurence.start}
         onChange={([start]) => {
-          editApplianceOccurence({
-            slug: props.appliance.slug,
+          editOccurence({
             occurenceIndex: props.index,
             newOccurence: { ...props.occurence, start },
           })

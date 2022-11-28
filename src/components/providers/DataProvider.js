@@ -1,60 +1,59 @@
 import React, { useState } from 'react'
 
-import appliancesData from 'data/appliances.json'
+import appliances from 'data/appliances.json'
 
 const DataContext = React.createContext({})
 
 export function DataProvider(props) {
-  const [appliances, setAppliances] = useState(appliancesData)
+  const [occurences, setOccurences] = useState([
+    {
+      slug: 'lavelinge',
+      start: 14,
+      duration: 1.5,
+    },
+    {
+      slug: 'plaques',
+      start: 12,
+      duration: 0.5,
+    },
+  ])
 
   const [hover, setHover] = useState(null)
+  const [active, setActive] = useState(null)
 
   return (
     <DataContext.Provider
       value={{
         appliances,
+        occurences,
+        setOccurences,
         hover,
         setHover,
-        editApplianceOccurence: ({ slug, occurenceIndex, newOccurence }) => {
-          setAppliances((prevAppliances) =>
-            prevAppliances.map((appliance) =>
-              appliance.slug === slug
-                ? {
-                    ...appliance,
-                    occurences: appliance.occurences.map((occurence, index) =>
-                      index === occurenceIndex ? newOccurence : occurence
-                    ),
-                  }
-                : appliance
+        active,
+        setActive,
+        addOccurence: () => {
+          const appliance = appliances[0]
+          setOccurences((prevOccurences) => [
+            ...prevOccurences,
+            {
+              slug: appliance.slug,
+              start: appliance.defaultOccurence.start,
+              duration: appliance.defaultOccurence.duration,
+            },
+          ])
+          setActive(occurences.length)
+        },
+        editOccurence: ({ occurenceIndex, newOccurence }) => {
+          setOccurences((prevOccurences) =>
+            prevOccurences.map((occurence, index) =>
+              index === occurenceIndex ? newOccurence : occurence
             )
           )
         },
-        addApplianceOccurence: ({ slug }) => {
-          setAppliances((prevAppliances) =>
-            prevAppliances.map((appliance) =>
-              appliance.slug === slug
-                ? {
-                    ...appliance,
-                    occurences: [
-                      ...appliance.occurences,
-                      { ...appliance.defaultOccurence },
-                    ],
-                  }
-                : appliance
-            )
-          )
-        },
-        deleteApplianceOccurence: ({ slug, occurenceIndex }) => {
-          setAppliances((prevAppliances) =>
-            prevAppliances.map((appliance) =>
-              appliance.slug === slug
-                ? {
-                    ...appliance,
-                    occurences: appliance.occurences.filter(
-                      (occurence, index) => index !== occurenceIndex
-                    ),
-                  }
-                : appliance
+        deleteOccurence: ({ occurenceIndex }) => {
+          setOccurences((prevOccurences) =>
+            prevOccurences.filter(
+              (occurence, index) => index !== occurenceIndex
             )
           )
         },

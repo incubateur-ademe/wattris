@@ -6,8 +6,10 @@ const Wrapper = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
+  gap: 0.5rem;
   height: 1.25rem;
 `
+const Tick = styled.div``
 const Track = styled.div`
   position: relative;
   width: 100%;
@@ -30,9 +32,11 @@ const Thumb = styled.div`
   background-color: ${(props) => props.color || props.theme.colors.background};
   border-radius: 1rem;
 `
+
 export default function Slider(props) {
   return (
     <Wrapper className={props.className}>
+      <Tick>0h</Tick>
       <Range
         allowOverlap
         step={0.5}
@@ -51,6 +55,7 @@ export default function Slider(props) {
           />
         )}
       />
+      <Tick>24h</Tick>
     </Wrapper>
   )
 }

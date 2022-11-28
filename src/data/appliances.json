@@ -9,17 +9,7 @@
     "defaultOccurence": {
       "start": 18,
       "duration": 1
-    },
-    "occurences": [
-      {
-        "start": 16,
-        "duration": 8
-      },
-      {
-        "start": 6,
-        "duration": 16
-      }
-    ]
+    }
   },
   {
     "slug": "four",
@@ -31,13 +21,7 @@
     "defaultOccurence": {
       "start": 18,
       "duration": 1
-    },
-    "occurences": [
-      {
-        "start": 18,
-        "duration": 1
-      }
-    ]
+    }
   },
   {
     "slug": "aspirateur",
@@ -47,13 +31,7 @@
     "defaultOccurence": {
       "start": 18,
       "duration": 0.5
-    },
-    "occurences": [
-      {
-        "start": 15,
-        "duration": 0.5
-      }
-    ]
+    }
   },
   {
     "slug": "lavelinge",
@@ -65,13 +43,7 @@
     "defaultOccurence": {
       "start": 15,
       "duration": 1.5
-    },
-    "occurences": [
-      {
-        "start": 8,
-        "duration": 1.5
-      }
-    ]
+    }
   },
   {
     "slug": "lavevaisselle",
@@ -83,13 +55,7 @@
     "defaultOccurence": {
       "start": 18,
       "duration": 1.5
-    },
-    "occurences": [
-      {
-        "start": 14,
-        "duration": 1.5
-      }
-    ]
+    }
   },
   {
     "slug": "sechelinge",
@@ -99,13 +65,7 @@
     "defaultOccurence": {
       "start": 18,
       "duration": 2
-    },
-    "occurences": [
-      {
-        "start": 9.5,
-        "duration": 2
-      }
-    ]
+    }
   },
   {
     "slug": "microonde",
@@ -115,8 +75,7 @@
     "defaultOccurence": {
       "start": 18,
       "duration": 0.5
-    },
-    "occurences": []
+    }
   },
   {
     "slug": "plaques",
@@ -126,13 +85,7 @@
     "defaultOccurence": {
       "start": 18,
       "duration": 2
-    },
-    "occurences": [
-      {
-        "start": 12,
-        "duration": 0.5
-      }
-    ]
+    }
   },
   {
     "slug": "bouilloire",
@@ -142,8 +95,7 @@
     "defaultOccurence": {
       "start": 18,
       "duration": 0.5
-    },
-    "occurences": []
+    }
   },
   {
     "slug": "sechecheveux",
@@ -153,7 +105,6 @@
     "defaultOccurence": {
       "start": 18,
       "duration": 0.5
-    },
-    "occurences": []
+    }
   }
 ]

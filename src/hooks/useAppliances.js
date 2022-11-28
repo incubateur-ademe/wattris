@@ -9,73 +9,75 @@ const peakHalfhours = [
 ]
 
 export function useAllBlocsByStep() {
-  const { appliances } = useContext(DataContext)
+  const { appliances, occurences } = useContext(DataContext)
   const steps = useMemo(
     () =>
       Array.from(Array(24 * (60 / stepDurationInMinute))).map((step, index) =>
         getAllBlocsForStep({
           appliances,
+          occurences,
           step: index,
           powerByBlocInKW,
         })
       ),
-    [appliances]
+    [appliances, occurences]
   )
 
   return { steps, stepDurationInMinute, powerByBlocInKW }
 }
 
 export function useAllPowerOfPeaks() {
-  const { appliances } = useContext(DataContext)
+  const { appliances, occurences } = useContext(DataContext)
   const power = useMemo(
     () =>
       peakHalfhours
         .map((hour) =>
-          appliances
-            .map((appliance) =>
-              appliance.occurences
-                .map(
-                  (occurence) =>
-                    Math.ceil(
-                      getPowerForStep({
-                        step: hour,
-                        appliance,
-                        start: occurence.start,
-                        duration: occurence.duration,
-                      }) / powerByBlocInKW
-                    ) * powerByBlocInKW
-                )
-                .reduce((acc, cur) => acc + cur, 0)
+          occurences
+            .map(
+              (occurence) =>
+                Math.ceil(
+                  getPowerForStep({
+                    step: hour,
+                    appliance: appliances.find(
+                      (appliance) => appliance.slug === occurence.slug
+                    ),
+                    start: occurence.start,
+                    duration: occurence.duration,
+                  }) / powerByBlocInKW
+                ) * powerByBlocInKW
             )
             .reduce((acc, cur) => acc + cur, 0)
         )
-        .reduce((acc, cur) => acc + cur, 0),
-    [appliances]
+        .reduce((acc, cur) => acc + cur, 0)[(appliances, occurences)]
   )
   return power
 }
 
-export function getAllBlocsForStep({ appliances, step, powerByBlocInKW }) {
-  return appliances
-    .map((appliance) =>
-      appliance.occurences
-        .map((occurence, index) => {
-          const power = getPowerForStep({
-            step,
-            appliance,
-            start: occurence.start,
-            duration: occurence.duration,
-          })
+export function getAllBlocsForStep({
+  appliances,
+  occurences,
+  step,
+  powerByBlocInKW,
+}) {
+  return occurences
+    .map((occurence, index) => {
+      const appliance = appliances.find(
+        (appliance) => appliance.slug === occurence.slug
+      )
+      const power = getPowerForStep({
+        step,
+        appliance,
+        start: occurence.start,
+        duration: occurence.duration,
+      })
 
-          return Array.from(Array(Math.ceil(power / powerByBlocInKW) || 0)).map(
-            () => ({
-              appliance,
-              index,
-            })
-          )
+      return Array.from(Array(Math.ceil(power / powerByBlocInKW) || 0)).map(
+        () => ({
+          appliance,
+          index,
         })
-        .reduce((acc, cur) => [...acc, ...cur], [])
-    )
+      )
+    })
     .reduce((acc, cur) => [...acc, ...cur], [])
 }
 
