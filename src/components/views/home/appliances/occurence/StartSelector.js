@@ -36,7 +36,7 @@ const Thumb = styled.div`
 export default function Slider(props) {
   return (
     <Wrapper className={props.className}>
-      <Tick>0h</Tick>
+      {props.large && <Tick>0h</Tick>}
       <Range
         allowOverlap
         step={0.5}
@@ -55,7 +55,7 @@ export default function Slider(props) {
           />
         )}
       />
-      <Tick>24h</Tick>
+      {props.large && <Tick>24h</Tick>}
     </Wrapper>
   )
 }

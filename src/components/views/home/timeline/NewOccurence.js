@@ -13,6 +13,8 @@ const Wrapper = styled.div`
   top: 0;
   left: 50%;
   transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
   width: 24rem;
   padding: 1rem 1.5rem;
   color: ${(props) => props.theme.colors.background};
