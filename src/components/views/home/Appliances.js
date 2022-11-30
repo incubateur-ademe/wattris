@@ -10,6 +10,7 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
   gap: 0.5rem;
   align-items: center;
+  margin-bottom: 2rem;
 `
 const AddOccurenceButton = styled(Button)``
 export default function Appliances() {
