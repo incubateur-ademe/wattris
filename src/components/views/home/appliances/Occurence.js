@@ -7,7 +7,6 @@ import DurationSelector from './occurence/DurationSelector'
 
 const Wrapper = styled.div`
   position: relative;
-  width: calc(20% - 0.4rem);
   padding: 0.75rem 0.75rem;
   color: ${(props) => props.theme.colors.background};
   background-color: ${(props) =>
@@ -25,7 +24,7 @@ const Title = styled.p`
 const Text = styled.p`
   display: flex;
   justify-content: center;
-  gap: 0.375rem;
+  gap: 0.25rem;
   margin-bottom: 0.375rem;
   font-size: 0.75rem;
 `

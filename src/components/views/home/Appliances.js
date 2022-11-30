@@ -6,13 +6,43 @@ import Button from 'components/base/Button'
 import Occurence from './appliances/Occurence'
 
 const Wrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
   gap: 0.5rem;
   align-items: center;
   margin-bottom: 2rem;
 `
-const AddOccurenceButton = styled(Button)``
+const AddOccurenceButton = styled.button`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  padding: 0.75rem 0.75rem;
+  color: ${(props) => props.theme.colors.main};
+  background-color: ${(props) => props.theme.colors.background};
+  border: 0.125rem solid ${(props) => props.theme.colors.main};
+  border-radius: 0.75rem;
+  box-shadow: none;
+  transition: all 300ms ease-out;
+  cursor: pointer;
+
+  svg {
+    width: 1.5rem;
+    height: auto;
+    path {
+      fill: ${(props) => props.theme.colors.main};
+    }
+  }
+
+  &:hover {
+    color: ${(props) => props.theme.colors.background};
+    background-color: ${(props) => props.theme.colors.main};
+
+    path {
+      fill: ${(props) => props.theme.colors.background};
+    }
+  }
+`
 export default function Appliances() {
   const { occurences, addOccurence } = useContext(DataContext)
 

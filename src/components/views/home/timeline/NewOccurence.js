@@ -8,6 +8,14 @@ import StartSelector from 'components/views/home/appliances/occurence/StartSelec
 import NameSelector from 'components/views/home/appliances/occurence/NameSelector'
 import DurationSelector from 'components/views/home/appliances/occurence/DurationSelector'
 
+const Background = styled.div`
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+`
 const Wrapper = styled.div`
   position: absolute;
   top: 0;
@@ -81,81 +89,84 @@ export default function Occurence() {
   return (
     appliance &&
     occurence && (
-      <Wrapper color={appliance.color} visible={occurence} peak={peak}>
-        <NameSelector
-          large
-          slug={appliance.slug}
-          index={active}
-          value={appliance.slug}
-          appliances={appliances}
-          onChange={(slug) => {
-            const newAppliance = appliances.find(
-              (appliance) => appliance.slug === slug
-            )
-            editOccurence({
-              occurenceIndex: active,
-              newOccurence: {
-                start: newAppliance.defaultOccurence.start,
-                duration: newAppliance.defaultOccurence.duration,
-                slug,
-              },
-            })
-          }}
-        />
-        <Text>
-          À
-          <DurationSelector
+      <>
+        <Background onClick={() => setActive(null)} />
+        <Wrapper color={appliance.color} visible={occurence} peak={peak}>
+          <NameSelector
             large
             slug={appliance.slug}
             index={active}
-            value={occurence.start}
-            onChange={(start) => {
+            value={appliance.slug}
+            appliances={appliances}
+            onChange={(slug) => {
+              const newAppliance = appliances.find(
+                (appliance) => appliance.slug === slug
+              )
+              editOccurence({
+                occurenceIndex: active,
+                newOccurence: {
+                  start: newAppliance.defaultOccurence.start,
+                  duration: newAppliance.defaultOccurence.duration,
+                  slug,
+                },
+              })
+            }}
+          />
+          <Text>
+            À
+            <DurationSelector
+              large
+              slug={appliance.slug}
+              index={active}
+              value={occurence.start}
+              onChange={(start) => {
+                editOccurence({
+                  occurenceIndex: active,
+                  newOccurence: { ...occurence, start },
+                })
+              }}
+            />
+            pendant
+            <DurationSelector
+              large
+              slug={appliance.slug}
+              index={active}
+              value={occurence.duration}
+              onChange={(duration) => {
+                editOccurence({
+                  occurenceIndex: active,
+                  newOccurence: { ...occurence, duration },
+                })
+              }}
+            />
+          </Text>
+          <StartSelector
+            large
+            start={occurence.start}
+            onChange={([start]) => {
               editOccurence({
                 occurenceIndex: active,
                 newOccurence: { ...occurence, start },
               })
             }}
           />
-          pendant
-          <DurationSelector
-            large
-            slug={appliance.slug}
-            index={active}
-            value={occurence.duration}
-            onChange={(duration) => {
-              editOccurence({
-                occurenceIndex: active,
-                newOccurence: { ...occurence, duration },
-              })
-            }}
-          />
-        </Text>
-        <StartSelector
-          large
-          start={occurence.start}
-          onChange={([start]) => {
-            editOccurence({
-              occurenceIndex: active,
-              newOccurence: { ...occurence, start },
-            })
-          }}
-        />
-        <Buttons>
-          <StyledButtonLink
-            onClick={() => {
-              deleteOccurence({
-                occurenceIndex: active,
-              })
-              setActive(null)
-            }}
-          >
-            Supprimer
-          </StyledButtonLink>
-          <StyledButton onClick={() => setActive(null)} peak={peak} small>
-            Valider
-          </StyledButton>
-        </Buttons>
-      </Wrapper>
+          <Buttons>
+            <StyledButtonLink
+              onClick={() => {
+                deleteOccurence({
+                  occurenceIndex: active,
+                })
+                setActive(null)
+              }}
+            >
+              Supprimer
+            </StyledButtonLink>
+            <StyledButton onClick={() => setActive(null)} peak={peak} small>
+              Valider
+            </StyledButton>
+          </Buttons>
+        </Wrapper>
+      </>
     )
   )
 }

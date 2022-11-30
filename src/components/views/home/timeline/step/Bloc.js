@@ -5,6 +5,8 @@ import DataContext from 'components/providers/DataProvider'
 import ModalContext from 'components/providers/ModalProvider'
 
 const Wrapper = styled.div`
+  position: relative;
+  z-index: 10;
   display: flex;
   justify-content: center;
   align-items: center;
