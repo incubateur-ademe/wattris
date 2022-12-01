@@ -41,7 +41,7 @@ export function DataProvider(props) {
               duration: appliance.defaultOccurence.duration,
             },
           ])
-          setActive(occurences.length)
+          setActive({ occurence: occurences.length, new: true })
         },
         editOccurence: ({ occurenceIndex, newOccurence }) => {
           setOccurences((prevOccurences) =>

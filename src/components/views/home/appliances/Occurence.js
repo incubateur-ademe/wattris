@@ -72,14 +72,18 @@ export default function Occurence(props) {
   return (
     <Wrapper
       color={appliance.color}
-      discret={active ? active !== props.index : hover && hover !== props.index}
+      discret={
+        active
+          ? active?.occurence !== props.index
+          : hover && hover.occurence !== props.index
+      }
       peak={peak}
-      onMouseEnter={() => setHover(props.index)}
+      onMouseEnter={() => setHover({ occurence: props.index })}
       onMouseLeave={() => setHover(null)}
     >
       <Title>{appliance.name}</Title>
       <DeleteButton
-        visible={hover && hover === props.index}
+        visible={hover && hover.occurence === props.index}
         onClick={() =>
           deleteOccurence({
             occurenceIndex: props.index,

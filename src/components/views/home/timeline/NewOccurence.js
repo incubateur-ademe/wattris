@@ -71,7 +71,7 @@ export default function Occurence() {
   } = useContext(DataContext)
 
   const occurence = useMemo(
-    () => occurences.find((occurence, index) => index === active),
+    () => occurences.find((occurence, index) => index === active?.occurence),
     [occurences, active]
   )
 
@@ -95,7 +95,7 @@ export default function Occurence() {
           <NameSelector
             large
             slug={appliance.slug}
-            index={active}
+            index={active?.occurence}
             value={appliance.slug}
             appliances={appliances}
             onChange={(slug) => {
@@ -103,7 +103,7 @@ export default function Occurence() {
                 (appliance) => appliance.slug === slug
               )
               editOccurence({
-                occurenceIndex: active,
+                occurenceIndex: active?.occurence,
                 newOccurence: {
                   start: newAppliance.defaultOccurence.start,
                   duration: newAppliance.defaultOccurence.duration,
@@ -117,11 +117,11 @@ export default function Occurence() {
             <DurationSelector
               large
               slug={appliance.slug}
-              index={active}
+              index={active?.occurence}
               value={occurence.start}
               onChange={(start) => {
                 editOccurence({
-                  occurenceIndex: active,
+                  occurenceIndex: active?.occurence,
                   newOccurence: { ...occurence, start },
                 })
               }}
@@ -130,11 +130,11 @@ export default function Occurence() {
             <DurationSelector
               large
               slug={appliance.slug}
-              index={active}
+              index={active?.occurence}
               value={occurence.duration}
               onChange={(duration) => {
                 editOccurence({
-                  occurenceIndex: active,
+                  occurenceIndex: active?.occurence,
                   newOccurence: { ...occurence, duration },
                 })
               }}
@@ -145,7 +145,7 @@ export default function Occurence() {
             start={occurence.start}
             onChange={([start]) => {
               editOccurence({
-                occurenceIndex: active,
+                occurenceIndex: active?.occurence,
                 newOccurence: { ...occurence, start },
               })
             }}
@@ -154,7 +154,7 @@ export default function Occurence() {
             <StyledButtonLink
               onClick={() => {
                 deleteOccurence({
-                  occurenceIndex: active,
+                  occurenceIndex: active?.occurence,
                 })
                 setActive(null)
               }}

@@ -32,12 +32,12 @@ export default function Bloc(props) {
       peak={props.peak}
       discret={
         active
-          ? active !== props.bloc.index
-          : hover && hover !== props.bloc.index
+          ? active?.occurence !== props.bloc.index
+          : hover && hover.occurence !== props.bloc.index
       }
-      onMouseEnter={() => setHover(props.bloc.index)}
+      onMouseEnter={() => setHover({ occurence: props.bloc.index })}
       onMouseLeave={() => setHover(null)}
-      onClick={() => setActive(props.bloc.index)}
+      onClick={() => setActive({ occurence: props.bloc.index })}
     ></Wrapper>
   )
 }
