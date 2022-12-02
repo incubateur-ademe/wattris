@@ -68,7 +68,6 @@ const Buttons = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 0.75rem;
 `
 const StyledButton = styled(Button)`
   padding: 0.375rem 0.875rem;
@@ -168,20 +167,18 @@ export default function Occurence() {
               })
             }}
           />
+          <Text>Je le lance à</Text>
+          <StartSelector
+            large
+            start={occurence.start}
+            onChange={([start]) => {
+              editOccurence({
+                occurenceIndex: active?.occurence,
+                newOccurence: { ...occurence, start },
+              })
+            }}
+          />
           <Text>
-            À
-            <DurationSelector
-              large
-              slug={appliance.slug}
-              index={active?.occurence}
-              value={occurence.start}
-              onChange={(start) => {
-                editOccurence({
-                  occurenceIndex: active?.occurence,
-                  newOccurence: { ...occurence, start },
-                })
-              }}
-            />
             pendant
             <DurationSelector
               large
@@ -196,16 +193,6 @@ export default function Occurence() {
               }}
             />
           </Text>
-          <StartSelector
-            large
-            start={occurence.start}
-            onChange={([start]) => {
-              editOccurence({
-                occurenceIndex: active?.occurence,
-                newOccurence: { ...occurence, start },
-              })
-            }}
-          />
           <Buttons>
             <StyledButtonLink
               onClick={() => {

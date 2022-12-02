@@ -2,12 +2,15 @@ import React from 'react'
 import styled from 'styled-components'
 import { Range } from 'react-range'
 
+import { getRealHoursFromDecimalHours } from 'utils/formatters'
+
 const Wrapper = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
   gap: 0.5rem;
   height: 1.25rem;
+  margin-bottom: ${(props) => (props.large ? '1rem' : 0)};
 `
 const Tick = styled.div``
 const Track = styled.div`
@@ -26,6 +29,18 @@ const Track = styled.div`
     background-color: ${(props) => props.theme.colors.background};
   }
 `
+const NumberThumb = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  height: 1.5rem;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  color: ${(props) => props.theme.colors.main};
+  background-color: ${(props) => props.color || props.theme.colors.background};
+  border-radius: 0.5rem;
+`
 const Thumb = styled.div`
   width: 1rem;
   height: 1rem;
@@ -35,10 +50,9 @@ const Thumb = styled.div`
 
 export default function Slider(props) {
   return (
-    <Wrapper className={props.className}>
+    <Wrapper className={props.className} large={props.large}>
       {props.large && <Tick>0h</Tick>}
       <Range
-        allowOverlap
         step={0.5}
         min={0}
         max={24}
@@ -47,13 +61,23 @@ export default function Slider(props) {
         renderTrack={({ props, children }) => (
           <Track {...props}>{children}</Track>
         )}
-        renderThumb={({ props: anotherProps }) => (
-          <Thumb
-            {...anotherProps}
-            color={props.color}
-            aria-label={props.ariaLabel}
-          />
-        )}
+        renderThumb={({ props: anotherProps }) =>
+          props.large ? (
+            <NumberThumb
+              {...anotherProps}
+              color={props.color}
+              aria-label={props.ariaLabel}
+            >
+              {getRealHoursFromDecimalHours(props.start)}
+            </NumberThumb>
+          ) : (
+            <Thumb
+              {...anotherProps}
+              color={props.color}
+              aria-label={props.ariaLabel}
+            />
+          )
+        }
       />
       {props.large && <Tick>24h</Tick>}
     </Wrapper>

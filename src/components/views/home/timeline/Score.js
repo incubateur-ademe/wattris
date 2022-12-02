@@ -3,8 +3,6 @@ import styled from 'styled-components'
 
 import { useAllPowerOfPeaks } from 'hooks/useAppliances'
 
-const max = 4000
-
 const Wrapper = styled.h2`
   position: absolute;
   top: 0;
