@@ -13,6 +13,10 @@ const Wrapper = styled.select`
     ${(props) => props.theme.colors.background};
   appearance: none;
   cursor: pointer;
+
+  ${(props) => props.theme.mq.small} {
+    font-size: ${(props) => (props.large ? 0.75 : 0.625)}rem;
+  }
 `
 export default function DurationSelector(props) {
   return (

@@ -11,6 +11,13 @@ const Wrapper = styled.div`
   gap: 0.5rem;
   align-items: center;
   margin-bottom: 2rem;
+
+  ${(props) => props.theme.mq.medium} {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  ${(props) => props.theme.mq.small} {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `
 const AddOccurenceButton = styled.button`
   display: flex;

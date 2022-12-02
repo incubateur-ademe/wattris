@@ -20,6 +20,10 @@ const Title = styled.p`
   margin-bottom: 0.375rem;
   font-size: 0.875rem;
   text-align: center;
+
+  ${(props) => props.theme.mq.small} {
+    font-size: 0.75rem;
+  }
 `
 const Text = styled.p`
   display: flex;
@@ -27,6 +31,10 @@ const Text = styled.p`
   gap: 0.25rem;
   margin-bottom: 0.375rem;
   font-size: 0.75rem;
+
+  ${(props) => props.theme.mq.small} {
+    font-size: 0.625rem;
+  }
 `
 const DeleteButton = styled.button`
   position: absolute;

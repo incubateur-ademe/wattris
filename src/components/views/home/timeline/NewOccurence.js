@@ -18,6 +18,7 @@ const Background = styled.div`
 `
 const Wrapper = styled.div`
   position: absolute;
+  z-index: 10;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -32,6 +33,11 @@ const Wrapper = styled.div`
   box-shadow: 0px 0px 15px 10px rgba(0, 0, 0, 0.2);
   opacity: ${(props) => (props.discret ? 0.4 : 1)};
   transition: opacity ${(props) => props.discret && '200ms'} ease-out;
+
+  ${(props) => props.theme.mq.small} {
+    width: 95vw;
+    padding: 1rem 1rem;
+  }
 `
 const DeleteButton = styled.button`
   position: absolute;
