@@ -171,6 +171,7 @@ export default function Occurence() {
           <StartSelector
             large
             start={occurence.start}
+            peak={peak}
             onChange={([start]) => {
               editOccurence({
                 occurenceIndex: active?.occurence,

@@ -37,7 +37,7 @@ const NumberThumb = styled.div`
   height: 1.5rem;
   padding: 0.5rem;
   font-size: 0.875rem;
-  color: ${(props) => props.theme.colors.main};
+  color: ${(props) => props.theme.colors[props.peak ? 'error' : 'main']};
   background-color: ${(props) => props.color || props.theme.colors.background};
   border-radius: 0.5rem;
 `
@@ -67,6 +67,7 @@ export default function Slider(props) {
               {...anotherProps}
               color={props.color}
               aria-label={props.ariaLabel}
+              peak={props.peak}
             >
               {getRealHoursFromDecimalHours(props.start)}
             </NumberThumb>
