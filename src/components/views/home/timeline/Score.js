@@ -17,7 +17,7 @@ export default function Score() {
     <Wrapper>
       Score
       <br />
-      {power}
+      {power} kWh {power < 1000 ? ':)' : power > 2500 ? ':(' : ':/'}
     </Wrapper>
   )
 }
