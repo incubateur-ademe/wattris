@@ -91,11 +91,17 @@ export function getPowerForStep({ step, appliance, start, duration }) {
 
   const runAtNight = endInStep < startInStep
 
-  if ((step < startInStep && !runAtNight) || step >= endInStep) {
-    return 0
-  } else {
-    return step === startInStep
-      ? appliance.initialPower || appliance.power
-      : appliance.power
+  if (step === startInStep) {
+    return appliance.initialPower || appliance.power
   }
+
+  if (step > startInStep && step < endInStep) {
+    return appliance.power
+  }
+
+  if (runAtNight && (step > startInStep || step < endInStep)) {
+    return appliance.power
+  }
+
+  return 0
 }

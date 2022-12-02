@@ -24,7 +24,7 @@ export default function DurationSelector(props) {
       large={props.large}
     >
       {Array.from(Array(49)).map((hour, index) => (
-        <option value={index / 2}>
+        <option key={index / 2} value={index / 2}>
           {getRealHoursFromDecimalHours(index / 2)}
         </option>
       ))}
