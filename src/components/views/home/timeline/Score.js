@@ -20,7 +20,7 @@ const Wrapper = styled.h2`
   position: absolute;
   top: 0;
   left: 0;
-  animation: ${warning} 600ms infinite;
+  animation: ${(props) => (props.angle > 180 ? warning : '')} 600ms infinite;
 `
 const Gauge = styled.svg`
   width: 8rem;
@@ -40,9 +40,11 @@ const Hand = styled.div`
 export default function Score() {
   const power = useAllPowerOfPeaks()
 
+  const angle = (power / maxPower) * 180
+
   return (
-    <Wrapper>
-      <Hand angle={(power / maxPower) * 180} />
+    <Wrapper angle={angle}>
+      <Hand angle={angle} />
       <Gauge
         width='647'
         height='567'
