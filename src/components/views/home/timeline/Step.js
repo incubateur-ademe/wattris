@@ -9,8 +9,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column-reverse;
   width: calc(${(props) => props.width}%);
-  height: 28rem;
-  margin-bottom: 1rem;
+  height: 25rem;
   background-color: ${(props) =>
     props.peak ? props.theme.colors.errorLight : 'transparent'};
 `

@@ -13,6 +13,7 @@ export const themes = {
       background: '#ffffff',
       text: '#383838',
       textLight: '#f6f6f6',
+      textLighter: '#CACACA',
       error: '#FA1E43',
       errorLight: '#FEEBEF',
       warning: '#fc5d00',
