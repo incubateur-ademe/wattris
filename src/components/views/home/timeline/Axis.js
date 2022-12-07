@@ -22,9 +22,8 @@ const Xlegend = styled.div`
 `
 const Ylegend = styled.div`
   position: absolute;
-  top: 0;
+  top: -0.25rem;
   left: 0.5rem;
-  transform: translateY(-50%);
   width: 4rem;
   font-size: 0.75rem;
   font-weight: 300;
@@ -107,7 +106,7 @@ export default function Axis() {
         <span>2000&nbsp;W</span>
       </Tick>
       <Yaxis hover={hover} />
-      <Ylegend hover={hover}>Puissance appelée (en Watt)</Ylegend>
+      <Ylegend hover={hover}>Puissance appelée</Ylegend>
       <Xlegend hover={hover}>Heure de la journée</Xlegend>
     </Wrapper>
   )
