@@ -18,11 +18,8 @@ const warning = keyframes`
 `
 const Wrapper = styled.div`
   position: absolute;
-  top: 1rem;
-  left: 3rem;
-  padding: 1rem;
-  background-color: ${(props) => props.theme.colors.second};
-  border-radius: 1rem;
+  top: 0rem;
+  left: 7rem;
 `
 const Chart = styled.div`
   position: relative;
@@ -32,16 +29,18 @@ const Gauge = styled.svg`
   width: 8rem;
   height: auto;
 `
-const Hand = styled.div`
+const Hand = styled.svg`
   position: absolute;
-  bottom: 3rem;
+  bottom: 1.5rem;
   right: 50%;
-  width: 3rem;
-  height: 0.25rem;
-  background-color: ${(props) => props.theme.colors.text};
   transform: rotate(${(props) => (props.angle > 180 ? 180 : props.angle)}deg);
   transform-origin: right;
+  width: 3.5rem;
   transition: transform 300ms ease-in-out;
+
+  path {
+    fill: ${(props) => props.theme.colors.text};
+  }
 `
 export default function Score() {
   const power = useAllPowerOfPeaks()
@@ -51,7 +50,18 @@ export default function Score() {
   return (
     <Wrapper>
       <Chart angle={angle}>
-        <Hand angle={angle} />
+        <Hand
+          width='214'
+          height='34'
+          viewBox='0 0 214 34'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
+          angle={angle}
+        >
+          <path d='M-7.43094e-07 17L196.96 -8.6094e-06L196.96 34L-7.43094e-07 17Z' />
+          <path d='M197.461 -8.6313e-06C206.595 -9.03057e-06 214 7.61115 214 17C214 26.3888 206.595 34 197.461 34C188.327 34 180.922 26.3888 180.922 17C180.922 7.61115 188.327 -8.23204e-06 197.461 -8.6313e-06Z' />
+        </Hand>
+
         <Gauge
           width='647'
           height='567'

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
@@ -8,41 +8,50 @@ const Wrapper = styled.div`
   left: 0;
   right: 0;
 `
-const Xaxis = styled.div`
+const Xlegend = styled.div`
   position: absolute;
-  top: 100%;
-  left: -0.125rem;
+  bottom: 0.5rem;
   right: 0;
-  height: 0.125rem;
-  background-color: ${(props) => props.theme.colors.textLighter};
+  width: 4rem;
+  font-size: 0.75rem;
+  font-weight: 300;
+  text-align: center;
+  transform-origin: left;
+  opacity: ${(props) => (props.hover ? 1 : 0)};
+  transition: opacity 300ms ease-out;
 `
 const Ylegend = styled.div`
   position: absolute;
-  top: 50%;
+  top: 0;
   left: 0.5rem;
-  transform: translateY(-100%);
+  transform: translateY(-50%);
   width: 4rem;
   font-size: 0.75rem;
   font-weight: 300;
   transform-origin: left;
+  opacity: ${(props) => (props.hover ? 1 : 0)};
+  transition: opacity 300ms ease-out;
 `
 const Tick = styled.div`
   position: absolute;
+  z-index: 10;
   bottom: ${(props) => (props.position / 2500) * 100}%;
-  right: calc(100% + 0.5rem);
+  left: 0;
+  width: 100%;
+  height: 0.0625rem;
   transform: translateY(50%);
-  font-size: 0.75rem;
-  font-weight: 300;
+  background-color: ${(props) => props.theme.colors.text};
+  cursor: pointer;
+  opacity: ${(props) => (props.hover ? 1 : 0.3)};
+  transition: opacity 300ms ease-out;
 
-  &:before {
-    content: '';
+  span {
     position: absolute;
-    top: 50%;
-    left: calc(100% + 0.125rem);
-    transform: translateY(-50%);
-    width: 0.625rem;
-    height: 0.125rem;
-    background-color: ${(props) => props.theme.colors.textLighter};
+    bottom: 0.125rem;
+    left: 0.125rem;
+    font-size: 0.75rem;
+    font-weight: 300;
+    color: ${(props) => props.theme.colors.text};
   }
 `
 const Yaxis = styled.div`
@@ -50,17 +59,56 @@ const Yaxis = styled.div`
   top: 0;
   bottom: 0;
   right: 100%;
-  width: 0.125rem;
-  background-color: ${(props) => props.theme.colors.textLighter};
+  width: 0.0625rem;
+  background-color: ${(props) => props.theme.colors.text};
+  opacity: ${(props) => (props.hover ? 1 : 0)};
+  transition: opacity 300ms ease-out;
 `
 export default function Axis() {
+  const [hover, setHover] = useState(false)
   return (
     <Wrapper>
-      <Xaxis />
-      <Tick position={1000}>1000&nbsp;W</Tick>
-      <Tick position={2000}>2000&nbsp;W</Tick>
-      <Ylegend>Puissance appelée (en Watt)</Ylegend>
-      <Yaxis />
+      <Tick
+        hover={hover}
+        position={0}
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+      ></Tick>
+      <Tick
+        hover={hover}
+        position={500}
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+      >
+        <span>500&nbsp;W</span>
+      </Tick>
+      <Tick
+        hover={hover}
+        position={1000}
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+      >
+        <span>1000&nbsp;W</span>
+      </Tick>
+      <Tick
+        hover={hover}
+        position={1500}
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+      >
+        <span>1500&nbsp;W</span>
+      </Tick>
+      <Tick
+        hover={hover}
+        position={2000}
+        onMouseEnter={() => setHover(true)}
+        onMouseLeave={() => setHover(false)}
+      >
+        <span>2000&nbsp;W</span>
+      </Tick>
+      <Yaxis hover={hover} />
+      <Ylegend hover={hover}>Puissance appelée (en Watt)</Ylegend>
+      <Xlegend hover={hover}>Heure de la journée</Xlegend>
     </Wrapper>
   )
 }

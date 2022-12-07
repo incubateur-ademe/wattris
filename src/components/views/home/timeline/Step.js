@@ -17,6 +17,7 @@ const Time = styled.div`
   position: absolute;
   top: calc(100% + 0.25rem);
   font-size: 0.75rem;
+  font-weight: 300;
 `
 const Indicator = styled.div`
   position: absolute;
@@ -30,18 +31,26 @@ export default function Step(props) {
       (props.hour >= 18 && props.hour < 20),
     [props.hour]
   )
-  const first = useMemo(
-    () => props.hour === 8 || props.hour === 18,
-    [props.hour]
-  )
-  const last = useMemo(
-    () => props.hour === 13 || props.hour === 20,
+  const tick = useMemo(
+    () =>
+      props.hour === 0 ||
+      props.hour === 4 ||
+      props.hour === 8 ||
+      props.hour === 13 ||
+      props.hour === 18 ||
+      props.hour === 20 ||
+      props.hour === 23,
     [props.hour]
   )
 
   return (
-    <Wrapper width={props.width} peak={peak} first={first} last={last}>
-      {first || last ? <Time>{props.hour}h</Time> : null}
+    <Wrapper width={props.width} peak={peak}>
+      {tick ? (
+        <Time>
+          {props.hour}
+          {props.hour ? 'h' : ''}
+        </Time>
+      ) : null}
       {props.step.map(
         (bloc, index) => index < 28 && <Bloc bloc={bloc} peak={peak} />
       )}
