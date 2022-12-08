@@ -27,7 +27,7 @@ const Wrapper = styled.div`
 `
 const Gauge = styled.svg`
   width: auto;
-  height: 5rem;
+  height: 5.5rem;
   animation: ${(props) => (props.percent >= 1 ? warning : '')} 800ms infinite;
 
   path,
@@ -63,7 +63,7 @@ const Label = styled.p`
   }
 `
 const Description = styled.p`
-  max-width: 17rem;
+  max-width: ${(props) => (props.percent < 0.4 ? 14 : 23)}rem;
   margin-bottom: 0;
   font-size: 0.75rem;
 `
@@ -130,12 +130,12 @@ export default function Score() {
             pendant les pics (<strong>{power} kWh</strong>)
           </span>
         </Label>
-        <Description>
+        <Description percent={percent}>
           {percent < 0.4
             ? 'Votre consommation est raisonnable et ne met pas le réseau en tension.'
             : percent < 0.8
             ? 'Votre consommation risque de mettre le réseau en tension. Essayez de déplacer vos appareils en dehors des pics.'
-            : 'Votre consommation met très fortement le réseau en tension. Déplacez vos appareils en dehors des pics pour sauver la France.'}
+            : 'Votre consommation met très fortement le réseau en tension. Essayez de déplacer vos appareils en dehors des pics.'}
         </Description>
         <StyledButtonLink onClick={() => alert('soon soon soon')}>
           Découvrir des éco-gestes

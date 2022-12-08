@@ -14,13 +14,12 @@ const Peak = styled.div`
     rgba(250, 30, 67, 1) 80%,
     rgba(250, 30, 67, 0) 100%
   );
-
   opacity: ${(props) => (props.hover ? 0.4 : 0.1)};
   transition: opacity 300ms ease-out;
 `
 const PeakIndicator = styled.div`
   position: absolute;
-  bottom: calc(100% + 2rem);
+  bottom: calc(100% + 1.5rem);
   left: ${(props) => (13 / 24) * 100}%;
   right: ${(props) => (6 / 24) * 100}%;
   font-size: 0.75rem;
@@ -32,7 +31,7 @@ const PeakIndicator = styled.div`
 `
 const Arrow = styled.div`
   position: absolute;
-  bottom: calc(100% + 2rem);
+  bottom: calc(100% + 1.5rem);
   left: ${(props) => ((props.right ? 17.5 : 12) / 24) * 100}%;
   right: ${(props) => ((props.right ? 5.5 : 10.5) / 24) * 100}%;
   height: 0.0625rem;
