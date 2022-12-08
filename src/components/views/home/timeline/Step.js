@@ -10,8 +10,6 @@ const Wrapper = styled.div`
   flex-direction: column-reverse;
   width: calc(${(props) => props.width}%);
   height: 25rem;
-  background-color: ${(props) =>
-    props.peak ? props.theme.colors.errorLight : 'transparent'};
 `
 
 const Indicator = styled.div`
@@ -24,17 +22,6 @@ export default function Step(props) {
     () =>
       (props.hour >= 8 && props.hour < 13) ||
       (props.hour >= 18 && props.hour < 20),
-    [props.hour]
-  )
-  const tick = useMemo(
-    () =>
-      props.hour === 0 ||
-      props.hour === 4 ||
-      props.hour === 8 ||
-      props.hour === 13 ||
-      props.hour === 18 ||
-      props.hour === 20 ||
-      props.hour === 23,
     [props.hour]
   )
 
