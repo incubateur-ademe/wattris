@@ -8,7 +8,14 @@ const Peak = styled.div`
   left: ${(props) => (props.position / 24) * 100}%;
   width: ${(props) => (props.duration / 24) * 100}%;
   background: ${(props) => props.theme.colors.error};
-  opacity: ${(props) => (props.hover ? 0.3 : 0.1)};
+  background: linear-gradient(
+    0deg,
+    rgba(250, 30, 67, 1) 0%,
+    rgba(250, 30, 67, 1) 80%,
+    rgba(250, 30, 67, 0) 100%
+  );
+
+  opacity: ${(props) => (props.hover ? 0.4 : 0.1)};
   transition: opacity 300ms ease-out;
 `
 const PeakIndicator = styled.div`

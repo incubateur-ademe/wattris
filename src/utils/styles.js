@@ -16,7 +16,7 @@ export const themes = {
       textLighter: '#C4C4C4',
       error: '#FA1E43',
       errorLight: '#FEEBEF',
-      warning: '#fc5d00',
+      warning: '#FC5D00',
     },
     fonts: {
       body: '"Marianne", Arial, sans-serif',

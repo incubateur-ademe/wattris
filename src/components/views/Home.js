@@ -10,7 +10,7 @@ import NewOccurence from './home/NewOccurence'
 const Wrapper = styled.div`
   position: relative;
   margin-bottom: 2.5rem;
-  padding-top: 3rem;
+  padding-top: 4.5rem;
 `
 export default function Home() {
   return (

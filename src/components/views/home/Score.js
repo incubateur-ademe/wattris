@@ -2,8 +2,9 @@ import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
 import { useAllPowerOfPeaks } from 'hooks/useAppliances'
+import ButtonLink from 'components/base/ButtonLink'
 
-const maxPower = 4000
+const maxPower = 5500
 
 const warning = keyframes`
   from {
@@ -19,107 +20,127 @@ const warning = keyframes`
 const Wrapper = styled.div`
   position: absolute;
   top: 0rem;
-  left: 7rem;
-`
-const Chart = styled.div`
-  position: relative;
-  animation: ${(props) => (props.angle > 180 ? warning : '')} 600ms infinite;
+  left: 0.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
 `
 const Gauge = styled.svg`
-  width: 8rem;
-  height: auto;
-`
-const Hand = styled.svg`
-  position: absolute;
-  bottom: 1.5rem;
-  right: 50%;
-  transform: rotate(${(props) => (props.angle > 180 ? 180 : props.angle)}deg);
-  transform-origin: right;
-  width: 3.5rem;
-  transition: transform 300ms ease-in-out;
+  width: auto;
+  height: 5rem;
+  animation: ${(props) => (props.percent >= 1 ? warning : '')} 800ms infinite;
 
-  path {
-    fill: ${(props) => props.theme.colors.text};
+  path,
+  rect {
+    fill: ${(props) =>
+      props.theme.colors[
+        props.percent < 0.4 ? 'main' : props.percent < 0.8 ? 'warning' : 'error'
+      ]};
   }
+`
+const Filling = styled.rect`
+  transform: scaleY(${(props) => props.percent});
+  transform-origin: bottom;
+  fill: ${(props) => props.theme.colors.main};
+  transition: transform 300ms ease-out;
+`
+const Content = styled.div`
+  color: ${(props) =>
+    props.theme.colors[
+      props.percent < 0.4 ? 'main' : props.percent < 0.8 ? 'warning' : 'error'
+    ]};
+`
+const Label = styled.p`
+  margin: -0.25rem 0 0.25rem;
+  font-size: 1.125rem;
+  font-weight: bold;
+  line-height: 1.2;
+
+  span {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 300;
+  }
+`
+const Description = styled.p`
+  max-width: 17rem;
+  margin-bottom: 0;
+  font-size: 0.75rem;
+`
+const StyledButtonLink = styled(ButtonLink)`
+  font-size: 0.75rem;
+  color: inherit;
 `
 export default function Score() {
   const power = useAllPowerOfPeaks()
 
-  const angle = (power / maxPower) * 180
+  const percent = power / maxPower
 
   return (
     <Wrapper>
-      <Chart angle={angle}>
-        <Hand
-          width='214'
-          height='34'
-          viewBox='0 0 214 34'
-          fill='none'
-          xmlns='http://www.w3.org/2000/svg'
-          angle={angle}
+      <Gauge
+        width='80'
+        height='120'
+        viewBox='0 0 80 120'
+        fill='none'
+        xmlns='http://www.w3.org/2000/svg'
+        percent={percent}
+      >
+        <path
+          fillRule='evenodd'
+          clipRule='evenodd'
+          d='M40.8071 63.7822L28.3257 113.827L75.5933 40.5174H42.6998L58.8507 4H27.4391L4.22419 63.7822H40.8071ZM62.5384 1.59515C63.1897 2.5903 63.2927 3.84584 62.8118 4.93311L48.8427 36.5174H76.4706C77.7614 36.5174 78.9492 37.2193 79.568 38.3476C80.1868 39.4759 80.1379 40.8507 79.4402 41.9326L30.147 118.384C29.4804 119.418 28.347 120 27.1757 120C26.7072 120 26.2326 119.907 25.7794 119.712C24.1933 119.031 23.3355 117.306 23.7519 115.636L35.6869 67.7822H3.5294C2.3654 67.7822 1.27623 67.2105 0.618111 66.254C-0.0400049 65.2976 -0.182121 64.0795 0.237642 62.9981L23.8286 2.24741C24.3545 0.892965 25.6623 0 27.1204 0H59.5819C60.7746 0 61.8866 0.599998 62.5384 1.59515Z'
+          fill='#476C9B'
+        />
+        <mask
+          id='mask0_914_135'
+          style={{ 'mask-type': 'alpha' }}
+          maskUnits='userSpaceOnUse'
+          x='0'
+          y='0'
+          width='80'
+          height='120'
         >
-          <path d='M-7.43094e-07 17L196.96 -8.6094e-06L196.96 34L-7.43094e-07 17Z' />
-          <path d='M197.461 -8.6313e-06C206.595 -9.03057e-06 214 7.61115 214 17C214 26.3888 206.595 34 197.461 34C188.327 34 180.922 26.3888 180.922 17C180.922 7.61115 188.327 -8.23204e-06 197.461 -8.6313e-06Z' />
-        </Hand>
-
-        <Gauge
-          width='647'
-          height='567'
-          viewBox='0 0 647 567'
-          fill='none'
-          xmlns='http://www.w3.org/2000/svg'
-        >
-          <mask
-            id='mask0_892_4815'
-            style={{ 'mask-type': 'alpha' }}
-            maskUnits='userSpaceOnUse'
-            x='0'
+          <path
+            d='M27.1757 120C26.7072 120 26.2326 119.907 25.7794 119.712C24.1933 119.031 23.3355 117.306 23.7519 115.636L35.6869 67.7822H3.5294C2.3654 67.7822 1.27623 67.2105 0.618111 66.254C-0.0400048 65.2976 -0.182121 64.0795 0.237642 62.9981L23.8286 2.24741C24.3545 0.892965 25.6623 0 27.1204 0H59.5819C60.7746 0 61.8866 0.599998 62.5384 1.59515C63.1897 2.5903 63.2927 3.84584 62.8118 4.93311L48.8427 36.5174H76.4706C77.7614 36.5174 78.9492 37.2193 79.568 38.3476C80.1868 39.4759 80.1379 40.8507 79.4402 41.9326L30.147 118.384C29.4804 119.418 28.347 120 27.1757 120V120Z'
+            fill='white'
+          />
+        </mask>
+        <g mask='url(#mask0_914_135)'>
+          <Filling
+            percent={percent}
+            x='-30.8232'
             y='0'
-            width='647'
-            height='487'
-          >
-            <path d='M552.565 406.092C565.825 369.316 570.036 329.888 564.84 291.141C559.645 252.394 545.197 215.468 522.718 183.483C500.238 151.499 470.388 125.398 435.691 107.386C400.994 89.3735 362.47 79.9802 323.377 80C284.283 80.0198 245.769 89.4521 211.09 107.499C176.411 125.547 146.588 151.678 124.141 183.685C101.694 215.692 87.283 252.633 82.127 291.386C76.9711 330.138 81.2215 369.562 94.5188 406.324L95.4019 406.005C82.1558 369.384 77.9218 330.112 83.0579 291.509C88.1939 252.907 102.549 216.108 124.91 184.225C147.27 152.341 176.979 126.31 211.524 108.332C246.069 90.3547 284.434 80.9588 323.377 80.9391C362.32 80.9193 400.695 90.2763 435.258 108.219C469.822 126.162 499.556 152.163 521.949 184.023C544.342 215.884 558.734 252.668 563.91 291.266C569.085 329.863 564.891 369.14 551.682 405.774L552.565 406.092Z' />
-            <path
-              d='M552.565 406.092C565.825 369.316 570.036 329.888 564.84 291.141C559.645 252.394 545.197 215.468 522.718 183.483C500.238 151.499 470.388 125.398 435.691 107.386C400.994 89.3735 362.47 79.9802 323.377 80C284.283 80.0198 245.769 89.4521 211.09 107.499C176.411 125.547 146.588 151.678 124.141 183.685C101.694 215.692 87.283 252.633 82.127 291.386C76.9711 330.138 81.2215 369.562 94.5188 406.324L95.4019 406.005C82.1558 369.384 77.9218 330.112 83.0579 291.509C88.1939 252.907 102.549 216.108 124.91 184.225C147.27 152.341 176.979 126.31 211.524 108.332C246.069 90.3547 284.434 80.9588 323.377 80.9391C362.32 80.9193 400.695 90.2763 435.258 108.219C469.822 126.162 499.556 152.163 521.949 184.023C544.342 215.884 558.734 252.668 563.91 291.266C569.085 329.863 564.891 369.14 551.682 405.774L552.565 406.092Z'
-              fill='#D9D9D9'
-            />
-            <path
-              d='M552.565 406.092C565.825 369.316 570.036 329.888 564.84 291.141C559.645 252.394 545.197 215.468 522.718 183.483C500.238 151.499 470.388 125.398 435.691 107.386C400.994 89.3735 362.47 79.9802 323.377 80C284.283 80.0198 245.769 89.4521 211.09 107.499C176.411 125.547 146.588 151.678 124.141 183.685C101.694 215.692 87.283 252.633 82.127 291.386C76.9711 330.138 81.2215 369.562 94.5188 406.324L95.4019 406.005C82.1558 369.384 77.9218 330.112 83.0579 291.509C88.1939 252.907 102.549 216.108 124.91 184.225C147.27 152.341 176.979 126.31 211.524 108.332C246.069 90.3547 284.434 80.9588 323.377 80.9391C362.32 80.9193 400.695 90.2763 435.258 108.219C469.822 126.162 499.556 152.163 521.949 184.023C544.342 215.884 558.734 252.668 563.91 291.266C569.085 329.863 564.891 369.14 551.682 405.774L552.565 406.092Z'
-              stroke='black'
-              fill='black'
-              stroke-width='160'
-              stroke-linejoin='round'
-              mask='url(#path-1-outside-1_892_4815)'
-            />
-          </mask>
-          <g mask='url(#mask0_892_4815)'>
-            <path
-              d='M584.541 546.771C627.325 496.75 654.836 435.49 663.8 370.281C672.764 305.072 662.804 238.66 635.105 178.95C607.406 119.239 563.134 68.7444 507.559 33.4747C451.983 -1.79506 387.445 -20.3545 321.623 -19.9948C255.802 -19.6352 191.47 -0.371597 136.283 35.5033C81.0967 71.3783 37.3795 122.354 10.3346 182.363C-16.7104 242.373 -25.9442 308.889 -16.2679 373.997C-6.59161 439.104 21.5872 500.06 64.9151 549.611L323.5 323.5L584.541 546.771Z'
-              fill='#476C9B'
-            />
-            <path
-              d='M584.541 546.771C619.33 506.097 644.133 457.856 656.971 405.897C669.81 353.937 670.329 299.696 658.487 247.5C646.645 195.304 622.77 146.597 588.765 105.265C554.761 63.9323 511.568 31.118 462.633 9.439C413.697 -12.24 360.373 -22.1838 306.913 -19.5992C253.453 -17.0147 201.336 -1.97337 154.72 24.3251C108.104 50.6235 68.2789 87.4513 38.4202 131.871C8.56151 176.291 -10.504 227.073 -17.2558 280.168L323.5 323.5L584.541 546.771Z'
-              fill='#6768AD'
-            />
-            <path
-              d='M584.541 546.771C641.647 480.005 671 393.894 666.562 306.149C662.124 218.403 624.233 135.694 560.681 75.0297C497.129 14.3656 412.749 -19.6412 324.892 -19.9971C237.035 -20.3531 152.381 12.969 88.3402 73.1162L323.5 323.5L584.541 546.771Z'
-              fill='#965BAF'
-            />
-            <path
-              d='M584.541 546.771C627.168 496.933 654.638 435.933 663.703 370.98C672.768 306.028 663.05 239.838 635.697 180.232C608.344 120.627 564.499 70.0977 509.345 34.6158C454.19 -0.866161 390.031 -19.8175 324.449 -19.9987L323.5 323.5L584.541 546.771Z'
-              fill='#C5449C'
-            />
-            <path
-              d='M584.541 546.771C641.464 480.219 670.818 394.438 666.602 306.964C662.386 219.491 624.919 136.93 561.86 76.1605L323.5 323.5L584.541 546.771Z'
-              fill='#EA2577'
-            />
-            <path
-              d='M584.541 546.771C615.529 510.541 638.636 468.257 652.391 422.61C666.147 376.963 670.25 328.953 664.439 281.633L323.5 323.5L584.541 546.771Z'
-              fill='#FA1E43'
-            />
-          </g>
-        </Gauge>
-      </Chart>
+            width='144.706'
+            height='120'
+            fill='#476C9B'
+          />
+        </g>
+      </Gauge>
+      <Content percent={percent}>
+        <Label>
+          Consommation{' '}
+          {percent < 0.4
+            ? 'faible'
+            : percent < 0.8
+            ? 'importante'
+            : 'très importante'}
+          <span>
+            {' '}
+            pendant les pics (<strong>{power} kWh</strong>)
+          </span>
+        </Label>
+        <Description>
+          {percent < 0.4
+            ? 'Votre consommation est raisonnable et ne met pas le réseau en tension.'
+            : percent < 0.8
+            ? 'Votre consommation risque de mettre le réseau en tension. Essayez de déplacer vos appareils en dehors des pics.'
+            : 'Votre consommation met très fortement le réseau en tension. Déplacez vos appareils en dehors des pics pour sauver la France.'}
+        </Description>
+        <StyledButtonLink onClick={() => alert('soon soon soon')}>
+          Découvrir des éco-gestes
+        </StyledButtonLink>
+      </Content>
     </Wrapper>
   )
 }
