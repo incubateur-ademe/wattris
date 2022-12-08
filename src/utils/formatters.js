@@ -1,5 +1,7 @@
-export function getRealHoursFromDecimalHours(decimal) {
-  var n = new Date(0, 0)
-  n.setMinutes(decimal * 60)
-  return n.toTimeString().slice(0, 5).replace(':', 'h')
+export function getRealHoursFromDecimalHours(duration) {
+  var minutes = Math.floor((duration * 60) % 60),
+    hours = Math.floor(duration % 60)
+  hours = hours < 10 ? '0' + hours : hours
+  minutes = minutes < 10 ? '0' + minutes : minutes
+  return hours + 'h' + minutes
 }
