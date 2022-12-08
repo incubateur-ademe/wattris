@@ -13,12 +13,7 @@ const Wrapper = styled.div`
   background-color: ${(props) =>
     props.peak ? props.theme.colors.errorLight : 'transparent'};
 `
-const Time = styled.div`
-  position: absolute;
-  top: calc(100% + 0.25rem);
-  font-size: 0.75rem;
-  font-weight: 300;
-`
+
 const Indicator = styled.div`
   position: absolute;
   bottom: calc(100% + 0.25rem);
@@ -45,12 +40,6 @@ export default function Step(props) {
 
   return (
     <Wrapper width={props.width} peak={peak}>
-      {tick ? (
-        <Time>
-          {props.hour}
-          {props.hour ? 'h' : ''}
-        </Time>
-      ) : null}
       {props.step.map(
         (bloc, index) => index < 28 && <Bloc bloc={bloc} peak={peak} />
       )}
