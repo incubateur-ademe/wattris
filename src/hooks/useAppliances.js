@@ -84,11 +84,10 @@ export function getAllBlocsForStep({
 
 export function getPowerForStep({ step, appliance, start, duration }) {
   let end = start + duration
-  end = end > 24 ? end - 24 : end
+  end = end > 24 ? end - (24 + stepDurationInMinute / 60) : end
 
   const startInStep = Math.floor(start * (60 / stepDurationInMinute))
   const endInStep = Math.ceil(end * (60 / stepDurationInMinute))
-
   const runAtNight = endInStep < startInStep
 
   if (step === startInStep) {
@@ -99,7 +98,7 @@ export function getPowerForStep({ step, appliance, start, duration }) {
     return appliance.power
   }
 
-  if (runAtNight && (step > startInStep || step < endInStep)) {
+  if (runAtNight && (step > startInStep || step <= endInStep)) {
     return appliance.power
   }
 
