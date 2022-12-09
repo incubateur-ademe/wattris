@@ -25,13 +25,21 @@ export default function Step(props) {
     [props.hour]
   )
 
+  const remToPower = 100 // 1rem = 100W -> 2500W
+  const graphHeight = 2500 / remToPower
+  const blocHeight = props.powerByBlocInKW / remToPower
+  const maxBlocsInHeight = graphHeight / blocHeight
+
   return (
     <Wrapper width={props.width} peak={peak}>
-      {props.step.map(
-        (bloc, index) => index < 28 && <Bloc bloc={bloc} peak={peak} />
-      )}
-      {props.step.length > 28 ? (
-        <Indicator>+ {props.step.length - 28}</Indicator>
+      {props.step.map((bloc, index) => {
+        return (
+          index <= maxBlocsInHeight && (
+            <Bloc bloc={bloc} peak={peak} blocHeight={blocHeight} />
+          )
+        )
+      })}
+      {props.step.length > maxBlocsInHeight ? (
       ) : null}
     </Wrapper>
   )

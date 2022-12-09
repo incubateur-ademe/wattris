@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 1rem;
+  height: ${(props) => props.blocHeight}rem;
   font-size: 0.75rem;
   font-weight: bold;
   text-transform: uppercase;
@@ -25,7 +25,6 @@ const Wrapper = styled.div`
 `
 export default function Bloc(props) {
   const { hover, setHover, active, setActive } = useContext(DataContext)
-
   return (
     <Wrapper
       peak={props.peak}
@@ -34,6 +33,7 @@ export default function Bloc(props) {
           ? active?.occurence !== props.bloc.index
           : hover && hover.occurence !== props.bloc.index
       }
+      blocHeight={props.blocHeight}
       onMouseEnter={() => setHover({ occurence: props.bloc.index })}
       onMouseLeave={() => setHover(null)}
       onClick={() => setActive({ occurence: props.bloc.index })}

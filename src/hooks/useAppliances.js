@@ -3,7 +3,7 @@ import { useContext, useMemo } from 'react'
 import DataContext from 'components/providers/DataProvider'
 
 const stepDurationInMinute = 30
-const powerByBlocInKW = 100
+const powerByBlocInKW = 10
 const peakHalfhours = [
   16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 36, 37, 38, 39, 40,
 ]
