@@ -1,5 +1,50 @@
 [
   {
+    "slug": "frigo",
+    "name": "Frigo",
+    "power": 19,
+    "defaultOccurence": {
+      "start": 0,
+      "duration": 24
+    }
+  },
+  {
+    "slug": "frigocombine",
+    "name": "Frigo combiné",
+    "power": 39,
+    "defaultOccurence": {
+      "start": 0,
+      "duration": 24
+    }
+  },
+  {
+    "slug": "congelateur",
+    "name": "Congélateur",
+    "power": 33,
+    "defaultOccurence": {
+      "start": 0,
+      "duration": 24
+    }
+  },
+  {
+    "slug": "boxinternet",
+    "name": "Box internet",
+    "power": 12,
+    "defaultOccurence": {
+      "start": 0,
+      "duration": 24
+    }
+  },
+  {
+    "slug": "boxtv",
+    "name": "Box TV",
+    "power": 13,
+    "defaultOccurence": {
+      "start": 0,
+      "duration": 24
+    }
+  },
+  {
     "slug": "radiateur",
     "name": "Radiateur électrique",
     "initialPower": 2000,
@@ -95,6 +140,44 @@
     "defaultOccurence": {
       "start": 18,
       "duration": 0.5
+    }
+  },
+  {
+    "slug": "television",
+    "name": "Télévision",
+    "power": 120,
+    "defaultOccurence": {
+      "start": 20,
+      "duration": 1
+    }
+  },
+  {
+    "slug": "ferarepasser",
+    "name": "Fer à repasser",
+    "power": 2000,
+    "defaultOccurence": {
+      "start": 14,
+      "duration": 1
+    }
+  },
+  {
+    "slug": "chauffeeau",
+    "name": "Chauffe-eau",
+    "initialPower": 2000,
+    "initialPowerLength": 5,
+    "power": 20,
+    "defaultOccurence": {
+      "start": 23.5,
+      "duration": 8
+    }
+  },
+  {
+    "slug": "ampouleled",
+    "name": "Ampoule (LED)",
+    "power": 10,
+    "defaultOccurence": {
+      "start": 19,
+      "duration": 4
     }
   }
 ]
