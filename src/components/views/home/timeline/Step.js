@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 
 const Indicator = styled.div`
   position: absolute;
-  bottom: calc(100% + 0.25rem);
+  bottom: calc(100% - 0.25rem);
   font-size: 0.75rem;
 `
 export default function Step(props) {
@@ -40,6 +40,7 @@ export default function Step(props) {
         )
       })}
       {props.step.length > maxBlocsInHeight ? (
+        <Indicator>+ {(props.step.length - maxBlocsInHeight) * 10} W</Indicator>
       ) : null}
     </Wrapper>
   )
