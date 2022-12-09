@@ -80,6 +80,7 @@ export function getAllBlocsForStep({
       )
     })
     .reduce((acc, cur) => [...acc, ...cur], [])
+    .sort((a, b) => a.appliance.power - b.appliance.power)
 }
 
 export function getPowerForStep({ step, appliance, start, duration }) {
