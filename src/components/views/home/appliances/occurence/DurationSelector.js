@@ -27,11 +27,14 @@ export default function DurationSelector(props) {
       onChange={(e) => props.onChange(Number(e.currentTarget.value))}
       large={props.large}
     >
-      {Array.from(Array(49)).map((hour, index) => (
-        <option key={index / 2} value={index / 2}>
-          {getRealHoursFromDecimalHours(index / 2)}
-        </option>
-      ))}
+      {Array.from(Array(48)).map((hour, index) => {
+        index += 1
+        return (
+          <option key={index / 2} value={index / 2}>
+            {getRealHoursFromDecimalHours(index / 2)}
+          </option>
+        )
+      })}
     </Wrapper>
   )
 }
