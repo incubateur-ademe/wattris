@@ -79,7 +79,6 @@ export default function Occurence(props) {
   )
   return (
     <Wrapper
-      color={appliance.color}
       discret={
         active
           ? active?.occurence !== props.index

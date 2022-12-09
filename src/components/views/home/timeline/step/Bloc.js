@@ -28,7 +28,6 @@ export default function Bloc(props) {
 
   return (
     <Wrapper
-      color={props.bloc.appliance.color}
       peak={props.peak}
       discret={
         active

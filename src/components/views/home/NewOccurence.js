@@ -122,7 +122,7 @@ export default function Occurence() {
             setActive(null)
           }}
         />
-        <Wrapper color={appliance.color} visible={occurence} peak={peak}>
+        <Wrapper visible={occurence} peak={peak}>
           <DeleteButton
             onClick={() => {
               active.new &&
