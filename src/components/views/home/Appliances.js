@@ -22,6 +22,8 @@ const AddOccurenceButton = styled.button`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   height: 100%;
   padding: 0.75rem 0.75rem;
   color: ${(props) => props.theme.colors.main};
