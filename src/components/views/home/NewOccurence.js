@@ -1,4 +1,4 @@
-import { useContext, useMemo } from 'react'
+import { useContext, useMemo, useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 import DataContext from 'components/providers/DataProvider'
@@ -79,10 +79,39 @@ const StyledButton = styled(Button)`
     color: ${(props) => props.theme.colors.background};
   }
 `
+const ButtonsWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+`
+const AllDayButton = styled.div`
+  border: 0.125rem solid ${(props) => props.theme.colors.background};
+  border-radius: 0 1.5rem 1.5rem 0;
+  padding: 0.375rem 0.875rem;
+  background-color: ${(props) =>
+    props.allDay ? props.theme.colors.background : props.theme.colors.main};
+  color: ${(props) =>
+    props.allDay ? props.theme.colors.main : props.theme.colors.background};
+  border-color: ${(props) => props.theme.colors.background};
+`
+
+const DurationButton = styled.div`
+  border: 0.125rem solid ${(props) => props.theme.colors.background};
+  border-radius: 1.5rem 0 0 1.5rem;
+  padding: 0.375rem 0.875rem;
+  background-color: ${(props) =>
+    props.allDay ? props.theme.colors.main : props.theme.colors.background};
+  color: ${(props) =>
+    props.allDay ? props.theme.colors.background : props.theme.colors.main};
+  border-color: ${(props) => props.theme.colors.background};
+`
+
 const StyledButtonLink = styled(ButtonLink)`
   font-size: 0.875rem;
   color: ${(props) => props.theme.colors.background};
 `
+
 export default function Occurence() {
   const {
     active,
@@ -109,6 +138,15 @@ export default function Occurence() {
       (occurence?.start >= 18 && occurence?.start < 20),
     [occurence]
   )
+
+  const [allDay, setAllDay] = useState(occurence && occurence.duration === 24)
+
+  useEffect(() => {
+    if (occurence) {
+      setAllDay(occurence.duration === 24)
+    }
+  }, [occurence])
+
   return (
     appliance &&
     occurence && (
@@ -122,7 +160,7 @@ export default function Occurence() {
             setActive(null)
           }}
         />
-        <Wrapper color={appliance.color} visible={occurence} peak={peak}>
+        <Wrapper visible={occurence} peak={peak}>
           <DeleteButton
             onClick={() => {
               active.new &&
@@ -167,18 +205,43 @@ export default function Occurence() {
               })
             }}
           />
-          <Text>Je le lance à</Text>
-          <StartSelector
-            large
-            start={occurence.start}
-            peak={peak}
-            onChange={([start]) => {
-              editOccurence({
-                occurenceIndex: active?.occurence,
-                newOccurence: { ...occurence, start },
-              })
-            }}
-          />
+          <ButtonsWrapper>
+            <DurationButton
+              allDay={allDay}
+              onClick={() => {
+                editOccurence({
+                  occurenceIndex: active?.occurence,
+                  newOccurence: { ...occurence, duration: 0 },
+                })
+              }}
+            >
+              Je le lance à
+            </DurationButton>
+            <AllDayButton
+              allDay={allDay}
+              onClick={() => {
+                editOccurence({
+                  occurenceIndex: active?.occurence,
+                  newOccurence: { ...occurence, duration: 24 },
+                })
+              }}
+            >
+              Toute la journée
+            </AllDayButton>{' '}
+          </ButtonsWrapper>
+          {!allDay && (
+            <StartSelector
+              large
+              start={occurence.start}
+              peak={peak}
+              onChange={([start]) => {
+                editOccurence({
+                  occurenceIndex: active?.occurence,
+                  newOccurence: { ...occurence, start },
+                })
+              }}
+            />
+          )}
           <Text>
             pendant
             <DurationSelector

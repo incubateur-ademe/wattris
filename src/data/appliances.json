@@ -1,8 +1,52 @@
 [
   {
+    "slug": "frigo",
+    "name": "Frigo",
+    "power": 19,
+    "defaultOccurence": {
+      "start": 0,
+      "duration": 24
+    }
+  },
+  {
+    "slug": "frigocombine",
+    "name": "Frigo combiné",
+    "power": 39,
+    "defaultOccurence": {
+      "start": 0,
+      "duration": 24
+    }
+  },
+  {
+    "slug": "congelateur",
+    "name": "Congélateur",
+    "power": 33,
+    "defaultOccurence": {
+      "start": 0,
+      "duration": 24
+    }
+  },
+  {
+    "slug": "boxinternet",
+    "name": "Box internet",
+    "power": 12,
+    "defaultOccurence": {
+      "start": 0,
+      "duration": 24
+    }
+  },
+  {
+    "slug": "boxtv",
+    "name": "Box TV",
+    "power": 13,
+    "defaultOccurence": {
+      "start": 0,
+      "duration": 24
+    }
+  },
+  {
     "slug": "radiateur",
     "name": "Radiateur électrique",
-    "color": "#0A338A",
     "initialPower": 2000,
     "initialPowerLength": 120,
     "power": 200,
@@ -14,7 +58,6 @@
   {
     "slug": "four",
     "name": "Four électrique",
-    "color": "#004393",
     "initialPower": 2000,
     "initialPowerLength": 12,
     "power": 140,
@@ -26,7 +69,6 @@
   {
     "slug": "aspirateur",
     "name": "Aspirateur",
-    "color": "#005098",
     "power": 700,
     "defaultOccurence": {
       "start": 18,
@@ -36,7 +78,6 @@
   {
     "slug": "lavelinge",
     "name": "Lave linge",
-    "color": "#005c98",
     "initialPower": 2000,
     "initialPowerLength": 20,
     "power": 64,
@@ -48,7 +89,6 @@
   {
     "slug": "lavevaisselle",
     "name": "Lave vaisselle",
-    "color": "#006796",
     "initialPower": 2000,
     "initialPowerLength": 25,
     "power": 140,
@@ -60,7 +100,6 @@
   {
     "slug": "sechelinge",
     "name": "Sèche linge",
-    "color": "#007192",
     "power": 1800,
     "defaultOccurence": {
       "start": 18,
@@ -70,7 +109,6 @@
   {
     "slug": "microonde",
     "name": "Micro-onde",
-    "color": "#007a8d",
     "power": 1000,
     "defaultOccurence": {
       "start": 18,
@@ -80,7 +118,6 @@
   {
     "slug": "plaques",
     "name": "Plaques électriques",
-    "color": "#158389",
     "power": 1500,
     "defaultOccurence": {
       "start": 18,
@@ -90,7 +127,6 @@
   {
     "slug": "bouilloire",
     "name": "Bouilloire",
-    "color": "#1E6091",
     "power": 1300,
     "defaultOccurence": {
       "start": 18,
@@ -100,11 +136,48 @@
   {
     "slug": "sechecheveux",
     "name": "Sèche cheveux",
-    "color": "#184E77",
     "power": 2000,
     "defaultOccurence": {
       "start": 18,
       "duration": 0.5
+    }
+  },
+  {
+    "slug": "television",
+    "name": "Télévision",
+    "power": 120,
+    "defaultOccurence": {
+      "start": 20,
+      "duration": 1
+    }
+  },
+  {
+    "slug": "ferarepasser",
+    "name": "Fer à repasser",
+    "power": 2000,
+    "defaultOccurence": {
+      "start": 14,
+      "duration": 1
+    }
+  },
+  {
+    "slug": "chauffeeau",
+    "name": "Chauffe-eau",
+    "initialPower": 2000,
+    "initialPowerLength": 5,
+    "power": 20,
+    "defaultOccurence": {
+      "start": 23.5,
+      "duration": 8
+    }
+  },
+  {
+    "slug": "ampouleled",
+    "name": "Ampoule (LED)",
+    "power": 10,
+    "defaultOccurence": {
+      "start": 19,
+      "duration": 4
     }
   }
 ]

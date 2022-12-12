@@ -21,6 +21,32 @@ export function DataProvider(props) {
   const [hover, setHover] = useState(null)
   const [active, setActive] = useState(null)
 
+  const addOccurence = () => {
+    const appliance = appliances[0]
+    setOccurences((prevOccurences) => [
+      ...prevOccurences,
+      {
+        slug: appliance.slug,
+        start: appliance.defaultOccurence.start,
+        duration: appliance.defaultOccurence.duration,
+      },
+    ])
+    setActive({ occurence: occurences.length, new: true })
+  }
+
+  const editOccurence = ({ occurenceIndex, newOccurence }) => {
+    setOccurences((prevOccurences) =>
+      prevOccurences.map((occurence, index) =>
+        index === occurenceIndex ? newOccurence : occurence
+      )
+    )
+  }
+
+  const deleteOccurence = ({ occurenceIndex }) => {
+    setOccurences((prevOccurences) =>
+      prevOccurences.filter((occurence, index) => index !== occurenceIndex)
+    )
+  }
   return (
     <DataContext.Provider
       value={{
@@ -31,32 +57,9 @@ export function DataProvider(props) {
         setHover,
         active,
         setActive,
-        addOccurence: () => {
-          const appliance = appliances[0]
-          setOccurences((prevOccurences) => [
-            ...prevOccurences,
-            {
-              slug: appliance.slug,
-              start: appliance.defaultOccurence.start,
-              duration: appliance.defaultOccurence.duration,
-            },
-          ])
-          setActive({ occurence: occurences.length, new: true })
-        },
-        editOccurence: ({ occurenceIndex, newOccurence }) => {
-          setOccurences((prevOccurences) =>
-            prevOccurences.map((occurence, index) =>
-              index === occurenceIndex ? newOccurence : occurence
-            )
-          )
-        },
-        deleteOccurence: ({ occurenceIndex }) => {
-          setOccurences((prevOccurences) =>
-            prevOccurences.filter(
-              (occurence, index) => index !== occurenceIndex
-            )
-          )
-        },
+        addOccurence,
+        editOccurence,
+        deleteOccurence,
       }}
     >
       {props.children}

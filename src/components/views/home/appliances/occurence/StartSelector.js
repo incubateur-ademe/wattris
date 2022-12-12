@@ -80,7 +80,7 @@ export default function Slider(props) {
           )
         }
       />
-      {props.large && <Tick>24h</Tick>}
+      {props.large && <Tick>Minuit</Tick>}
     </Wrapper>
   )
 }

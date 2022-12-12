@@ -11,16 +11,18 @@ const Wrapper = styled.div`
   display: flex;
 `
 export default function Timeline() {
-  const { steps, stepDurationInMinute } = useAllBlocsByStep()
+  const { steps, stepDurationInMinute, powerByBlocInKW } = useAllBlocsByStep()
 
   return (
     <Wrapper>
       <Axis />
       {steps.map((step, index) => (
         <Step
+          key={index}
           step={step}
           hour={(index / 60) * stepDurationInMinute}
           width={(100 / 24) * (60 / stepDurationInMinute)}
+          powerByBlocInKW={powerByBlocInKW}
         />
       ))}
     </Wrapper>

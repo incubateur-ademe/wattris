@@ -21,7 +21,7 @@ const PeakIndicator = styled.div`
   position: absolute;
   bottom: calc(100% + 1.5rem);
   left: ${(props) => (13 / 24) * 100}%;
-  right: ${(props) => (6 / 24) * 100}%;
+  right: ${(props) => (5.75 / 24) * 100}%;
   font-size: 0.75rem;
   font-weight: 300;
   text-align: center;
@@ -32,10 +32,10 @@ const PeakIndicator = styled.div`
 const Arrow = styled.div`
   position: absolute;
   bottom: calc(100% + 1.5rem);
-  left: ${(props) => ((props.right ? 17.5 : 12) / 24) * 100}%;
-  right: ${(props) => ((props.right ? 5.5 : 10.5) / 24) * 100}%;
-  height: 0.0625rem;
-  transform: rotate(${(props) => (props.right ? 35 : -30)}deg);
+  left: ${(props) => ((props.right ? 17.25 : 12.5) / 24) * 100}%;
+  right: ${(props) => ((props.right ? 5.25 : 10.1) / 24) * 100}%;
+  height: 0.05rem;
+  transform: rotate(${(props) => (props.right ? 37.5 : -35)}deg);
   transform-origin: ${(props) => (props.right ? 'left' : 'right')};
   background: ${(props) => props.theme.colors.textLighter};
 
@@ -61,7 +61,7 @@ export default function Peaks(props) {
         onMouseEnter={() => props.setHover(true)}
         onMouseLeave={() => props.setHover(false)}
       >
-        Pics de consommation
+        Période de tension
       </PeakIndicator>
       <Arrow
         hover={props.hover}

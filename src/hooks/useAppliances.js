@@ -3,7 +3,7 @@ import { useContext, useMemo } from 'react'
 import DataContext from 'components/providers/DataProvider'
 
 const stepDurationInMinute = 30
-const powerByBlocInKW = 100
+const powerByBlocInKW = 10
 const peakHalfhours = [
   16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 36, 37, 38, 39, 40,
 ]
@@ -80,15 +80,15 @@ export function getAllBlocsForStep({
       )
     })
     .reduce((acc, cur) => [...acc, ...cur], [])
+    .sort((a, b) => a.appliance.power - b.appliance.power)
 }
 
 export function getPowerForStep({ step, appliance, start, duration }) {
   let end = start + duration
-  end = end > 24 ? end - 24 : end
+  end = end > 24 ? end - (24 + stepDurationInMinute / 60) : end
 
   const startInStep = Math.floor(start * (60 / stepDurationInMinute))
   const endInStep = Math.ceil(end * (60 / stepDurationInMinute))
-
   const runAtNight = endInStep < startInStep
 
   if (step === startInStep) {
@@ -99,7 +99,7 @@ export function getPowerForStep({ step, appliance, start, duration }) {
     return appliance.power
   }
 
-  if (runAtNight && (step > startInStep || step < endInStep)) {
+  if (runAtNight && (step > startInStep || step <= endInStep)) {
     return appliance.power
   }
 

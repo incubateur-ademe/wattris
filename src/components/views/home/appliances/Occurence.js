@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   padding: 0.75rem 0.75rem;
   color: ${(props) => props.theme.colors.background};
   background-color: ${(props) =>
-    props.theme.colors[props.peak ? 'error' : 'main']};
+    props.theme.colors[props.peak && !props.allDay ? 'error' : 'main']};
   border-radius: 0.75rem;
   opacity: ${(props) => (props.discret ? 0.4 : 1)};
   transition: opacity ${(props) => props.discret && '200ms'} ease-out;
@@ -79,13 +79,13 @@ export default function Occurence(props) {
   )
   return (
     <Wrapper
-      color={appliance.color}
       discret={
         active
           ? active?.occurence !== props.index
           : hover && hover.occurence !== props.index
       }
       peak={peak}
+      allDay={props.occurence.duration === 24}
       onMouseEnter={() => setHover({ occurence: props.index })}
       onMouseLeave={() => setHover(null)}
     >
