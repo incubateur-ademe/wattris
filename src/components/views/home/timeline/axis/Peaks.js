@@ -32,8 +32,8 @@ const PeakIndicator = styled.div`
 const Arrow = styled.div`
   position: absolute;
   bottom: calc(100% + 1.5rem);
-  left: ${(props) => ((props.right ? 17.5 : 12.5) / 24) * 100}%;
-  right: ${(props) => ((props.right ? 5.1 : 10.1) / 24) * 100}%;
+  left: ${(props) => ((props.right ? 17.25 : 12.5) / 24) * 100}%;
+  right: ${(props) => ((props.right ? 5.25 : 10.1) / 24) * 100}%;
   height: 0.05rem;
   transform: rotate(${(props) => (props.right ? 37.5 : -35)}deg);
   transform-origin: ${(props) => (props.right ? 'left' : 'right')};
@@ -61,7 +61,7 @@ export default function Peaks(props) {
         onMouseEnter={() => props.setHover(true)}
         onMouseLeave={() => props.setHover(false)}
       >
-        Tension du réseau
+        Période de tension
       </PeakIndicator>
       <Arrow
         hover={props.hover}
