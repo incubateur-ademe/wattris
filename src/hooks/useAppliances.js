@@ -70,6 +70,7 @@ export function getAllBlocsForStep({
         appliance,
         start: occurence.start,
         duration: occurence.duration,
+        allDay: occurence.allDay,
       })
 
       return Array.from(Array(Math.ceil(power / powerByBlocInKW) || 0)).map(
@@ -83,7 +84,10 @@ export function getAllBlocsForStep({
     .sort((a, b) => a.appliance.power - b.appliance.power)
 }
 
-export function getPowerForStep({ step, appliance, start, duration }) {
+export function getPowerForStep({ step, appliance, start, duration, allDay }) {
+  if (allDay) {
+    return appliance.power
+  }
   let end = start + duration
   end = end > 24 ? end - (24 + stepDurationInMinute / 60) : end
 
