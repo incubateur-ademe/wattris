@@ -22,8 +22,12 @@ const StyledSelect = styled.select`
       ''
     )}' d='M12,13.1l5-4.9l1.4,1.4L12,15.9L5.6,9.5l1.4-1.4L12,13.1z'/></svg>");
   cursor: pointer;
+
+  ${(props) => props.theme.mq.small} {
+    font-size: 1rem;
+  }
 `
-export default function DurationSelector(props) {
+export default function NameSelector(props) {
   return (
     <StyledSelect
       id={props.slug + props.index}

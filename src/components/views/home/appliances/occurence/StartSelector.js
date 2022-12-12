@@ -10,22 +10,24 @@ const Wrapper = styled.div`
   align-items: center;
   gap: 0.5rem;
   height: 1.25rem;
-  margin-bottom: ${(props) => (props.large ? '1rem' : 0)};
+  margin-bottom: ${(props) => (props.large ? '0.5rem' : 0)};
 `
-const Tick = styled.div``
+const Tick = styled.div`
+  font-size: 0.75rem;
+`
 const Track = styled.div`
   position: relative;
   width: 100%;
   height: 0.0625rem;
-  margin: 0 0.625rem;
+  margin: 0 1.75rem;
 
   &:before {
     content: '';
     position: absolute;
     top: 0;
     bottom: 0;
-    left: -0.625rem;
-    right: -0.625rem;
+    left: -1.75rem;
+    right: -1.75rem;
     background-color: ${(props) => props.theme.colors.background};
   }
 `

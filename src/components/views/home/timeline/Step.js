@@ -35,7 +35,7 @@ export default function Step(props) {
       {props.step.map((bloc, index) => {
         return (
           index <= maxBlocsInHeight && (
-            <Bloc bloc={bloc} peak={peak} blocHeight={blocHeight} />
+            <Bloc key={index} bloc={bloc} peak={peak} blocHeight={blocHeight} />
           )
         )
       })}

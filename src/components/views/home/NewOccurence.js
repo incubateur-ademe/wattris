@@ -1,4 +1,4 @@
-import { useContext, useMemo, useState, useEffect } from 'react'
+import React, { useContext, useMemo } from 'react'
 import styled from 'styled-components'
 
 import DataContext from 'components/providers/DataProvider'
@@ -7,6 +7,7 @@ import ButtonLink from 'components/base/ButtonLink'
 import StartSelector from 'components/views/home/appliances/occurence/StartSelector'
 import NameSelector from 'components/views/home/appliances/occurence/NameSelector'
 import DurationSelector from 'components/views/home/appliances/occurence/DurationSelector'
+import Checkbox from 'components/base/Checkbox'
 
 const Background = styled.div`
   position: fixed;
@@ -18,7 +19,7 @@ const Background = styled.div`
 `
 const Wrapper = styled.div`
   position: absolute;
-  z-index: 10;
+  z-index: 150;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
@@ -36,7 +37,7 @@ const Wrapper = styled.div`
 
   ${(props) => props.theme.mq.small} {
     width: 95vw;
-    padding: 1rem 1rem;
+    padding: 1.5rem 1rem;
   }
 `
 const DeleteButton = styled.button`
@@ -56,6 +57,16 @@ const DeleteButton = styled.button`
   path {
     fill: ${(props) => props.theme.colors.background};
   }
+
+  ${(props) => props.theme.mq.small} {
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 0.75rem;
+  }
+`
+const ControlsWrapper = styled.div`
+  opacity: ${(props) => (props.allDay ? 0.1 : 1)};
+  pointer-events: ${(props) => (props.allDay ? 'none' : 'inherit')};
 `
 const Text = styled.p`
   display: flex;
@@ -63,6 +74,15 @@ const Text = styled.p`
   gap: 0.375rem;
   margin-bottom: 0.75rem;
   font-size: 0.875rem;
+`
+const StyledCheckbox = styled(Checkbox)`
+  margin: 0.5rem auto;
+  &:before {
+    border-color: ${(props) => props.theme.colors.background};
+  }
+  &:after {
+    color: ${(props) => props.theme.colors.background};
+  }
 `
 const Buttons = styled.div`
   display: flex;
@@ -78,33 +98,6 @@ const StyledButton = styled(Button)`
   &:hover {
     color: ${(props) => props.theme.colors.background};
   }
-`
-const ButtonsWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 1rem;
-`
-const AllDayButton = styled.div`
-  border: 0.125rem solid ${(props) => props.theme.colors.background};
-  border-radius: 0 1.5rem 1.5rem 0;
-  padding: 0.375rem 0.875rem;
-  background-color: ${(props) =>
-    props.allDay ? props.theme.colors.background : props.theme.colors.main};
-  color: ${(props) =>
-    props.allDay ? props.theme.colors.main : props.theme.colors.background};
-  border-color: ${(props) => props.theme.colors.background};
-`
-
-const DurationButton = styled.div`
-  border: 0.125rem solid ${(props) => props.theme.colors.background};
-  border-radius: 1.5rem 0 0 1.5rem;
-  padding: 0.375rem 0.875rem;
-  background-color: ${(props) =>
-    props.allDay ? props.theme.colors.main : props.theme.colors.background};
-  color: ${(props) =>
-    props.allDay ? props.theme.colors.background : props.theme.colors.main};
-  border-color: ${(props) => props.theme.colors.background};
 `
 
 const StyledButtonLink = styled(ButtonLink)`
@@ -138,14 +131,6 @@ export default function Occurence() {
       (occurence?.start >= 18 && occurence?.start < 20),
     [occurence]
   )
-
-  const [allDay, setAllDay] = useState(occurence && occurence.duration === 24)
-
-  useEffect(() => {
-    if (occurence) {
-      setAllDay(occurence.duration === 24)
-    }
-  }, [occurence])
 
   return (
     appliance &&
@@ -205,31 +190,8 @@ export default function Occurence() {
               })
             }}
           />
-          <ButtonsWrapper>
-            <DurationButton
-              allDay={allDay}
-              onClick={() => {
-                editOccurence({
-                  occurenceIndex: active?.occurence,
-                  newOccurence: { ...occurence, duration: 0 },
-                })
-              }}
-            >
-              Je le lance à
-            </DurationButton>
-            <AllDayButton
-              allDay={allDay}
-              onClick={() => {
-                editOccurence({
-                  occurenceIndex: active?.occurence,
-                  newOccurence: { ...occurence, duration: 24 },
-                })
-              }}
-            >
-              Toute la journée
-            </AllDayButton>{' '}
-          </ButtonsWrapper>
-          {!allDay && (
+          <ControlsWrapper allDay={occurence.allDay}>
+            <Text>Je le lance à</Text>
             <StartSelector
               large
               start={occurence.start}
@@ -241,22 +203,35 @@ export default function Occurence() {
                 })
               }}
             />
-          )}
-          <Text>
-            pendant
-            <DurationSelector
-              large
-              slug={appliance.slug}
-              index={active?.occurence}
-              value={occurence.duration}
-              onChange={(duration) => {
-                editOccurence({
-                  occurenceIndex: active?.occurence,
-                  newOccurence: { ...occurence, duration },
-                })
-              }}
-            />
-          </Text>
+            <Text>
+              pendant
+              <DurationSelector
+                large
+                slug={appliance.slug}
+                index={active?.occurence}
+                value={occurence.duration}
+                onChange={(duration) => {
+                  editOccurence({
+                    occurenceIndex: active?.occurence,
+                    newOccurence: { ...occurence, duration },
+                  })
+                }}
+              />
+            </Text>
+          </ControlsWrapper>
+          <StyledCheckbox
+            small
+            name={'allday'}
+            checked={occurence.allDay}
+            onChange={(allDay) => {
+              editOccurence({
+                occurenceIndex: active?.occurence,
+                newOccurence: { ...occurence, allDay },
+              })
+            }}
+          >
+            Allumé toute la journée
+          </StyledCheckbox>
           <Buttons>
             <StyledButtonLink
               onClick={() => {

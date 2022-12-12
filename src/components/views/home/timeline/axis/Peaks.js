@@ -25,9 +25,17 @@ const PeakIndicator = styled.div`
   font-size: 0.75rem;
   font-weight: 300;
   text-align: center;
+  white-space: nowrap;
   cursor: pointer;
   opacity: ${(props) => (props.hover ? 1 : 0.5)};
   transition: opacity 300ms ease-out;
+
+  ${(props) => props.theme.mq.medium} {
+    bottom: calc(100% + 0.5rem);
+  }
+  ${(props) => props.theme.mq.small} {
+    left: ${(props) => (11.5 / 24) * 100}%;
+  }
 `
 const Arrow = styled.div`
   position: absolute;
@@ -49,6 +57,10 @@ const Arrow = styled.div`
     path {
       fill: ${(props) => props.theme.colors.textLighter};
     }
+  }
+
+  ${(props) => props.theme.mq.medium} {
+    bottom: calc(100% + 0.5rem);
   }
 `
 export default function Peaks(props) {
