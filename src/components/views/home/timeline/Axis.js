@@ -26,8 +26,8 @@ const Xlegend = styled.div`
 `
 const Ylegend = styled.div`
   position: absolute;
-  top: 30%;
-  left: 0.5rem;
+  top: 35%;
+  left: 0.125rem;
   width: 4rem;
   font-size: 0.75rem;
   font-weight: 300;

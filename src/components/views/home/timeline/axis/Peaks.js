@@ -10,11 +10,11 @@ const Peak = styled.div`
   background: ${(props) => props.theme.colors.error};
   background: linear-gradient(
     0deg,
-    rgba(250, 30, 67, 1) 0%,
-    rgba(250, 30, 67, 1) 80%,
+    rgba(250, 30, 67, 0.9) 0%,
+    rgba(250, 30, 67, 0.7) 80%,
     rgba(250, 30, 67, 0) 100%
   );
-  opacity: ${(props) => (props.hover ? 0.4 : 0.1)};
+  opacity: ${(props) => (props.hover ? 0.4 : 0.2)};
   transition: opacity 300ms ease-out;
 `
 const PeakIndicator = styled.div`
