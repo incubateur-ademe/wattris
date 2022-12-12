@@ -10,16 +10,20 @@ import NewOccurence from './home/NewOccurence'
 const Wrapper = styled.div`
   position: relative;
   margin-bottom: 2.5rem;
-  padding-top: 5.5rem;
+  padding-top: 6.5rem;
+
+  ${(props) => props.theme.mq.medium} {
+    padding-top: 0;
+  }
 `
 export default function Home() {
   return (
     <Section>
       <Section.Content>
         <Wrapper>
-          <Timeline />
           <Score />
           <NewOccurence />
+          <Timeline />
         </Wrapper>
         <Appliances />
       </Section.Content>

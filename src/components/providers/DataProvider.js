@@ -10,11 +10,13 @@ export function DataProvider(props) {
       slug: 'lavelinge',
       start: 14,
       duration: 1.5,
+      allDay: false,
     },
     {
       slug: 'plaques',
       start: 12,
       duration: 0.5,
+      allDay: false,
     },
   ])
 
@@ -29,6 +31,7 @@ export function DataProvider(props) {
         slug: appliance.slug,
         start: appliance.defaultOccurence.start,
         duration: appliance.defaultOccurence.duration,
+        allDay: appliance.defaultOccurence.allDay,
       },
     ])
     setActive({ occurence: occurences.length, new: true })
