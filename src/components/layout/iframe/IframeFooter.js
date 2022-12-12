@@ -35,10 +35,8 @@ const Logos = styled(MagicLink)`
 export default function IframeFooter() {
   return (
     <Wrapper>
-      <StyledMagicLink to='https://wattris.fr/'>
+      <StyledMagicLink to='https://wattris.ademe.fr/'>
         Voir la version détaillée
-        <br />
-        (et les sources)
       </StyledMagicLink>
       <Logos
         to='https://datagir.ademe.fr/'
