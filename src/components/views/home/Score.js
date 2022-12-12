@@ -97,6 +97,10 @@ const Description = styled.p`
   ${(props) => props.theme.mq.medium} {
     max-width: ${(props) => (props.percent < 0.4 ? 14 : 23)}rem;
   }
+
+  ${(props) => props.theme.mq.small} {
+    min-height: 3.1875rem;
+  }
 `
 const StyledButtonLink = styled(ButtonLink)`
   font-size: 0.75rem;

@@ -4,13 +4,14 @@ import styled from 'styled-components'
 import DataContext from 'components/providers/DataProvider'
 import Button from 'components/base/Button'
 import ButtonLink from 'components/base/ButtonLink'
-import StartSelector from 'components/views/home/appliances/occurence/StartSelector'
-import NameSelector from 'components/views/home/appliances/occurence/NameSelector'
-import DurationSelector from 'components/views/home/appliances/occurence/DurationSelector'
+import StartSelector from 'components/misc/occurence/StartSelector'
+import NameSelector from 'components/misc/occurence/NameSelector'
+import DurationSelector from 'components/misc/occurence/DurationSelector'
 import Checkbox from 'components/base/Checkbox'
 
 const Background = styled.div`
   position: fixed;
+  z-index: 5;
   top: 0;
   bottom: 0;
   left: 0;
