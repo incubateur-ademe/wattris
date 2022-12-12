@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 import Section from 'components/base/Section'
 import Web from 'components/layout/Web'
 import Home from 'components/views/Home'
-import Configurator from 'components/views/Configurator'
+import Configurator from 'components/misc/Configurator'
 
 const Title = styled.h1`
   max-width: 50rem;
@@ -12,6 +12,7 @@ const Title = styled.h1`
   text-align: center;
 `
 export default function Index() {
+  const [hoverIframe, setHoverIframe] = useState(false)
   return (
     <Web>
       <Section>
@@ -22,8 +23,8 @@ export default function Index() {
           </Title>
         </Section.Content>
       </Section>
-      <Home />
-      <Configurator />
+      <Home hoverIframe={hoverIframe} />
+      <Configurator setHoverIframe={setHoverIframe} />
     </Web>
   )
 }

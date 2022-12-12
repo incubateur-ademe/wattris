@@ -19,7 +19,7 @@ const Title = styled.h1`
   font-size: 2rem;
 `
 
-const Text = styled.small``
+const Text = styled.p``
 
 export default function Configurator(props) {
   const iframe = useIframe()
@@ -27,16 +27,13 @@ export default function Configurator(props) {
     !iframe && (
       <Section>
         <Section.Content>
-          <Wrapper>
-            <Title>Intégrer Wattris en iframe</Title>
+          <Wrapper
+            onMouseEnter={() => props.setHoverIframe(true)}
+            onMouseLeave={() => props.setHoverIframe(false)}
+          >
+            <Title>Intégrez Wattris sur votre site</Title>
+
             <Code />
-            <Text>
-              Testez l'affichage sur{' '}
-              <MagicLink to='/integration'>
-                notre page de démonstration
-              </MagicLink>{' '}
-              (à noter que ce bloc d'informations disparaitra en iframe).
-            </Text>
           </Wrapper>
         </Section.Content>
       </Section>

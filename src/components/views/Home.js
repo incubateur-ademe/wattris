@@ -7,6 +7,13 @@ import Timeline from './home/Timeline'
 import Score from './home/Score'
 import NewOccurence from './home/NewOccurence'
 
+const StyledSectionContent = styled(Section.Content)`
+  padding-top: 0.5rem;
+  border: 0.125rem solid
+    ${(props) => props.theme.colors[props.hoverIframe ? 'main' : 'background']};
+  border-radius: 1rem;
+  transition: border 300ms ease-out;
+`
 const Wrapper = styled.div`
   position: relative;
   margin-bottom: 2.5rem;
@@ -16,17 +23,17 @@ const Wrapper = styled.div`
     padding-top: 0;
   }
 `
-export default function Home() {
+export default function Home(props) {
   return (
     <Section>
-      <Section.Content>
+      <StyledSectionContent hoverIframe={props.hoverIframe}>
         <Wrapper>
           <Score />
           <NewOccurence />
           <Timeline />
         </Wrapper>
         <Appliances />
-      </Section.Content>
+      </StyledSectionContent>
     </Section>
   )
 }

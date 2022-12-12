@@ -60,7 +60,7 @@ export default function Code() {
 
   useEffect(() => {
     setScript(
-      `<script id="datagir-impact-co2" src="${window?.location.origin}/iframe.js"></script>`
+      `<script id="datagir-wattris" src="${window?.location.origin}/iframe.js"></script>`
     )
   }, [])
 
