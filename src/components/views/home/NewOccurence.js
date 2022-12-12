@@ -37,7 +37,7 @@ const Wrapper = styled.div`
 
   ${(props) => props.theme.mq.small} {
     width: 95vw;
-    padding: 1.5rem 1rem;
+    padding: 1rem 1rem 0.75rem;
   }
 `
 const DeleteButton = styled.button`
@@ -74,6 +74,11 @@ const Text = styled.p`
   gap: 0.375rem;
   margin-bottom: 0.75rem;
   font-size: 0.875rem;
+
+  ${(props) => props.theme.mq.small} {
+    margin-bottom: 0.5rem;
+    font-size: 0.75rem;
+  }
 `
 const StyledCheckbox = styled(Checkbox)`
   margin: 0.5rem auto;
@@ -82,6 +87,11 @@ const StyledCheckbox = styled(Checkbox)`
   }
   &:after {
     color: ${(props) => props.theme.colors.background};
+  }
+
+  ${(props) => props.theme.mq.small} {
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
   }
 `
 const Buttons = styled.div`
@@ -97,6 +107,10 @@ const StyledButton = styled(Button)`
 
   &:hover {
     color: ${(props) => props.theme.colors.background};
+  }
+
+  ${(props) => props.theme.mq.small} {
+    font-size: 0.75rem;
   }
 `
 
@@ -185,6 +199,7 @@ export default function Occurence() {
                 newOccurence: {
                   start: newAppliance.defaultOccurence.start,
                   duration: newAppliance.defaultOccurence.duration,
+                  allDay: newAppliance.defaultOccurence.allDay,
                   slug,
                 },
               })
@@ -221,7 +236,7 @@ export default function Occurence() {
           </ControlsWrapper>
           <StyledCheckbox
             small
-            name={'allday'}
+            name={'allday' + appliance.slug}
             checked={occurence.allDay}
             onChange={(allDay) => {
               editOccurence({
