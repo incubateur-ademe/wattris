@@ -18,9 +18,6 @@ const Wrapper = styled.div`
 const Title = styled.h1`
   font-size: 2rem;
 `
-
-const Text = styled.p``
-
 export default function Configurator(props) {
   const iframe = useIframe()
   return (
