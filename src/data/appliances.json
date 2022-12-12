@@ -1,47 +1,14 @@
 [
   {
-    "slug": "frigo",
-    "name": "Frigo",
-    "power": 19,
+    "slug": "lavelinge",
+    "name": "Lave linge",
+    "initialPower": 2000,
+    "initialPowerLength": 20,
+    "power": 64,
     "defaultOccurence": {
-      "start": 0,
-      "duration": 24
-    }
-  },
-  {
-    "slug": "frigocombine",
-    "name": "Frigo combiné",
-    "power": 39,
-    "defaultOccurence": {
-      "start": 0,
-      "duration": 24
-    }
-  },
-  {
-    "slug": "congelateur",
-    "name": "Congélateur",
-    "power": 33,
-    "defaultOccurence": {
-      "start": 0,
-      "duration": 24
-    }
-  },
-  {
-    "slug": "boxinternet",
-    "name": "Box internet",
-    "power": 12,
-    "defaultOccurence": {
-      "start": 0,
-      "duration": 24
-    }
-  },
-  {
-    "slug": "boxtv",
-    "name": "Box TV",
-    "power": 13,
-    "defaultOccurence": {
-      "start": 0,
-      "duration": 24
+      "start": 15,
+      "duration": 1.5,
+      "allDay": false
     }
   },
   {
@@ -52,7 +19,8 @@
     "power": 200,
     "defaultOccurence": {
       "start": 18,
-      "duration": 1
+      "duration": 1,
+      "allDay": false
     }
   },
   {
@@ -63,7 +31,8 @@
     "power": 140,
     "defaultOccurence": {
       "start": 18,
-      "duration": 1
+      "duration": 1,
+      "allDay": false
     }
   },
   {
@@ -72,18 +41,8 @@
     "power": 700,
     "defaultOccurence": {
       "start": 18,
-      "duration": 0.5
-    }
-  },
-  {
-    "slug": "lavelinge",
-    "name": "Lave linge",
-    "initialPower": 2000,
-    "initialPowerLength": 20,
-    "power": 64,
-    "defaultOccurence": {
-      "start": 15,
-      "duration": 1.5
+      "duration": 0.5,
+      "allDay": false
     }
   },
   {
@@ -94,7 +53,8 @@
     "power": 140,
     "defaultOccurence": {
       "start": 18,
-      "duration": 1.5
+      "duration": 1.5,
+      "allDay": false
     }
   },
   {
@@ -103,7 +63,8 @@
     "power": 1800,
     "defaultOccurence": {
       "start": 18,
-      "duration": 2
+      "duration": 2,
+      "allDay": false
     }
   },
   {
@@ -112,7 +73,8 @@
     "power": 1000,
     "defaultOccurence": {
       "start": 18,
-      "duration": 0.5
+      "duration": 0.5,
+      "allDay": false
     }
   },
   {
@@ -121,7 +83,8 @@
     "power": 1500,
     "defaultOccurence": {
       "start": 18,
-      "duration": 2
+      "duration": 2,
+      "allDay": false
     }
   },
   {
@@ -130,7 +93,8 @@
     "power": 1300,
     "defaultOccurence": {
       "start": 18,
-      "duration": 0.5
+      "duration": 0.5,
+      "allDay": false
     }
   },
   {
@@ -139,7 +103,8 @@
     "power": 2000,
     "defaultOccurence": {
       "start": 18,
-      "duration": 0.5
+      "duration": 0.5,
+      "allDay": false
     }
   },
   {
@@ -148,7 +113,8 @@
     "power": 120,
     "defaultOccurence": {
       "start": 20,
-      "duration": 1
+      "duration": 1,
+      "allDay": false
     }
   },
   {
@@ -157,7 +123,8 @@
     "power": 2000,
     "defaultOccurence": {
       "start": 14,
-      "duration": 1
+      "duration": 1,
+      "allDay": false
     }
   },
   {
@@ -168,7 +135,8 @@
     "power": 20,
     "defaultOccurence": {
       "start": 23.5,
-      "duration": 8
+      "duration": 8,
+      "allDay": false
     }
   },
   {
@@ -177,7 +145,88 @@
     "power": 10,
     "defaultOccurence": {
       "start": 19,
-      "duration": 4
+      "duration": 4,
+      "allDay": false
+    }
+  },
+  {
+    "slug": "frigo",
+    "name": "Frigo",
+    "power": 19,
+    "defaultOccurence": {
+      "start": 0,
+      "duration": 24,
+      "allDay": true
+    }
+  },
+  {
+    "slug": "frigocombine",
+    "name": "Frigo combiné",
+    "power": 39,
+    "defaultOccurence": {
+      "start": 0,
+      "duration": 24,
+      "allDay": true
+    }
+  },
+  {
+    "slug": "congelateur",
+    "name": "Congélateur",
+    "power": 33,
+    "defaultOccurence": {
+      "start": 0,
+      "duration": 24,
+      "allDay": true
+    }
+  },
+  {
+    "slug": "boxinternet",
+    "name": "Box internet",
+    "power": 12,
+    "defaultOccurence": {
+      "start": 0,
+      "duration": 24,
+      "allDay": true
+    }
+  },
+  {
+    "slug": "boxtv",
+    "name": "Box TV",
+    "power": 13,
+    "defaultOccurence": {
+      "start": 0,
+      "duration": 24,
+      "allDay": true
+    }
+  },
+  {
+    "slug": "chargesmartphone",
+    "name": "Charge Smartphone",
+    "power": 5,
+    "defaultOccurence": {
+      "start": 21,
+      "duration": 3,
+      "allDay": false
+    }
+  },
+  {
+    "slug": "chargeordinateur",
+    "name": "Charge Laptop",
+    "power": 19,
+    "defaultOccurence": {
+      "start": 9,
+      "duration": 7,
+      "allDay": false
+    }
+  },
+  {
+    "slug": "ordinateurfixe",
+    "name": "Ordinateur fixe",
+    "power": 76,
+    "defaultOccurence": {
+      "start": 9,
+      "duration": 7,
+      "allDay": false
     }
   }
 ]

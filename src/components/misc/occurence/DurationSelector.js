@@ -27,7 +27,7 @@ export default function DurationSelector(props) {
       onChange={(e) => props.onChange(Number(e.currentTarget.value))}
       large={props.large}
     >
-      {Array.from(Array(48)).map((hour, index) => {
+      {Array.from(Array(47)).map((hour, index) => {
         index += 1
         return (
           <option key={index / 2} value={index / 2}>

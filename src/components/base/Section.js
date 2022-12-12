@@ -16,6 +16,7 @@ Section.Content = styled.div`
 
   ${(props) => props.theme.mq.medium} {
     width: 100vw;
+    padding: 0 0.25rem;
   }
 `
 
