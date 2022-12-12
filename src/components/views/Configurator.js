@@ -6,6 +6,7 @@ import Code from './configurator/Code'
 
 import useIframe from 'hooks/useIframe'
 import MagicLink from 'components/base/MagicLink'
+import Section from 'components/base/Section'
 
 const Wrapper = styled.div`
   width: 100%;
@@ -24,15 +25,21 @@ export default function Configurator(props) {
   const iframe = useIframe()
   return (
     !iframe && (
-      <Wrapper>
-        <Title>Intégrer Wattris en iframe</Title>
-        <Code />
-        <Text>
-          Testez l'affichage sur{' '}
-          <MagicLink to='/integration'>notre page de démonstration</MagicLink>{' '}
-          (à noter que ce bloc disparaitra en iframe).
-        </Text>
-      </Wrapper>
+      <Section>
+        <Section.Content>
+          <Wrapper>
+            <Title>Intégrer Wattris en iframe</Title>
+            <Code />
+            <Text>
+              Testez l'affichage sur{' '}
+              <MagicLink to='/integration'>
+                notre page de démonstration
+              </MagicLink>{' '}
+              (à noter que ce bloc d'informations disparaitra en iframe).
+            </Text>
+          </Wrapper>
+        </Section.Content>
+      </Section>
     )
   )
 }

@@ -2,9 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import IframeResizer from 'iframe-resizer-react'
 
-import Web from 'components/layout/Web'
-import Section from 'components/base/Section'
-
 const Wrapper = styled.div`
   max-width: 1270px;
   margin: 3rem auto;

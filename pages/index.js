@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import Section from 'components/base/Section'
 import Web from 'components/layout/Web'
 import Home from 'components/views/Home'
+import Configurator from 'components/views/Configurator'
 
 const Title = styled.h1`
   max-width: 50rem;
@@ -22,6 +23,7 @@ export default function Index() {
         </Section.Content>
       </Section>
       <Home />
+      <Configurator />
     </Web>
   )
 }
