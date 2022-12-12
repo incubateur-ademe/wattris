@@ -6,6 +6,7 @@ import Appliances from './home/Appliances'
 import Timeline from './home/Timeline'
 import Score from './home/Score'
 import NewOccurence from './home/NewOccurence'
+import Configurator from './home/Configurator'
 
 const Wrapper = styled.div`
   position: relative;
@@ -22,6 +23,7 @@ export default function Home() {
           <NewOccurence />
         </Wrapper>
         <Appliances />
+        <Configurator />
       </Section.Content>
     </Section>
   )
