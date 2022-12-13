@@ -2,7 +2,7 @@ import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
 import { useAllPowerOfPeaks } from 'hooks/useAppliances'
-import ButtonLink from 'components/base/ButtonLink'
+import MagicLink from 'components/base/MagicLink'
 
 const maxPower = 5500
 
@@ -102,7 +102,7 @@ const Description = styled.p`
     min-height: 3.1875rem;
   }
 `
-const StyledButtonLink = styled(ButtonLink)`
+const StyledMagicLink = styled(MagicLink)`
   font-size: 0.75rem;
   color: inherit;
 `
@@ -172,9 +172,9 @@ export default function Score() {
             ? 'Votre consommation risque de mettre le réseau en tension. Essayez de déplacer vos appareils en dehors des pics.'
             : 'Votre consommation met très fortement le réseau en tension. Essayez de déplacer vos appareils en dehors des pics.'}
         </Description>
-        <StyledButtonLink onClick={() => alert('soon soon soon')}>
+        <StyledMagicLink to='https://www.monecowatt.fr/ecogestes'>
           Découvrir des éco-gestes
-        </StyledButtonLink>
+        </StyledMagicLink>
       </Content>
     </Wrapper>
   )
