@@ -150,8 +150,8 @@
     }
   },
   {
-    "slug": "frigo",
-    "name": "Frigo",
+    "slug": "refrigerateur",
+    "name": "Réfrigérateur",
     "power": 19,
     "defaultOccurence": {
       "start": 0,
@@ -160,8 +160,8 @@
     }
   },
   {
-    "slug": "frigocombine",
-    "name": "Frigo combiné",
+    "slug": "refrigerateurcombine",
+    "name": "Réfrigérateur combiné",
     "power": 39,
     "defaultOccurence": {
       "start": 0,
@@ -211,7 +211,7 @@
   },
   {
     "slug": "chargeordinateur",
-    "name": "Charge Laptop",
+    "name": "Charge ordinateur portable",
     "power": 19,
     "defaultOccurence": {
       "start": 9,
