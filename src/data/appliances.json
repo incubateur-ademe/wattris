@@ -9,7 +9,7 @@
       "start": 15,
       "duration": 1.5
     },
-    "description": "L'appel de puissance est maximal au début du cycle pour chauffer l'eau, puis reste inférieur à 100 Watt sur le reste du cycle (2000 Watt puis 64 Watt)."
+    "description": "L'appel de puissance est maximal au début du cycle du lave linge pour chauffer l'eau, puis reste inférieur à 100 Watt sur le reste du cycle (2000 Watt puis 64 Watt)."
   },
   {
     "slug": "radiateur",
@@ -21,7 +21,7 @@
       "start": 18,
       "duration": 1
     },
-    "description": "L'appel de puissance est maximal à l'allumage pour que le pièce soit à température puis, selon la température extérieure, l'isolation, la taille de la pièce, le radiateur appelle une puissance maximale par intermittence. Nous avons choisi de ne pas représenter ces appels de puissance brefs étant donné qu'ils ne sont pas prévisibles (2000 Watt à l'allumage puis 200 Watt)."
+    "description": "On considère un radiateur adapté pour une pièce d'environ 20m2. L'appel de puissance est maximal à l'allumage pour que le pièce soit à température puis, selon la température extérieure, l'isolation, la taille de la pièce, le radiateur appelle une puissance maximale par intermittence. Nous avons choisi de ne pas représenter ces appels de puissance brefs étant donné qu'ils ne sont pas prévisibles mais seulement le pic de montée en température (2000 Watt à l'allumage puis 200 Watt)."
   },
   {
     "slug": "four",
@@ -55,7 +55,7 @@
       "start": 18,
       "duration": 1.5
     },
-    "description": "L'appel de puissance est maximal au début du cycle pour chauffer l'eau, puis reste inférieur à 150 Watt environ sur le reste du cycle (2000 Watt)."
+    "description": "L'appel de puissance est maximal au début du cycle du lave vaisselle pour chauffer l'eau, puis reste inférieur à 150 Watt environ sur le reste du cycle (2000 Watt)."
   },
   {
     "slug": "sechelinge",
@@ -115,7 +115,7 @@
       "start": 20,
       "duration": 1
     },
-    "description": "L'appel de puissance est maximal tout au long de l'utilisation de ma télévision (120 Watt). La puissance appelée varie entre 60 et 200 Watt selon la taille de la TV (hypothèse de 120 Watt dans le simulateur)."
+    "description": "L'appel de puissance est maximal tout au long de l'utilisation de la télévision (120 Watt). (A savoir que la puissance appelée varie entre 60 et 200 Watt selon la taille de la TV.)"
   },
   {
     "slug": "ferarepasser",
