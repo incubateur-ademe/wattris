@@ -2,12 +2,11 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 
 import DataContext from 'components/providers/DataProvider'
-import Button from 'components/base/Button'
-import Occurence from './appliances/Occurence'
+import Occurence from 'components/misc/Occurence'
 
 const Wrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 0.5rem;
   align-items: center;
   margin-bottom: 2rem;
@@ -23,6 +22,8 @@ const AddOccurenceButton = styled.button`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   height: 100%;
   padding: 0.75rem 0.75rem;
   color: ${(props) => props.theme.colors.main};
@@ -56,7 +57,7 @@ export default function Appliances() {
   return (
     <Wrapper>
       {occurences.map((occurence, index) => (
-        <Occurence key={index} index={index} occurence={occurence} />
+        <Occurence key={index} index={index} occurence={occurence} small />
       ))}
       <AddOccurenceButton onClick={addOccurence}>
         <svg width='14' height='15' viewBox='0 0 14 15'>

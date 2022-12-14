@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   padding: 0.75rem 0.75rem;
   color: ${(props) => props.theme.colors.background};
   background-color: ${(props) =>
-    props.theme.colors[props.peak && !props.allDay ? 'error' : 'main']};
+    props.theme.colors[props.peak ? 'error' : 'main']};
   border-radius: 0.75rem;
   opacity: ${(props) => (props.discret ? 0.4 : 1)};
   transition: opacity ${(props) => props.discret && '200ms'} ease-out;
@@ -20,9 +20,14 @@ const Title = styled.p`
   margin-bottom: 0.375rem;
   font-size: 0.875rem;
   text-align: center;
+  cursor: pointer;
 
   ${(props) => props.theme.mq.small} {
     font-size: 0.75rem;
+  }
+
+  &:hover {
+    text-decoration: underline;
   }
 `
 const Text = styled.p`
@@ -61,6 +66,7 @@ export default function Occurence(props) {
     hover,
     setHover,
     active,
+    setActive,
     editOccurence,
     deleteOccurence,
   } = useContext(DataContext)
@@ -89,7 +95,9 @@ export default function Occurence(props) {
       onMouseEnter={() => setHover({ occurence: props.index })}
       onMouseLeave={() => setHover(null)}
     >
-      <Title>{appliance.name}</Title>
+      <Title onClick={() => setActive({ occurence: props.index })}>
+        {appliance.name}
+      </Title>
       <DeleteButton
         visible={hover && hover.occurence === props.index}
         onClick={() =>
@@ -113,19 +121,17 @@ export default function Occurence(props) {
           />
         </svg>
       </DeleteButton>
+      <Text>Je le lance à</Text>
+      <StartSelector
+        start={props.occurence.start}
+        onChange={([start]) => {
+          editOccurence({
+            occurenceIndex: props.index,
+            newOccurence: { ...props.occurence, start },
+          })
+        }}
+      />
       <Text>
-        À
-        <DurationSelector
-          slug={appliance.slug}
-          index={props.index}
-          value={props.occurence.start}
-          onChange={(start) => {
-            editOccurence({
-              occurenceIndex: props.index,
-              newOccurence: { ...props.occurence, start },
-            })
-          }}
-        />
         pendant
         <DurationSelector
           slug={appliance.slug}
@@ -139,15 +145,6 @@ export default function Occurence(props) {
           }}
         />
       </Text>
-      <StartSelector
-        start={props.occurence.start}
-        onChange={([start]) => {
-          editOccurence({
-            occurenceIndex: props.index,
-            newOccurence: { ...props.occurence, start },
-          })
-        }}
-      />
     </Wrapper>
   )
 }

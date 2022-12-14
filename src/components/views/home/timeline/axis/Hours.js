@@ -17,6 +17,11 @@ const Hour = styled.div`
   cursor: pointer;
   opacity: ${(props) => (props.hover ? 1 : 0.5)};
   transition: opacity 300ms ease-out;
+
+  ${(props) => props.theme.mq.small} {
+    transform: translateX(${(props) => (props.last ? '0' : '-50%')});
+    right: ${(props) => (props.last ? '-0.25rem' : 'auto')};
+  }
 `
 export default function Hours(props) {
   return (

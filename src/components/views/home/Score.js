@@ -2,7 +2,7 @@ import React from 'react'
 import styled, { keyframes } from 'styled-components'
 
 import { useAllPowerOfPeaks } from 'hooks/useAppliances'
-import ButtonLink from 'components/base/ButtonLink'
+import MagicLink from 'components/base/MagicLink'
 
 const maxPower = 5500
 
@@ -24,6 +24,14 @@ const Wrapper = styled.div`
   display: flex;
   align-items: flex-start;
   gap: 0.5rem;
+
+  ${(props) => props.theme.mq.medium} {
+    position: relative;
+    margin-bottom: 1rem;
+  }
+  ${(props) => props.theme.mq.medium} {
+    margin-bottom: 2rem;
+  }
 `
 const Gauge = styled.svg`
   width: auto;
@@ -36,6 +44,12 @@ const Gauge = styled.svg`
       props.theme.colors[
         props.percent < 0.4 ? 'main' : props.percent < 0.8 ? 'warning' : 'error'
       ]};
+    ${(props) => props.theme.mq.medium} {
+      max-width: none;
+    }
+  }
+  ${(props) => props.theme.mq.medium} {
+    height: 4.5rem;
   }
 `
 const Filling = styled.rect`
@@ -45,6 +59,7 @@ const Filling = styled.rect`
   transition: transform 300ms ease-out;
 `
 const Content = styled.div`
+  flex: 1;
   color: ${(props) =>
     props.theme.colors[
       props.percent < 0.4 ? 'main' : props.percent < 0.8 ? 'warning' : 'error'
@@ -56,18 +71,38 @@ const Label = styled.p`
   font-weight: bold;
   line-height: 1.2;
 
+  ${(props) => props.theme.mq.small} {
+    font-size: 1.125rem;
+  }
+
   span {
     display: block;
     font-size: 0.75rem;
     font-weight: 300;
+
+    ${(props) => props.theme.mq.medium} {
+      display: inline;
+    }
+
+    ${(props) => props.theme.mq.small} {
+      display: block;
+    }
   }
 `
 const Description = styled.p`
   max-width: ${(props) => (props.percent < 0.4 ? 14 : 23)}rem;
   margin-bottom: 0;
   font-size: 0.75rem;
+
+  ${(props) => props.theme.mq.medium} {
+    max-width: ${(props) => (props.percent < 0.4 ? 14 : 23)}rem;
+  }
+
+  ${(props) => props.theme.mq.small} {
+    min-height: 3.1875rem;
+  }
 `
-const StyledButtonLink = styled(ButtonLink)`
+const StyledMagicLink = styled(MagicLink)`
   font-size: 0.75rem;
   color: inherit;
 `
@@ -94,7 +129,7 @@ export default function Score() {
         />
         <mask
           id='mask0_914_135'
-          style={{ 'mask-type': 'alpha' }}
+          style={{ maskType: 'alpha' }}
           maskUnits='userSpaceOnUse'
           x='0'
           y='0'
@@ -137,9 +172,9 @@ export default function Score() {
             ? 'Votre consommation risque de mettre le réseau en tension. Essayez de déplacer vos appareils en dehors des pics.'
             : 'Votre consommation met très fortement le réseau en tension. Essayez de déplacer vos appareils en dehors des pics.'}
         </Description>
-        <StyledButtonLink onClick={() => alert('soon soon soon')}>
+        <StyledMagicLink to='https://www.monecowatt.fr/ecogestes'>
           Découvrir des éco-gestes
-        </StyledButtonLink>
+        </StyledMagicLink>
       </Content>
     </Wrapper>
   )
