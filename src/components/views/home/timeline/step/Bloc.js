@@ -2,7 +2,6 @@ import React, { useContext } from 'react'
 import styled from 'styled-components'
 
 import DataContext from 'components/providers/DataProvider'
-import ModalContext from 'components/providers/ModalProvider'
 
 const Wrapper = styled.div`
   position: relative;
@@ -11,7 +10,7 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: ${(props) => props.blocHeight}rem;
+  height: ${(props) => props.power * 0.01}rem;
   font-size: 0.75rem;
   font-weight: bold;
   text-transform: uppercase;
@@ -25,8 +24,10 @@ const Wrapper = styled.div`
 `
 export default function Bloc(props) {
   const { hover, setHover, active, setActive } = useContext(DataContext)
+
   return (
     <Wrapper
+      power={props.bloc.power}
       peak={props.peak}
       discret={
         active

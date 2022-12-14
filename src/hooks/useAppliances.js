@@ -65,22 +65,20 @@ export function getAllBlocsForStep({
       const appliance = appliances.find(
         (appliance) => appliance.slug === occurence.slug
       )
-      const power = getPowerForStep({
-        step,
-        appliance,
-        start: occurence.start,
-        duration: occurence.duration,
-        allDay: occurence.allDay,
-      })
 
-      return Array.from(Array(Math.ceil(power / powerByBlocInKW) || 0)).map(
-        () => ({
+      return {
+        appliance,
+        power: getPowerForStep({
+          step,
           appliance,
-          index,
-        })
-      )
+          start: occurence.start,
+          duration: occurence.duration,
+          allDay: occurence.allDay,
+        }),
+        index,
+      }
     })
-    .reduce((acc, cur) => [...acc, ...cur], [])
+    .filter((bloc) => bloc.power)
     .sort((a, b) => a.appliance.power - b.appliance.power)
 }
 
