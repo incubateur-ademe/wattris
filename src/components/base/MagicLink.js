@@ -10,7 +10,7 @@ const Svg = styled.svg`
   margin-left: 0.3em;
 
   path {
-    fill: ${(props) => props.theme.colors.main};
+    fill: ${(props) => props.iconColor || props.theme.colors.main};
   }
 `
 export default function MagicLink(props) {
@@ -41,7 +41,12 @@ export default function MagicLink(props) {
     >
       {props.children}
       {!props.noIcon && (
-        <Svg x='0px' y='0px' viewBox='0 0 283.178 283.178'>
+        <Svg
+          iconColor={props.iconColor}
+          x='0px'
+          y='0px'
+          viewBox='0 0 283.178 283.178'
+        >
           <path
             d='M254.812,140.713h-20c-4.142,0-7.5,3.358-7.5,7.5v91.186c0,4.84-3.939,8.778-8.779,8.778H43.776
 		c-4.839,0-8.775-3.938-8.775-8.778V64.645c0-4.841,3.936-8.78,8.775-8.78h95.855c4.142,0,7.5-3.358,7.5-7.5v-20

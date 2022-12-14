@@ -172,7 +172,14 @@ export default function Score() {
             ? 'Votre consommation risque de mettre le réseau en tension. Essayez de déplacer vos appareils en dehors des pics.'
             : 'Votre consommation met très fortement le réseau en tension. Essayez de déplacer vos appareils en dehors des pics.'}
         </Description>
-        <StyledMagicLink to='https://www.monecowatt.fr/ecogestes'>
+        <StyledMagicLink
+          iconColor={(props) =>
+            props.theme.colors[
+              percent < 0.4 ? 'main' : percent < 0.8 ? 'warning' : 'error'
+            ]
+          }
+          to='https://www.monecowatt.fr/ecogestes'
+        >
           Découvrir des éco-gestes
         </StyledMagicLink>
       </Content>
