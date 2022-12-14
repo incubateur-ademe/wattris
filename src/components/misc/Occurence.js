@@ -124,6 +124,7 @@ export default function Occurence(props) {
       <Text>Je le lance à</Text>
       <StartSelector
         start={props.occurence.start}
+        peak={peak}
         onChange={([start]) => {
           editOccurence({
             occurenceIndex: props.index,
