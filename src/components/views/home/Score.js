@@ -116,7 +116,7 @@ const StyledMagicLink = styled(MagicLink)`
 `
 export default function Score() {
   const { occurences } = useContext(DataContext)
-  console.log(occurences)
+
   const power = useAllPowerOfPeaks()
 
   const percent = power / maxPower
@@ -165,10 +165,13 @@ export default function Score() {
       {occurences.length === 0 ? (
         <Content>
           <Label>
-            Ajoutez un appareil <br />
-            pour visualiser votre <br />
-            consommation
+            Votre foyer ne comporte
+            <br />
+            aucun appareil
           </Label>
+          <Description>
+            Ajoutez en un pour commencer la simulation !
+          </Description>
         </Content>
       ) : (
         <Content percent={percent}>
