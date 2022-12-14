@@ -2,11 +2,19 @@ import { useContext, useMemo } from 'react'
 
 import DataContext from 'components/providers/DataProvider'
 
-const stepDurationInMinute = 30
+const stepDurationInMinute = 15
 const powerByBlocInKW = 10
-const peakHalfhours = [
-  16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 36, 37, 38, 39, 40,
-]
+const peakSteps = () => {
+  const peaks = [8, 9, 10, 11, 12, 18, 19]
+  const numStepsInAnHour = 60 / stepDurationInMinute
+  return peaks
+    .map((peak) =>
+      Array.from(Array(numStepsInAnHour)).map(
+        (step, index) => peak * numStepsInAnHour + index
+      )
+    )
+    .reduce((acc, cur) => [...acc, ...cur], [])
+}
 
 export function useAllBlocsByStep() {
   const { appliances, occurences } = useContext(DataContext)
@@ -30,7 +38,7 @@ export function useAllPowerOfPeaks() {
   const { appliances, occurences } = useContext(DataContext)
   const power = useMemo(
     () =>
-      peakHalfhours
+      peakSteps()
         .map((hour) =>
           occurences
             .map(
