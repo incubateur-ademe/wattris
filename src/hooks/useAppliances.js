@@ -119,9 +119,7 @@ export function getPowerForStep({ step, appliance, start, duration, allDay }) {
   ) {
     return appliance.initialPower || appliance.power
   }
-  if (appliance.slug === 'radiateur') {
-    console.log(initialPowerAtNight, initialPowerEndInStep)
-  }
+
   if (initialPowerAtNight && step <= initialPowerEndInStep) {
     return appliance.initialPower || appliance.power
   }
