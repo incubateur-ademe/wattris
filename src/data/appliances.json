@@ -18,8 +18,8 @@
     "initialPowerLength": 120,
     "power": 200,
     "defaultOccurence": {
-      "start": 18,
-      "duration": 1,
+      "start": 8,
+      "duration": 14,
       "allDay": false
     }
   },

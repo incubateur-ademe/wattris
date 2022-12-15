@@ -86,7 +86,7 @@ export function getAllBlocsForStep({
 
 export function getPowerForStep({ step, appliance, start, duration, allDay }) {
   if (allDay) {
-    return appliance.power
+    duration = 24
   }
   let end = start + duration
   end = end > 24 ? end - (24 + stepDurationInMinute / 60) : end

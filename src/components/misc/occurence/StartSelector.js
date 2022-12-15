@@ -18,7 +18,7 @@ const Tick = styled.div`
 const Track = styled.div`
   position: relative;
   width: 100%;
-  height: 0.0625rem;
+  height: 0.15rem;
   margin: 0 ${(props) => (props.large ? 1.75 : 1)}rem;
 
   &:before {

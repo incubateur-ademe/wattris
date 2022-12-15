@@ -7,8 +7,7 @@ import Checkbox from 'components/base/Checkbox'
 const Wrapper = styled.div``
 
 const ControlsWrapper = styled.div`
-  opacity: ${(props) => (props.allDay ? 0.1 : 1)};
-  pointer-events: ${(props) => (props.allDay ? 'none' : 'inherit')};
+  pointer-events: 'inherit';
 `
 const Text = styled.p`
   display: flex;
@@ -23,7 +22,7 @@ const Text = styled.p`
   }
 `
 const StyledCheckbox = styled(Checkbox)`
-  margin: 0.5rem auto;
+  margin: 0.75rem auto;
   &:before {
     border-color: ${(props) => props.theme.colors.background};
   }
@@ -39,7 +38,7 @@ const StyledCheckbox = styled(Checkbox)`
 export default function HeaterCustom(props) {
   return (
     <Wrapper>
-      <ControlsWrapper allDay={props.occurence.allDay}>
+      <ControlsWrapper>
         <Text>Je chauffe davantage entre : </Text>
         <StartAndEndSelector
           large
@@ -69,7 +68,7 @@ export default function HeaterCustom(props) {
           })
         }}
       >
-        Allumé toute la journée
+        Je n'éteins jamais mon chauffage{' '}
       </StyledCheckbox>
     </Wrapper>
   )
