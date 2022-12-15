@@ -4,7 +4,7 @@ const script = document.getElementById('datagir-wattris')
 
 const source = window.location.href.toString()
 
-const src = `https://wattris.fr/iframe?source=${source}`
+const src = `https://wattris.ademe.fr/iframe?source=${source}`
 
 const iframe = document.createElement('iframe')
 
