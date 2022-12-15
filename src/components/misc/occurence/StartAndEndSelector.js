@@ -31,26 +31,11 @@ const Track = styled.div`
     background: ${(props) => props.background};
   }
 `
-const NumberThumb = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: ${(props) => (props.large ? 2.75 : 2.75)}rem;
-  height: 1.5rem;
-  padding: 0.5rem;
-  font-size: ${(props) => (props.large ? 0.75 : 0.25)}rem;
-  color: ${(props) => props.theme.colors[props.peak ? 'error' : 'main']};
-  background-color: ${(props) => props.color || props.theme.colors.background};
-  border-radius: 0.5rem;
-  outline: solid ${(props) => props.theme.colors[props.peak ? 'error' : 'main']};
-`
 
 const NumberLabel = styled.div`
   position: absolute;
   top: 1.5rem;
-  left: ${(props) => props.labelStyle.left || '-0.75rem'};
-  transform: ${(props) => props.labelStyle.transform};
-  visibility: ${(props) => props.labelStyle.visibility};
+  left: -0.75rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -67,9 +52,6 @@ const Thumb = styled.div`
   width: 0.75rem;
   height: 1.25rem;
   border-radius: 0.25rem;
-  display: 'flex';
-  justify-content: 'center';
-  align-items: 'center';
   background-color: ${(props) => props.theme.colors.background};
 `
 
@@ -85,7 +67,7 @@ const ThumbLabel = (props) => {
   return (
     <NumberLabel
       data-label={props.index}
-      labelStyle={labelStyle}
+      style={{ ...labelStyle }}
       color={props.color}
       large={props.large}
       aria-label={props.ariaLabel}
