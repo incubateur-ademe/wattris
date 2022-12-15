@@ -105,7 +105,8 @@ export function getPowerForStep({ step, appliance, start, duration, allDay }) {
     endInitialPowerStep &&
     endInitialPowerStep !== startInStep &&
     step > startInStep &&
-    step < endInitialPowerStep
+    step < endInitialPowerStep &&
+    step < endInStep
   ) {
     return appliance.initialPower || appliance.power
   }
