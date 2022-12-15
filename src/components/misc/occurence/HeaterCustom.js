@@ -46,14 +46,17 @@ export default function HeaterCustom(props) {
           duration={props.occurence.duration}
           peak={props.peak}
           onChange={([start, end]) => {
-            props.editOccurence({
-              occurenceIndex: props.active?.occurence,
-              newOccurence: {
-                ...props.occurence,
-                start,
-                duration: end - start,
-              },
-            })
+            let duration = end - start
+            if (duration >= 0.5) {
+              props.editOccurence({
+                occurenceIndex: props.active?.occurence,
+                newOccurence: {
+                  ...props.occurence,
+                  start,
+                  duration,
+                },
+              })
+            }
           }}
         />
       </ControlsWrapper>
