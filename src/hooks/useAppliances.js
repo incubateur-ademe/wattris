@@ -54,6 +54,7 @@ export function useAllPowerOfPeaks() {
                   }) / powerByBlocInKW
                 ) * powerByBlocInKW
             )
+            .map((occurence) => occurence / (60 / stepDurationInMinute))
             .reduce((acc, cur) => acc + cur, 0)
         )
         .reduce((acc, cur) => acc + cur, 0),
@@ -97,19 +98,39 @@ export function getPowerForStep({ step, appliance, start, duration, allDay }) {
   let end = start + duration
   end = end > 24 ? end - (24 + stepDurationInMinute / 60) : end
 
+  let initialPowerEnd = start + appliance.initialPowerLength / 60
+  initialPowerEnd =
+    initialPowerEnd > 24
+      ? initialPowerEnd - (24 + stepDurationInMinute / 60)
+      : initialPowerEnd
+
   const startInStep = Math.floor(start * (60 / stepDurationInMinute))
   const endInStep = Math.ceil(end * (60 / stepDurationInMinute))
+  const initialPowerEndInStep = Math.ceil(
+    initialPowerEnd * (60 / stepDurationInMinute)
+  )
   const runAtNight = endInStep < startInStep
+  const initialPowerAtNight = initialPowerEndInStep < startInStep
 
-  if (step === startInStep) {
+  if (
+    step >= startInStep &&
+    (step < initialPowerEndInStep || initialPowerAtNight) &&
+    (step < endInStep || runAtNight)
+  ) {
+    return appliance.initialPower || appliance.power
+  }
+  if (appliance.slug === 'radiateur') {
+    console.log(initialPowerAtNight, initialPowerEndInStep)
+  }
+  if (initialPowerAtNight && step <= initialPowerEndInStep) {
     return appliance.initialPower || appliance.power
   }
 
-  if (step > startInStep && step < endInStep) {
+  if (step >= startInStep && step < endInStep) {
     return appliance.power
   }
 
-  if (runAtNight && (step > startInStep || step <= endInStep)) {
+  if (runAtNight && (step >= startInStep || step <= endInStep)) {
     return appliance.power
   }
 
