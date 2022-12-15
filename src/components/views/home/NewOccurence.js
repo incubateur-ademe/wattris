@@ -4,10 +4,8 @@ import styled from 'styled-components'
 import DataContext from 'components/providers/DataProvider'
 import Button from 'components/base/Button'
 import ButtonLink from 'components/base/ButtonLink'
-import StartSelector from 'components/misc/occurence/StartSelector'
+import DeviceCustom from 'components/misc/occurence/DeviceCustom'
 import NameSelector from 'components/misc/occurence/NameSelector'
-import DurationSelector from 'components/misc/occurence/DurationSelector'
-import Checkbox from 'components/base/Checkbox'
 
 const Background = styled.div`
   position: fixed;
@@ -63,36 +61,6 @@ const DeleteButton = styled.button`
     top: 0.5rem;
     right: 0.5rem;
     width: 0.75rem;
-  }
-`
-const ControlsWrapper = styled.div`
-  opacity: ${(props) => (props.allDay ? 0.1 : 1)};
-  pointer-events: ${(props) => (props.allDay ? 'none' : 'inherit')};
-`
-const Text = styled.p`
-  display: flex;
-  justify-content: center;
-  gap: 0.375rem;
-  margin-bottom: 0.75rem;
-  font-size: 0.875rem;
-
-  ${(props) => props.theme.mq.small} {
-    margin-bottom: 0.5rem;
-    font-size: 0.75rem;
-  }
-`
-const StyledCheckbox = styled(Checkbox)`
-  margin: 0.5rem auto;
-  &:before {
-    border-color: ${(props) => props.theme.colors.background};
-  }
-  &:after {
-    color: ${(props) => props.theme.colors.background};
-  }
-
-  ${(props) => props.theme.mq.small} {
-    font-size: 0.875rem;
-    margin-bottom: 0.75rem;
   }
 `
 const Buttons = styled.div`
@@ -206,48 +174,13 @@ export default function Occurence() {
               })
             }}
           />
-          <ControlsWrapper allDay={occurence.allDay}>
-            <Text>Je le lance à</Text>
-            <StartSelector
-              large
-              start={occurence.start}
-              peak={peak}
-              onChange={([start]) => {
-                editOccurence({
-                  occurenceIndex: active?.occurence,
-                  newOccurence: { ...occurence, start },
-                })
-              }}
-            />
-            <Text>
-              pendant
-              <DurationSelector
-                large
-                slug={appliance.slug}
-                index={active?.occurence}
-                value={occurence.duration}
-                onChange={(duration) => {
-                  editOccurence({
-                    occurenceIndex: active?.occurence,
-                    newOccurence: { ...occurence, duration },
-                  })
-                }}
-              />
-            </Text>
-          </ControlsWrapper>
-          <StyledCheckbox
-            small
-            name={'allday' + appliance.slug}
-            checked={occurence.allDay}
-            onChange={(allDay) => {
-              editOccurence({
-                occurenceIndex: active?.occurence,
-                newOccurence: { ...occurence, allDay },
-              })
-            }}
-          >
-            Allumé toute la journée
-          </StyledCheckbox>
+          <DeviceCustom
+            occurence={occurence}
+            appliance={appliance}
+            peak={peak}
+            active={active}
+            editOccurence={editOccurence}
+          />
           <Buttons>
             <StyledButtonLink
               onClick={() => {
