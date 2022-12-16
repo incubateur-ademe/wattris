@@ -32,10 +32,10 @@ export default function IntroductionModal() {
       </Text>
       <Text>
         Grâce à ce simulateur, évaluez les gestes qui vous correspondent le
-        mieux et qui auront le plus d’impacts !
+        mieux et qui auront le plus d’impacts.
       </Text>
       <Button.Wrapper>
-        <Button onClick={() => setOpen(false)}>C'est parti</Button>
+        <Button onClick={() => setOpen(false)}>C'est parti !</Button>
       </Button.Wrapper>
     </Modal>
   )
