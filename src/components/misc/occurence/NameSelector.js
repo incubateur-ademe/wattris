@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const StyledSelect = styled.select`
-  padding: 0.375rem ${(props) => (props.large ? 2 : 1)}rem 0.375rem;
+  padding: 0.375rem ${(props) => (props.large ? 2 : 1)}rem;
   font-size: ${(props) => (props.large ? 1.25 : 0.75)}rem;
   text-align: center;
   color: ${(props) => props.theme.colors.background};
@@ -26,7 +26,10 @@ const StyledSelect = styled.select`
   cursor: pointer;
 
   ${(props) => props.theme.mq.small} {
-    font-size: 1rem;
+    padding: 0.375rem 1.25rem;
+    background-position: calc(100% - 0.125rem) 50%;
+    background-size: 1.25rem 1.25rem;
+    font-size: 0.875rem;
   }
 `
 export default function NameSelector(props) {

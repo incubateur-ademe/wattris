@@ -7,7 +7,7 @@ import ButtonLink from 'components/base/ButtonLink'
 import StartSelector from 'components/misc/occurence/StartSelector'
 import NameSelector from 'components/misc/occurence/NameSelector'
 import DurationSelector from 'components/misc/occurence/DurationSelector'
-import DisplayDescription from 'components/misc/occurence/DisplayDescription'
+import DescriptionButton from 'components/misc/occurence/DescriptionButton'
 import Checkbox from 'components/base/Checkbox'
 import DeleteButton from 'components/misc/occurence/DeleteButton'
 
@@ -47,15 +47,16 @@ const Wrapper = styled.div`
 const HeadWrapper = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
 `
 const Description = styled.div`
-  margin-top: 0.5rem;
-  padding: 0.5rem;
-  font-size: 0.75rem;
+  margin-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  font-size: 0.875rem;
   font-style: italic;
-  border-left: 0.25rem double ${(props) => props.theme.colors.background};
-  border-bottom: 0.075rem solid ${(props) => props.theme.colors.background};
+  text-align: center;
+  border-bottom: 0.125rem solid ${(props) => props.theme.colors.background};
 `
 
 const ControlsWrapper = styled.div`
@@ -170,6 +171,11 @@ export default function Occurence() {
               setActive(null)
             }}
           />
+          <DescriptionButton
+            onClick={() =>
+              setDescription((prevDescription) => !prevDescription)
+            }
+          />
           <HeadWrapper>
             <NameSelector
               large
@@ -191,9 +197,6 @@ export default function Occurence() {
                   },
                 })
               }}
-            />
-            <DisplayDescription
-              onClick={() => setDescription(description ? false : true)}
             />
           </HeadWrapper>
           {description && <Description>{appliance.description}</Description>}
