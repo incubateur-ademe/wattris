@@ -26,9 +26,19 @@ const drop2 = keyframes`
   }
 `
 const Wrapper = styled(MagicLink)`
+  width: 10rem;
+
+  path {
+    animation-duration: ${(props) => (props.permanent ? 2000 : 0)}ms;
+    animation-iteration-count: ${(props) => (props.permanent ? 2 : 'infinite')};
+  }
+  svg {
+    width: 100%;
+    height: auto;
+  }
   &:hover {
     path {
-      animation-duration: 1500ms !important;
+      animation-duration: 2000ms !important;
     }
   }
 `
@@ -36,11 +46,11 @@ const Path = styled.path`
   fill: ${(props) => props.color};
 
   animation: ${(props) => (props.color === '#FA1E43' ? drop1 : drop2)} infinite
-    0ms ${(props) => Number(props.delay) * 300}ms;
+    0ms ${(props) => Number(props.delay) * 400}ms;
 `
 export default function Logo(props) {
   return (
-    <Wrapper to='/' className={props.className}>
+    <Wrapper to='/' permanent={props.permanent} className={props.className}>
       <svg
         width='138'
         height='18'

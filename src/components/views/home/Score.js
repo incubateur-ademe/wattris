@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import styled, { keyframes } from 'styled-components'
 
 import DataContext from 'components/providers/DataProvider'
-
+import ModalContext from 'components/providers/ModalProvider'
 import { useAllPowerOfPeaks } from 'hooks/useAppliances'
 import MagicLink from 'components/base/MagicLink'
 
@@ -26,6 +26,8 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  opacity: ${(props) => (props.visible ? 1 : 0)};
+  transition: opacity 500ms 300ms;
 
   ${(props) => props.theme.mq.medium} {
     position: relative;
@@ -116,13 +118,14 @@ const StyledMagicLink = styled(MagicLink)`
 `
 export default function Score() {
   const { occurences } = useContext(DataContext)
+  const { introduction } = useContext(ModalContext)
 
   const power = useAllPowerOfPeaks()
 
   const percent = power / maxPower
 
   return (
-    <Wrapper>
+    <Wrapper visible={!introduction}>
       <Gauge
         width='80'
         height='120'
