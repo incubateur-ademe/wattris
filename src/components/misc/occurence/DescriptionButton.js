@@ -17,6 +17,13 @@ const Wrapper = styled.button`
   border: 0.125rem solid ${(props) => props.theme.colors.background};
   border-radius: 1rem;
   cursor: pointer;
+
+  ${(props) => props.theme.mq.small} {
+    width: 1.125rem;
+    height: 1.125rem;
+    font-size: 0.75rem;
+    border-width: 0.0625rem;
+  }
 `
 export default function DisplayDescription(props) {
   return <Wrapper onClick={props.onClick}>?</Wrapper>
