@@ -9,7 +9,8 @@ import Button from 'components/base/Button'
 const StyledLogo = styled(Logo)`
   display: block;
   width: 20rem;
-  margin: 0 auto 1.5rem;
+  max-width: 100%;
+  margin: 0.5rem auto 1.5rem;
 `
 const Text = styled.p`
   text-align: center;
