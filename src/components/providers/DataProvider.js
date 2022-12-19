@@ -5,20 +5,7 @@ import appliances from 'data/appliances.json'
 const DataContext = React.createContext({})
 
 export function DataProvider(props) {
-  const [occurences, setOccurences] = useState([
-    {
-      slug: 'lavelinge',
-      start: 14,
-      duration: 1.5,
-      allDay: false,
-    },
-    {
-      slug: 'plaques',
-      start: 12,
-      duration: 0.5,
-      allDay: false,
-    },
-  ])
+  const [occurences, setOccurences] = useState([])
 
   const [hover, setHover] = useState(null)
   const [active, setActive] = useState(null)
