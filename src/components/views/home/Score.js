@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled, { keyframes } from 'styled-components'
 
+import DataContext from 'components/providers/DataProvider'
+import ModalContext from 'components/providers/ModalProvider'
 import { useAllPowerOfPeaks } from 'hooks/useAppliances'
 import MagicLink from 'components/base/MagicLink'
 
@@ -22,8 +24,10 @@ const Wrapper = styled.div`
   top: 0rem;
   left: 0.5rem;
   display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
+  align-items: center;
+  gap: 0.75rem;
+  opacity: ${(props) => (props.visible ? 1 : 0)};
+  transition: opacity 500ms 300ms;
 
   ${(props) => props.theme.mq.medium} {
     position: relative;
@@ -62,7 +66,13 @@ const Content = styled.div`
   flex: 1;
   color: ${(props) =>
     props.theme.colors[
-      props.percent < 0.4 ? 'main' : props.percent < 0.8 ? 'warning' : 'error'
+      props.percent
+        ? props.percent < 0.4
+          ? 'main'
+          : props.percent < 0.8
+          ? 'warning'
+          : 'error'
+        : 'main'
     ]};
 `
 const Label = styled.p`
@@ -107,12 +117,15 @@ const StyledMagicLink = styled(MagicLink)`
   color: inherit;
 `
 export default function Score() {
+  const { occurences } = useContext(DataContext)
+  const { introduction } = useContext(ModalContext)
+
   const power = useAllPowerOfPeaks()
 
   const percent = power / maxPower
 
   return (
-    <Wrapper>
+    <Wrapper visible={!introduction}>
       <Gauge
         width='80'
         height='120'
@@ -152,37 +165,43 @@ export default function Score() {
           />
         </g>
       </Gauge>
-      <Content percent={percent}>
-        <Label>
-          Consommation{' '}
-          {percent < 0.4
-            ? 'faible'
-            : percent < 0.8
-            ? 'importante'
-            : 'très importante'}
-          <span>
-            {' '}
-            pendant les pics (<strong>{power} kWh</strong>)
-          </span>
-        </Label>
-        <Description percent={percent}>
-          {percent < 0.4
-            ? 'Votre consommation est raisonnable et ne met pas le réseau en tension.'
-            : percent < 0.8
-            ? 'Votre consommation risque de mettre le réseau en tension. Essayez de déplacer vos appareils en dehors des pics.'
-            : 'Votre consommation met très fortement le réseau en tension. Essayez de déplacer vos appareils en dehors des pics.'}
-        </Description>
-        <StyledMagicLink
-          iconColor={(props) =>
-            props.theme.colors[
-              percent < 0.4 ? 'main' : percent < 0.8 ? 'warning' : 'error'
-            ]
-          }
-          to='https://www.monecowatt.fr/ecogestes'
-        >
-          Découvrir des éco-gestes
-        </StyledMagicLink>
-      </Content>
+      {occurences.length === 0 ? (
+        <Content>
+          <Label>
+            Votre foyer ne comporte
+            <br />
+            aucun appareil
+          </Label>
+          <Description>
+            Ajoutez en un pour commencer la simulation !
+          </Description>
+        </Content>
+      ) : (
+        <Content percent={percent}>
+          <Label>
+            Consommation{' '}
+            {percent < 0.4
+              ? 'faible'
+              : percent < 0.8
+              ? 'importante'
+              : 'très importante'}
+            <span>
+              {' '}
+              pendant les pics (<strong>{power} kWh</strong>)
+            </span>
+          </Label>
+          <Description percent={percent}>
+            {percent < 0.4
+              ? 'Votre consommation est raisonnable et ne met pas le réseau en tension.'
+              : percent < 0.8
+              ? 'Votre consommation risque de mettre le réseau en tension. Essayez de déplacer vos appareils en dehors des pics.'
+              : 'Votre consommation met très fortement le réseau en tension. Essayez de déplacer vos appareils en dehors des pics.'}
+          </Description>
+          <StyledMagicLink to='https://www.monecowatt.fr/ecogestes'>
+            Découvrir des éco-gestes
+          </StyledMagicLink>
+        </Content>
+      )}
     </Wrapper>
   )
 }

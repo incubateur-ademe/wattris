@@ -2,11 +2,19 @@ import { useContext, useMemo } from 'react'
 
 import DataContext from 'components/providers/DataProvider'
 
-const stepDurationInMinute = 30
+const stepDurationInMinute = 15
 const powerByBlocInKW = 10
-const peakHalfhours = [
-  16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 36, 37, 38, 39, 40,
-]
+const peakSteps = () => {
+  const peaks = [8, 9, 10, 11, 12, 18, 19]
+  const numStepsInAnHour = 60 / stepDurationInMinute
+  return peaks
+    .map((peak) =>
+      Array.from(Array(numStepsInAnHour)).map(
+        (step, index) => peak * numStepsInAnHour + index
+      )
+    )
+    .reduce((acc, cur) => [...acc, ...cur], [])
+}
 
 export function useAllBlocsByStep() {
   const { appliances, occurences } = useContext(DataContext)
@@ -30,7 +38,7 @@ export function useAllPowerOfPeaks() {
   const { appliances, occurences } = useContext(DataContext)
   const power = useMemo(
     () =>
-      peakHalfhours
+      peakSteps()
         .map((hour) =>
           occurences
             .map(
@@ -46,6 +54,7 @@ export function useAllPowerOfPeaks() {
                   }) / powerByBlocInKW
                 ) * powerByBlocInKW
             )
+            .map((occurence) => occurence / (60 / stepDurationInMinute))
             .reduce((acc, cur) => acc + cur, 0)
         )
         .reduce((acc, cur) => acc + cur, 0),
@@ -65,22 +74,20 @@ export function getAllBlocsForStep({
       const appliance = appliances.find(
         (appliance) => appliance.slug === occurence.slug
       )
-      const power = getPowerForStep({
-        step,
-        appliance,
-        start: occurence.start,
-        duration: occurence.duration,
-        allDay: occurence.allDay,
-      })
 
-      return Array.from(Array(Math.ceil(power / powerByBlocInKW) || 0)).map(
-        () => ({
+      return {
+        appliance,
+        power: getPowerForStep({
+          step,
           appliance,
-          index,
-        })
-      )
+          start: occurence.start,
+          duration: occurence.duration,
+          allDay: occurence.allDay,
+        }),
+        index,
+      }
     })
-    .reduce((acc, cur) => [...acc, ...cur], [])
+    .filter((bloc) => bloc.power)
     .sort((a, b) => a.appliance.power - b.appliance.power)
 }
 
@@ -91,19 +98,37 @@ export function getPowerForStep({ step, appliance, start, duration, allDay }) {
   let end = start + duration
   end = end > 24 ? end - (24 + stepDurationInMinute / 60) : end
 
+  let initialPowerEnd = start + appliance.initialPowerLength / 60
+  initialPowerEnd =
+    initialPowerEnd > 24
+      ? initialPowerEnd - (24 + stepDurationInMinute / 60)
+      : initialPowerEnd
+
   const startInStep = Math.floor(start * (60 / stepDurationInMinute))
   const endInStep = Math.ceil(end * (60 / stepDurationInMinute))
+  const initialPowerEndInStep = Math.ceil(
+    initialPowerEnd * (60 / stepDurationInMinute)
+  )
   const runAtNight = endInStep < startInStep
+  const initialPowerAtNight = initialPowerEndInStep < startInStep
 
-  if (step === startInStep) {
+  if (
+    step >= startInStep &&
+    (step < initialPowerEndInStep || initialPowerAtNight) &&
+    (step < endInStep || runAtNight)
+  ) {
     return appliance.initialPower || appliance.power
   }
 
-  if (step > startInStep && step < endInStep) {
+  if (initialPowerAtNight && step <= initialPowerEndInStep) {
+    return appliance.initialPower || appliance.power
+  }
+
+  if (step >= startInStep && step < endInStep) {
     return appliance.power
   }
 
-  if (runAtNight && (step > startInStep || step <= endInStep)) {
+  if (runAtNight && (step >= startInStep || step <= endInStep)) {
     return appliance.power
   }
 
