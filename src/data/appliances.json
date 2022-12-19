@@ -7,9 +7,9 @@
     "power": 64,
     "defaultOccurence": {
       "start": 15,
-      "duration": 1.5,
-      "allDay": false
-    }
+      "duration": 1.5
+    },
+    "description": "L'appel de puissance est maximal au début du cycle du lave linge pour chauffer l'eau, puis reste inférieur à 100 Watt sur le reste du cycle (2000 Watt puis 64 Watt)."
   },
   {
     "slug": "radiateur",
@@ -31,9 +31,9 @@
     "power": 140,
     "defaultOccurence": {
       "start": 18,
-      "duration": 1,
-      "allDay": false
-    }
+      "duration": 1
+    },
+    "description": "L'appel de puissance est maximal au début du cycle, puis les appels de puissance sont intermittents pour maintenir le four à la bonne température. Nous avons choisi de ne pas représenter ces appels de puissance brefs étant donné qu'ils ne sont pas prévisibles (2000 Watt puis 140 Watt)."
   },
   {
     "slug": "aspirateur",
@@ -41,9 +41,9 @@
     "power": 700,
     "defaultOccurence": {
       "start": 18,
-      "duration": 0.5,
-      "allDay": false
-    }
+      "duration": 0.5
+    },
+    "description": "L'appel de puissance est maximal tout au long de l'utilisation de l'aspirateur (700 Watt)."
   },
   {
     "slug": "lavevaisselle",
@@ -53,9 +53,9 @@
     "power": 140,
     "defaultOccurence": {
       "start": 18,
-      "duration": 1.5,
-      "allDay": false
-    }
+      "duration": 1.5
+    },
+    "description": "L'appel de puissance est maximal au début du cycle du lave vaisselle pour chauffer l'eau, puis reste inférieur à 150 Watt environ sur le reste du cycle (2000 Watt)."
   },
   {
     "slug": "sechelinge",
@@ -63,9 +63,9 @@
     "power": 1800,
     "defaultOccurence": {
       "start": 18,
-      "duration": 2,
-      "allDay": false
-    }
+      "duration": 2
+    },
+    "description": "L'appel de puissance est maximal pendant une grande partie du cycle. Nous faisons l'hypothèse que l'appel de puissance est continu pour le sèche linge, les appels étant imprévisibles mais importants (1800 Watt)."
   },
   {
     "slug": "microonde",
@@ -73,9 +73,9 @@
     "power": 1000,
     "defaultOccurence": {
       "start": 18,
-      "duration": 0.5,
-      "allDay": false
-    }
+      "duration": 0.5
+    },
+    "description": "L'appel de puissance est maximal tout au long de l'utilisation du micro-onde (1000 Watt)."
   },
   {
     "slug": "plaques",
@@ -83,9 +83,9 @@
     "power": 1500,
     "defaultOccurence": {
       "start": 18,
-      "duration": 2,
-      "allDay": false
-    }
+      "duration": 2
+    },
+    "description": "L'appel de puissance est maximal tout au long de l'utilisation des plaques électriques (1500 Watt)."
   },
   {
     "slug": "bouilloire",
@@ -93,19 +93,19 @@
     "power": 1300,
     "defaultOccurence": {
       "start": 18,
-      "duration": 0.5,
-      "allDay": false
-    }
+      "duration": 0.5
+    },
+    "description": "L'appel de puissance est maximal tout au long de l'utilisation de la bouilloire (1300 Watt)."
   },
   {
     "slug": "sechecheveux",
-    "name": "Sèche cheveux",
+    "name": "Sèche-cheveux",
     "power": 2000,
     "defaultOccurence": {
       "start": 18,
-      "duration": 0.5,
-      "allDay": false
-    }
+      "duration": 0.5
+    },
+    "description": "L'appel de puissance est maximal tout au long de l'utilisation du sèche-cheveux (2000 Watt)."
   },
   {
     "slug": "television",
@@ -113,9 +113,9 @@
     "power": 120,
     "defaultOccurence": {
       "start": 20,
-      "duration": 1,
-      "allDay": false
-    }
+      "duration": 1
+    },
+    "description": "L'appel de puissance est maximal tout au long de l'utilisation de la télévision (120 Watt). (A savoir que la puissance appelée varie entre 60 et 200 Watt selon la taille de la TV.)"
   },
   {
     "slug": "ferarepasser",
@@ -123,9 +123,9 @@
     "power": 2000,
     "defaultOccurence": {
       "start": 14,
-      "duration": 1,
-      "allDay": false
-    }
+      "duration": 1
+    },
+    "description": "L'appel de puissance est maximal tout au long de l'utilisation du fer à repasser (2000 Watt)."
   },
   {
     "slug": "chauffeeau",
@@ -135,9 +135,9 @@
     "power": 20,
     "defaultOccurence": {
       "start": 23.5,
-      "duration": 8,
-      "allDay": false
-    }
+      "duration": 8
+    },
+    "description": "Le ballon d'eau chaude est réglé pour fonctionner pendant les heures creuses (le plus souvent la nuit). L'appel de puissance est maximal au départ pour chauffer l'eau ayant refroidi dans la journée (2000 Watt puis 20 Watt)."
   },
   {
     "slug": "ampouleled",
@@ -145,9 +145,9 @@
     "power": 10,
     "defaultOccurence": {
       "start": 19,
-      "duration": 4,
-      "allDay": false
-    }
+      "duration": 4
+    },
+    "description": "L'appel de puissance est maximal dès lors de que la lumière est allumée (10 Watt)."
   },
   {
     "slug": "refrigerateur",
@@ -155,9 +155,9 @@
     "power": 19,
     "defaultOccurence": {
       "start": 0,
-      "duration": 24,
-      "allDay": true
-    }
+      "duration": 24
+    },
+    "description": "Nous avons fait l'hypothèse d'un appel de puissance en continu (19 Watt). En réalité, un réfrigérateur appelle régulièrement une puissance plus importante, notamment lors des cycles de compresseur."
   },
   {
     "slug": "refrigerateurcombine",
@@ -165,9 +165,9 @@
     "power": 39,
     "defaultOccurence": {
       "start": 0,
-      "duration": 24,
-      "allDay": true
-    }
+      "duration": 24
+    },
+    "description": "Nous avons fait l'hypothèse d'un appel de puissance en continu (39 Watt). En réalité, un réfrigérateur combiné appelle régulièrement une puissance plus importante, notamment lors des cycles de compresseur ou de dégivrage automatique."
   },
   {
     "slug": "congelateur",
@@ -175,9 +175,9 @@
     "power": 33,
     "defaultOccurence": {
       "start": 0,
-      "duration": 24,
-      "allDay": true
-    }
+      "duration": 24
+    },
+    "description": "Nous avons fait l'hypothèse d'un appel de puissance en continu (33 Watt). En réalité, un congélateur appelle régulièrement une puissance plus importante, notamment lors des cycles de compresseur ou de dégivrage automatique."
   },
   {
     "slug": "boxinternet",
@@ -185,9 +185,9 @@
     "power": 12,
     "defaultOccurence": {
       "start": 0,
-      "duration": 24,
-      "allDay": true
-    }
+      "duration": 24
+    },
+    "description": "L'appel de puissance est continu tout au long du fonctionnement de la box internet (12 Watt)."
   },
   {
     "slug": "boxtv",
@@ -195,9 +195,9 @@
     "power": 13,
     "defaultOccurence": {
       "start": 0,
-      "duration": 24,
-      "allDay": true
-    }
+      "duration": 24
+    },
+    "description": "L'appel de puissance est continu tout au long du fonctionnement de la box TV (13 Watt)."
   },
   {
     "slug": "chargesmartphone",
@@ -205,9 +205,9 @@
     "power": 5,
     "defaultOccurence": {
       "start": 21,
-      "duration": 3,
-      "allDay": false
-    }
+      "duration": 3
+    },
+    "description": "L'appel de puissance est continu durant le chargement du smartphone (5 Watt)."
   },
   {
     "slug": "chargeordinateur",
@@ -215,9 +215,9 @@
     "power": 19,
     "defaultOccurence": {
       "start": 9,
-      "duration": 7,
-      "allDay": false
-    }
+      "duration": 7
+    },
+    "description": "L'appel de puissance est continu durant le chargement de l'ordinateur portable (19 Watt)."
   },
   {
     "slug": "ordinateurfixe",
@@ -225,8 +225,8 @@
     "power": 76,
     "defaultOccurence": {
       "start": 9,
-      "duration": 7,
-      "allDay": false
-    }
+      "duration": 7
+    },
+    "description": "L'appel de puissance est maximal tout au long de l'utilisation de l'ordinateur (tour et écran) (76 Watt)."
   }
 ]

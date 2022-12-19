@@ -4,9 +4,12 @@ import styled from 'styled-components'
 import DataContext from 'components/providers/DataProvider'
 import StartSelector from './occurence/StartSelector'
 import DurationSelector from './occurence/DurationSelector'
+import Checkbox from 'components/base/Checkbox'
 
 const Wrapper = styled.div`
   position: relative;
+  display: flex;
+  flex-direction: column;
   padding: 0.75rem 0.75rem;
   color: ${(props) => props.theme.colors.background};
   background-color: ${(props) =>
@@ -30,6 +33,10 @@ const Title = styled.p`
     text-decoration: underline;
   }
 `
+const ControlsWrapper = styled.div`
+  opacity: ${(props) => (props.allDay ? 0.1 : 1)};
+  pointer-events: ${(props) => (props.allDay ? 'none' : 'inherit')};
+`
 const Text = styled.p`
   display: flex;
   justify-content: center;
@@ -39,6 +46,22 @@ const Text = styled.p`
 
   ${(props) => props.theme.mq.small} {
     font-size: 0.625rem;
+  }
+`
+const StyledCheckbox = styled(Checkbox)`
+  margin: 0 auto;
+  font-size: 0.75rem;
+
+  &:before {
+    border-color: ${(props) => props.theme.colors.background};
+  }
+  &:after {
+    color: ${(props) => props.theme.colors.background};
+  }
+
+  ${(props) => props.theme.mq.small} {
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
   }
 `
 const DeleteButton = styled.button`
@@ -74,7 +97,7 @@ export default function Occurence(props) {
   const appliance = useMemo(
     () =>
       appliances.find((appliance) => appliance.slug === props.occurence.slug),
-    [props.occurence]
+    [props.occurence, appliances]
   )
 
   const peak = useMemo(
@@ -121,31 +144,47 @@ export default function Occurence(props) {
           />
         </svg>
       </DeleteButton>
-      <Text>Je le lance à</Text>
-      <StartSelector
-        start={props.occurence.start}
-        peak={peak}
-        onChange={([start]) => {
-          editOccurence({
-            occurenceIndex: props.index,
-            newOccurence: { ...props.occurence, start },
-          })
-        }}
-      />
-      <Text>
-        pendant
-        <DurationSelector
-          slug={appliance.slug}
-          index={props.index}
-          value={props.occurence.duration}
-          onChange={(duration) => {
+
+      <ControlsWrapper allDay={props.occurence.allDay}>
+        <Text>Je le lance à</Text>
+        <StartSelector
+          start={props.occurence.start}
+          peak={peak}
+          onChange={([start]) => {
             editOccurence({
               occurenceIndex: props.index,
-              newOccurence: { ...props.occurence, duration },
+              newOccurence: { ...props.occurence, start },
             })
           }}
         />
-      </Text>
+        <Text>
+          pendant
+          <DurationSelector
+            slug={appliance.slug}
+            index={props.index}
+            value={props.occurence.duration}
+            onChange={(duration) => {
+              editOccurence({
+                occurenceIndex: props.index,
+                newOccurence: { ...props.occurence, duration },
+              })
+            }}
+          />
+        </Text>
+      </ControlsWrapper>
+      <StyledCheckbox
+        small
+        name={'allday' + appliance.slug}
+        checked={props.occurence.allDay}
+        onChange={(allDay) => {
+          editOccurence({
+            occurenceIndex: props.index,
+            newOccurence: { ...props.occurence, allDay },
+          })
+        }}
+      >
+        Allumé toute la journée
+      </StyledCheckbox>
     </Wrapper>
   )
 }

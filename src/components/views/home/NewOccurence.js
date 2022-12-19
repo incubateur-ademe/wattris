@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react'
+import React, { useContext, useMemo, useState, useEffect } from 'react'
 import styled from 'styled-components'
 
 import DataContext from 'components/providers/DataProvider'
@@ -6,6 +6,10 @@ import Button from 'components/base/Button'
 import ButtonLink from 'components/base/ButtonLink'
 import DeviceCustom from 'components/misc/occurence/DeviceCustom'
 import NameSelector from 'components/misc/occurence/NameSelector'
+import DurationSelector from 'components/misc/occurence/DurationSelector'
+import DescriptionButton from 'components/misc/occurence/DescriptionButton'
+import Checkbox from 'components/base/Checkbox'
+import DeleteButton from 'components/misc/occurence/DeleteButton'
 
 const Background = styled.div`
   position: fixed;
@@ -24,7 +28,7 @@ const Wrapper = styled.div`
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
-  width: 26rem;
+  width: 26.5rem;
   padding: 1rem 1.5rem;
   color: ${(props) => props.theme.colors.background};
   background-color: ${(props) =>
@@ -39,28 +43,51 @@ const Wrapper = styled.div`
     padding: 1rem 1rem 0.75rem;
   }
 `
-const DeleteButton = styled.button`
-  position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  display: flex;
-  padding: 0;
-  background: transparent;
-  border: none;
-  cursor: pointer;
 
-  svg {
-    width: 1rem;
-    height: auto;
+const HeadWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+`
+const Description = styled.div`
+  margin-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  font-size: 0.875rem;
+  font-style: italic;
+  text-align: center;
+  border-bottom: 0.125rem solid ${(props) => props.theme.colors.background};
+`
+
+const ControlsWrapper = styled.div`
+  opacity: ${(props) => (props.allDay ? 0.1 : 1)};
+  pointer-events: ${(props) => (props.allDay ? 'none' : 'inherit')};
+`
+const Text = styled.p`
+  display: flex;
+  justify-content: center;
+  gap: 0.375rem;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.875rem;
+
+  ${(props) => props.theme.mq.small} {
+    margin-bottom: 0.5rem;
+    font-size: 0.75rem;
   }
-  path {
-    fill: ${(props) => props.theme.colors.background};
+`
+const StyledCheckbox = styled(Checkbox)`
+  margin: 0.5rem auto;
+  &:before {
+    border-color: ${(props) => props.theme.colors.background};
+  }
+  &:after {
+    color: ${(props) => props.theme.colors.background};
   }
 
   ${(props) => props.theme.mq.small} {
-    top: 0.5rem;
-    right: 0.5rem;
-    width: 0.75rem;
+    font-size: 0.875rem;
+    margin-bottom: 0.75rem;
   }
 `
 const Buttons = styled.div`
@@ -105,7 +132,7 @@ export default function Occurence() {
 
   const appliance = useMemo(
     () => appliances.find((appliance) => appliance.slug === occurence?.slug),
-    [occurence]
+    [occurence, appliances]
   )
 
   const peak = useMemo(
@@ -114,6 +141,12 @@ export default function Occurence() {
       (occurence?.start >= 18 && occurence?.start < 20),
     [occurence]
   )
+
+  const [description, setDescription] = useState(false)
+
+  useEffect(() => {
+    setDescription(false)
+  }, [occurence?.slug])
 
   return (
     appliance &&
@@ -137,50 +170,78 @@ export default function Occurence() {
                 })
               setActive(null)
             }}
-          >
-            <svg
-              x='0px'
-              y='0px'
-              width='41.756px'
-              height='41.756px'
-              viewBox='0 0 41.756 41.756'
-            >
-              <path
-                d='M27.948,20.878L40.291,8.536c1.953-1.953,1.953-5.119,0-7.071c-1.951-1.952-5.119-1.952-7.07,0L20.878,13.809L8.535,1.465
-		c-1.951-1.952-5.119-1.952-7.07,0c-1.953,1.953-1.953,5.119,0,7.071l12.342,12.342L1.465,33.22c-1.953,1.953-1.953,5.119,0,7.071
-		C2.44,41.268,3.721,41.755,5,41.755c1.278,0,2.56-0.487,3.535-1.464l12.343-12.342l12.343,12.343
-		c0.976,0.977,2.256,1.464,3.535,1.464s2.56-0.487,3.535-1.464c1.953-1.953,1.953-5.119,0-7.071L27.948,20.878z'
+          />
+          <DescriptionButton
+            onClick={() =>
+              setDescription((prevDescription) => !prevDescription)
+            }
+          />
+          <HeadWrapper>
+            <NameSelector
+              large
+              slug={appliance.slug}
+              index={active?.occurence}
+              value={appliance.slug}
+              appliances={appliances}
+              onChange={(slug) => {
+                const newAppliance = appliances.find(
+                  (appliance) => appliance.slug === slug
+                )
+                editOccurence({
+                  occurenceIndex: active?.occurence,
+                  newOccurence: {
+                    start: newAppliance.defaultOccurence.start,
+                    duration: newAppliance.defaultOccurence.duration,
+                    allDay: newAppliance.defaultOccurence.allDay,
+                    slug,
+                  },
+                })
+              }}
+            />
+          </HeadWrapper>
+          {description && <Description>{appliance.description}</Description>}
+          <ControlsWrapper allDay={occurence.allDay}>
+            <Text>Je le lance à</Text>
+            <StartSelector
+              large
+              start={occurence.start}
+              peak={peak}
+              onChange={([start]) => {
+                editOccurence({
+                  occurenceIndex: active?.occurence,
+                  newOccurence: { ...occurence, start },
+                })
+              }}
+            />
+            <Text>
+              pendant
+              <DurationSelector
+                large
+                slug={appliance.slug}
+                index={active?.occurence}
+                value={occurence.duration}
+                onChange={(duration) => {
+                  editOccurence({
+                    occurenceIndex: active?.occurence,
+                    newOccurence: { ...occurence, duration },
+                  })
+                }}
               />
-            </svg>
-          </DeleteButton>
-          <NameSelector
-            large
-            slug={appliance.slug}
-            index={active?.occurence}
-            value={appliance.slug}
-            appliances={appliances}
-            onChange={(slug) => {
-              const newAppliance = appliances.find(
-                (appliance) => appliance.slug === slug
-              )
+            </Text>
+          </ControlsWrapper>
+          <StyledCheckbox
+            small
+            name={'allday' + appliance.slug}
+            checked={occurence.allDay}
+            onChange={(allDay) => {
               editOccurence({
                 occurenceIndex: active?.occurence,
-                newOccurence: {
-                  start: newAppliance.defaultOccurence.start,
-                  duration: newAppliance.defaultOccurence.duration,
-                  allDay: newAppliance.defaultOccurence.allDay,
-                  slug,
-                },
+                newOccurence: { ...occurence, allDay },
               })
             }}
-          />
-          <DeviceCustom
-            occurence={occurence}
-            appliance={appliance}
-            peak={peak}
-            active={active}
-            editOccurence={editOccurence}
-          />
+          >
+            Allumé toute la journée
+          </StyledCheckbox>
           <Buttons>
             <StyledButtonLink
               onClick={() => {
