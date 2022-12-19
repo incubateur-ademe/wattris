@@ -132,7 +132,7 @@ export default function Occurence() {
 
   const appliance = useMemo(
     () => appliances.find((appliance) => appliance.slug === occurence?.slug),
-    [occurence]
+    [occurence, appliances]
   )
 
   const peak = useMemo(
