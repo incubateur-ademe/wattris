@@ -20,7 +20,7 @@ const Peak = styled.div`
 const PeakIndicator = styled.div`
   position: absolute;
   bottom: calc(100% + 1.5rem);
-  left: ${(props) => (13 / 24) * 100}%;
+  left: ${(props) => (12.9 / 24) * 100}%;
   right: ${(props) => (5.75 / 24) * 100}%;
   font-size: 0.75rem;
   font-weight: 300;
@@ -34,7 +34,7 @@ const PeakIndicator = styled.div`
     bottom: calc(100% + 0.5rem);
   }
   ${(props) => props.theme.mq.small} {
-    left: ${(props) => (11.5 / 24) * 100}%;
+    left: ${(props) => (12.5 / 24) * 100}%;
   }
 `
 const Arrow = styled.div`
@@ -73,7 +73,7 @@ export default function Peaks(props) {
         onMouseEnter={() => props.setHover(true)}
         onMouseLeave={() => props.setHover(false)}
       >
-        Période de tension
+        Périodes de tension
       </PeakIndicator>
       <Arrow
         hover={props.hover}
