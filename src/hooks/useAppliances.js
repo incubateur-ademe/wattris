@@ -2,7 +2,7 @@ import { useContext, useMemo } from 'react'
 
 import DataContext from 'components/providers/DataProvider'
 
-const stepDurationInMinute = 15
+const stepDurationInMinute = 5
 const powerByBlocInKW = 10
 const peakSteps = () => {
   const peaks = [8, 9, 10, 11, 12, 18, 19]
