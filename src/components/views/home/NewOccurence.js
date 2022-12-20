@@ -66,6 +66,7 @@ const ControlsWrapper = styled.div`
 const Text = styled.p`
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 0.375rem;
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
@@ -217,6 +218,7 @@ export default function Occurence() {
               pendant
               <DurationSelector
                 large
+                peak={peak}
                 slug={appliance.slug}
                 index={active?.occurence}
                 value={occurence.duration}
