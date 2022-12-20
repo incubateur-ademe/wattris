@@ -17,10 +17,12 @@ const peakSteps = () => {
 }
 
 export function usePeak(occurence) {
+  const { appliances } = useContext(DataContext)
+
   if (!occurence) {
     return false
   }
-  const { appliances } = useContext(DataContext)
+
   const appliance = appliances.find(
     (appliance) => appliance.slug === occurence.slug
   )
