@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   align-items: center;
   gap: 0.5rem;
   height: 1.25rem;
-  margin-bottom: 1rem;
+  margin-bottom: ${(props) => (props.large ? 1 : 0.5)}rem;
 `
 const Tick = styled.div`
   font-size: 0.75rem;

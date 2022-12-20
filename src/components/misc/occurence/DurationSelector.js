@@ -31,8 +31,8 @@ const ChangeButton = styled.div`
   cursor: pointer;
   font-size: ${(props) => (props.large ? 1 : 0.75)}rem;
   padding: 0.5rem;
-  width: 2rem;
-  height: 2rem;
+  width: ${(props) => (props.large ? 2 : 1.5)}rem;
+  height: ${(props) => (props.large ? 2 : 1.5)}rem;
   border-radius: 0.5rem;
   background-color: ${(props) => props.theme.colors.background};
   color: ${(props) => props.theme.colors[props.peak ? 'error' : 'main']};

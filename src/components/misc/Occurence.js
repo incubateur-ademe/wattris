@@ -40,6 +40,7 @@ const ControlsWrapper = styled.div`
 const Text = styled.p`
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 0.25rem;
   margin-bottom: 0.375rem;
   font-size: 0.75rem;
