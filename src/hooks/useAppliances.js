@@ -16,6 +16,45 @@ const peakSteps = () => {
     .reduce((acc, cur) => [...acc, ...cur], [])
 }
 
+export function usePeak(occurence) {
+  if (!occurence) {
+    return false
+  }
+  const { appliances } = useContext(DataContext)
+  const appliance = appliances.find(
+    (appliance) => appliance.slug === occurence.slug
+  )
+
+  // All day
+  if (occurence.allDay) {
+    return false
+  }
+
+  // Low power appliances
+  if (appliance.power < 20 && !appliance.initialPower) {
+    return false
+  }
+
+  let isPeak = false
+
+  peakSteps().map((step) => {
+    const powerOfStep = getPowerForStep({
+      step,
+      appliance,
+      ...occurence,
+    })
+    if (appliance.initialPower) {
+      if (powerOfStep === appliance.initialPower) {
+        isPeak = true
+      }
+    } else {
+      if (powerOfStep === appliance.power) {
+        isPeak = true
+      }
+    }
+  })
+  return isPeak
+}
 export function useAllBlocsByStep() {
   const { appliances, occurences } = useContext(DataContext)
   const steps = useMemo(
@@ -131,6 +170,5 @@ export function getPowerForStep({ step, appliance, start, duration, allDay }) {
   if (runAtNight && (step >= startInStep || step <= endInStep)) {
     return appliance.power
   }
-
   return 0
 }
