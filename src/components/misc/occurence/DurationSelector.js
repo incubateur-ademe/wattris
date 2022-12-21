@@ -37,6 +37,7 @@ const ChangeButton = styled.button`
   font-size: ${(props) => (props.large ? 1 : 0.75)}rem;
   background-color: transparent;
   color: ${(props) => props.theme.colors.background};
+  opacity: ${(props) => (props.disabled ? 0.5 : 1)};
 `
 
 const Svg = styled.svg`
@@ -49,17 +50,26 @@ const Svg = styled.svg`
   }
 `
 
+const roundHourValue = (value) => Math.round(Number(value) * 100) / 100
+
 export default function DurationSelector(props) {
+  console.log(props.value)
   return (
     <Wrapper large={props.large}>
       <ChangeButton
         onClick={() =>
-          props.value > 0.25 && props.onChange(Number(props.value) - 0.25)
+          props.value > 0.5
+            ? props.onChange(roundHourValue(props.value - 0.5))
+            : props.value === 0.5
+            ? props.onChange(roundHourValue(props.value - 0.25))
+            : props.value <= 0.25
+            ? props.onChange(roundHourValue(props.value - 5 / 60))
+            : null
         }
         title={'Diminuer ' + props.slug + props.index}
         large={props.large}
         left
-        disabled={props.value === 0.25}
+        disabled={props.value <= 0.09}
         hollow
       >
         <Svg x='0px' y='0px' viewBox='0 0 42 42'>
@@ -76,11 +86,11 @@ export default function DurationSelector(props) {
         onChange={(e) => props.onChange(Number(e.currentTarget.value))}
         large={props.large}
       >
-        <option value={0.0833333333333339}>
-          {getRealHoursFromDecimalHours(0.0833333333333339)}
+        <option value={roundHourValue(5 / 60)}>
+          {getRealHoursFromDecimalHours(5 / 60)}
         </option>
-        <option value={0.16666666666666669}>
-          {getRealHoursFromDecimalHours(0.16666666666666669)}
+        <option value={roundHourValue(10 / 60)}>
+          {getRealHoursFromDecimalHours(10 / 60)}
         </option>
         <option value={0.25}>{getRealHoursFromDecimalHours(0.25)}</option>
         {Array.from(Array(47)).map((hour, index) => {
@@ -94,12 +104,18 @@ export default function DurationSelector(props) {
       </InputSelector>
       <ChangeButton
         onClick={() =>
-          props.value < 24 && props.onChange(Number(props.value) + 0.25)
+          props.value >= 0.5 && props.value < 24
+            ? props.onChange(roundHourValue(props.value + 0.5))
+            : props.value === 0.25
+            ? props.onChange(roundHourValue(props.value + 0.25))
+            : props.value < 0.25
+            ? props.onChange(roundHourValue(props.value + 5 / 60))
+            : null
         }
         title={'Ajouter ' + props.slug + props.index}
         large={props.large}
         right
-        disabled={props.value === 24}
+        disabled={props.value === 23.5}
         hollow
       >
         <Svg x='0px' y='0px' viewBox='0 0 45 45'>
