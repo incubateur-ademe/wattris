@@ -1,10 +1,11 @@
-import React, { useContext, useMemo } from 'react'
+import React, { useContext, useMemo, useState, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 
 import DataContext from 'components/providers/DataProvider'
 import StartSelector from './occurence/StartSelector'
 import DurationSelector from './occurence/DurationSelector'
 import Checkbox from 'components/base/Checkbox'
+import useExpandOccurence from 'hooks/useExpandOccurence'
 
 const Wrapper = styled.div`
   position: relative;
@@ -83,7 +84,33 @@ const DeleteButton = styled.button`
   path {
     fill: ${(props) => props.theme.colors.background};
   }
+  ${(props) => props.theme.mq.medium} {
+    opacity: 1;
+  }
 `
+
+const PlusButton = styled.button`
+  position: absolute;
+  bottom: 0.2rem;
+  right: 0.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  background: transparent;
+  border: none;
+  height: 1.2rem;
+  width: 1.2rem;
+  cursor: pointer;
+  opacity: ${(props) => (props.visible ? 1 : 0)};
+  transition: opacity ${(props) => props.visible && '200ms'} ease-out;
+  color: ${(props) => props.theme.colors.background};
+
+  ${(props) => props.theme.mq.medium} {
+    opacity: 1;
+  }
+`
+
 export default function Occurence(props) {
   const {
     appliances,
@@ -107,8 +134,12 @@ export default function Occurence(props) {
       (props.occurence.start >= 18 && props.occurence.start < 20),
     [props.occurence]
   )
+
+  const [expand, setExpand] = useExpandOccurence()
+
   return (
     <Wrapper
+      onClick={(e) => e.stopPropagation()}
       discret={
         active
           ? active?.occurence !== props.index
@@ -147,7 +178,7 @@ export default function Occurence(props) {
       </DeleteButton>
 
       <ControlsWrapper allDay={props.occurence.allDay}>
-        <Text>Je le lance à</Text>
+        {expand && <Text>Je le lance à</Text>}
         <StartSelector
           start={props.occurence.start}
           peak={peak}
@@ -158,20 +189,22 @@ export default function Occurence(props) {
             })
           }}
         />
-        <Text>
-          pendant
-          <DurationSelector
-            slug={appliance.slug}
-            index={props.index}
-            value={props.occurence.duration}
-            onChange={(duration) => {
-              editOccurence({
-                occurenceIndex: props.index,
-                newOccurence: { ...props.occurence, duration },
-              })
-            }}
-          />
-        </Text>
+        {expand && (
+          <Text>
+            pendant
+            <DurationSelector
+              slug={appliance.slug}
+              index={props.index}
+              value={props.occurence.duration}
+              onChange={(duration) => {
+                editOccurence({
+                  occurenceIndex: props.index,
+                  newOccurence: { ...props.occurence, duration },
+                })
+              }}
+            />
+          </Text>
+        )}
       </ControlsWrapper>
       <StyledCheckbox
         small
@@ -186,6 +219,12 @@ export default function Occurence(props) {
       >
         Allumé toute la journée
       </StyledCheckbox>
+      <PlusButton
+        visible={hover && hover.occurence === props.index}
+        onClick={() => setExpand(expand ? false : true)}
+      >
+        {!expand ? '+' : '-'}
+      </PlusButton>
     </Wrapper>
   )
 }
