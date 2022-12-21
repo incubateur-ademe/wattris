@@ -1,4 +1,4 @@
-import React, { useContext, useMemo, useState, useRef, useEffect } from 'react'
+import React, { useContext, useMemo } from 'react'
 import styled from 'styled-components'
 
 import DataContext from 'components/providers/DataProvider'

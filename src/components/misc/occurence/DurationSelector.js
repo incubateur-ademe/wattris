@@ -53,7 +53,6 @@ const Svg = styled.svg`
 const roundHourValue = (value) => Math.round(Number(value) * 100) / 100
 
 export default function DurationSelector(props) {
-  console.log(props.value)
   return (
     <Wrapper large={props.large}>
       <ChangeButton
