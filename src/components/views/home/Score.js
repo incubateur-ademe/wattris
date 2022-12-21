@@ -187,7 +187,7 @@ export default function Score() {
               : 'très importante'}
             <span>
               {' '}
-              pendant les pics (<strong>{power} kWh</strong>)
+              pendant les pics (<strong>{Math.round(power)} kWh</strong>)
             </span>
           </Label>
           <Description percent={percent}>
