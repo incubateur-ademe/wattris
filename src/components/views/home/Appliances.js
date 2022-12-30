@@ -47,9 +47,9 @@ const AddOccurenceButton = styled.button`
   transition: all 300ms ease-out;
   cursor: pointer;
   opacity: ${(props) => (props.visible ? 1 : 0)};
-  transition: opacity 500ms 1000ms;
+  transition: opacity 500ms 300ms;
   animation: ${(props) => (props.blink && props.visible ? blink : '')} 2000ms
-    infinite 2000ms;
+    infinite 3000ms;
 
   svg {
     width: 1.5rem;

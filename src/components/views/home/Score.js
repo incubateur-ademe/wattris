@@ -27,7 +27,7 @@ const Wrapper = styled.div`
   align-items: center;
   gap: 0.75rem;
   opacity: ${(props) => (props.visible ? 1 : 0)};
-  transition: opacity 500ms 300ms;
+  transition: opacity 500ms 150ms;
 
   ${(props) => props.theme.mq.medium} {
     position: relative;
