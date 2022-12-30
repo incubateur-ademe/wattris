@@ -53,12 +53,10 @@ const Title = styled.p`
   text-align: center;
 `
 const Description = styled.div`
-  margin-top: 0.75rem;
-  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
   font-size: 0.875rem;
   font-style: italic;
   text-align: center;
-  border-bottom: 0.125rem solid ${(props) => props.theme.colors.background};
 `
 const Buttons = styled.div`
   display: flex;

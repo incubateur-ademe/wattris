@@ -16,6 +16,24 @@ const Wrapper = styled.div`
       ? 'rgba(255, 255, 255, 0.2)'
       : props.theme.colors[props.peak ? 'error' : 'main']};
   border-radius: 1rem;
+
+  > span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &:first-child {
+      flex: 1;
+
+      ${(props) => props.theme.mq.small} {
+        align-self: normal;
+      }
+    }
+  }
+
+  ${(props) => props.theme.mq.small} {
+    flex-direction: column;
+  }
 `
 const Text = styled.p`
   margin: 0;
@@ -31,30 +49,34 @@ export default function Occurence(props) {
     >
       {props.appliance.durationSelector ? (
         <>
-          <Text>Je le lance</Text>
-          <StartSelector
-            start={props.occurence.start}
-            peak={props.peak}
-            onChange={([start]) => {
-              editOccurence({
-                occurenceIndex: props.occurence.index,
-                newOccurence: { ...props.occurence, start },
-              })
-            }}
-            large
-          />
-          <Text>pendant</Text>
-          <DurationSelector
-            slug={props.occurence.slug}
-            peak={props.peak}
-            value={props.occurence.duration}
-            onChange={(duration) => {
-              editOccurence({
-                occurenceIndex: props.occurence.index,
-                newOccurence: { ...props.occurence, duration },
-              })
-            }}
-          />
+          <span>
+            <Text>Je le lance</Text>
+            <StartSelector
+              start={props.occurence.start}
+              peak={props.peak}
+              onChange={([start]) => {
+                editOccurence({
+                  occurenceIndex: props.occurence.index,
+                  newOccurence: { ...props.occurence, start },
+                })
+              }}
+              large
+            />
+          </span>
+          <span>
+            <Text>pendant</Text>
+            <DurationSelector
+              slug={props.occurence.slug}
+              peak={props.peak}
+              value={props.occurence.duration}
+              onChange={(duration) => {
+                editOccurence({
+                  occurenceIndex: props.occurence.index,
+                  newOccurence: { ...props.occurence, duration },
+                })
+              }}
+            />
+          </span>
         </>
       ) : (
         <>
