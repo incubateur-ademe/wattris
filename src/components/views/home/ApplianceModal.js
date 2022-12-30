@@ -157,6 +157,7 @@ export default function ApplianceModal() {
           <Occurences>
             {occurencesOfAppliance.map((occurence, index) => (
               <Occurence
+                key={appliance.slug + index}
                 appliance={appliance}
                 occurence={occurence}
                 peak={peaks[index]}
