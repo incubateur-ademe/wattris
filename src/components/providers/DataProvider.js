@@ -10,7 +10,7 @@ export function DataProvider(props) {
   const [hover, setHover] = useState(null)
   const [active, setActive] = useState(null)
 
-  const [appliancesListOpen, setAppliancesListOpen] = useState(true)
+  const [appliancesListOpen, setAppliancesListOpen] = useState(false)
 
   const addOccurence = (occurence) => {
     setOccurences((prevOccurences) => [...prevOccurences, occurence])

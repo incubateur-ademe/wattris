@@ -101,7 +101,7 @@ export default function ApplianceModal() {
     () => appliances.find((appliance) => appliance.slug === active?.appliance),
     [active, appliances]
   )
-  console.log(active)
+
   const occurencesOfAppliance = useMemo(
     () =>
       occurences
