@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const CrossButton = styled.button`
+const Wrapper = styled.button`
   position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
+  top: ${(props) => (props.small ? 0.5 : 0.75)}rem;
+  right: ${(props) => (props.small ? 0.5 : 0.75)}rem;
   display: flex;
   padding: 0;
   background: transparent;
@@ -12,7 +12,7 @@ const CrossButton = styled.button`
   cursor: pointer;
 
   svg {
-    width: 1rem;
+    width: ${(props) => (props.small ? 0.625 : 1)}rem;
     height: auto;
   }
   path {
@@ -28,7 +28,7 @@ const CrossButton = styled.button`
 
 export default function DeleteButton(props) {
   return (
-    <CrossButton onClick={props.onClick}>
+    <Wrapper onClick={props.onClick} small={props.small}>
       <svg
         x='0px'
         y='0px'
@@ -43,6 +43,6 @@ C2.44,41.268,3.721,41.755,5,41.755c1.278,0,2.56-0.487,3.535-1.464l12.343-12.342l
 c0.976,0.977,2.256,1.464,3.535,1.464s2.56-0.487,3.535-1.464c1.953-1.953,1.953-5.119,0-7.071L27.948,20.878z'
         />
       </svg>
-    </CrossButton>
+    </Wrapper>
   )
 }

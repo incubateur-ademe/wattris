@@ -3,7 +3,7 @@ import styled, { keyframes } from 'styled-components'
 
 import DataContext from 'components/providers/DataProvider'
 import ModalContext from 'components/providers/ModalProvider'
-import Occurence from 'components/misc/Occurence'
+import Occurence from 'components/views/home/appliances/Occurence'
 
 const blink = keyframes`
   from,
@@ -33,12 +33,12 @@ const Wrapper = styled.div`
 `
 const AddOccurenceButton = styled.button`
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   height: 100%;
   padding: 0.75rem 0.75rem;
+  text-align: left;
   color: ${(props) => props.theme.colors.main};
   background-color: ${(props) => props.theme.colors.background};
   border: 0.125rem solid ${(props) => props.theme.colors.main};
@@ -69,7 +69,8 @@ const AddOccurenceButton = styled.button`
   }
 `
 export default function Appliances() {
-  const { occurences, addOccurence } = useContext(DataContext)
+  const { occurences, appliancesListOpen, setAppliancesListOpen } =
+    useContext(DataContext)
   const { introduction } = useContext(ModalContext)
 
   return (
@@ -78,8 +79,8 @@ export default function Appliances() {
         <Occurence key={index} index={index} occurence={occurence} small />
       ))}
       <AddOccurenceButton
-        onClick={addOccurence}
-        blink={!occurences.length}
+        onClick={() => setAppliancesListOpen(true)}
+        blink={!occurences.length && !appliancesListOpen}
         visible={!introduction}
       >
         <svg width='14' height='15' viewBox='0 0 14 15'>
