@@ -39,8 +39,9 @@ const AddOccurenceButton = styled.button`
   height: 100%;
   padding: 0.75rem 0.75rem;
   text-align: left;
-  color: ${(props) => props.theme.colors.main};
-  background-color: ${(props) => props.theme.colors.background};
+  color: ${(props) => props.theme.colors[props.blink ? 'background' : 'main']};
+  background-color: ${(props) =>
+    props.theme.colors[props.blink ? 'main' : 'background']};
   border: 0.125rem solid ${(props) => props.theme.colors.main};
   border-radius: 0.75rem;
   box-shadow: none;
@@ -55,7 +56,8 @@ const AddOccurenceButton = styled.button`
     width: 1.5rem;
     height: auto;
     path {
-      fill: ${(props) => props.theme.colors.main};
+      fill: ${(props) =>
+        props.theme.colors[props.blink ? 'background' : 'main']};
     }
   }
 

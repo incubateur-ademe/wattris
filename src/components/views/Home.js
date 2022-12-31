@@ -6,7 +6,6 @@ import Appliances from './home/Appliances'
 import Timeline from './home/Timeline'
 import Score from './home/Score'
 import ApplianceModal from './home/ApplianceModal'
-import AppliancesListModal from './home/AppliancesListModal'
 
 const StyledSectionContent = styled(Section.Content)`
   padding-top: 0.5rem;
@@ -31,7 +30,6 @@ export default function Home(props) {
         <Wrapper>
           <Score />
           <ApplianceModal />
-          <AppliancesListModal />
           <Timeline />
         </Wrapper>
         <Appliances />
