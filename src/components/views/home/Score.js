@@ -100,7 +100,7 @@ const Label = styled.p`
   }
 `
 const Description = styled.p`
-  max-width: ${(props) => (props.percent < 0.4 ? 14 : 23)}rem;
+  max-width: ${(props) => (props.percent < 0.4 ? 20 : 25)}rem;
   margin-bottom: 0;
   font-size: 0.75rem;
 
@@ -187,15 +187,16 @@ export default function Score() {
               : 'très importante'}
             <span>
               {' '}
-              pendant les pics (<strong>{Math.round(power)} kWh</strong>)
+              pendant les périodes de tension (
+              <strong>{Math.round(power / 100) / 10} kWh</strong>)
             </span>
           </Label>
           <Description percent={percent}>
             {percent < 0.4
-              ? 'Votre consommation est raisonnable et ne met pas le réseau en tension.'
+              ? 'Votre consommation est modérée durant les périodes de tension du système électrique.'
               : percent < 0.8
-              ? 'Votre consommation risque de mettre le réseau en tension. Essayez de déplacer vos appareils en dehors des pics.'
-              : 'Votre consommation met très fortement le réseau en tension. Essayez de déplacer vos appareils en dehors des pics.'}
+              ? 'Votre consommation risque de mettre le réseau en tension. Essayez de déplacer vos appareils en dehors des périodes de tension.'
+              : 'Votre consommation met très fortement le réseau en tension. Essayez de déplacer vos appareils en dehors des périodes de tension.'}
           </Description>
           <StyledMagicLink to='https://www.monecowatt.fr/ecogestes'>
             Découvrir des éco-gestes
