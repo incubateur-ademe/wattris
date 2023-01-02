@@ -15,15 +15,15 @@
   {
     "slug": "radiateur",
     "name": "Radiateur électrique",
-    "initialPower": 2000,
-    "initialPowerLength": 120,
-    "power": 200,
+    "initialPower": 1800,
+    "initialPowerLength": 90,
+    "power": 100,
     "defaultOccurence": {
       "start": 18,
       "duration": 1,
-      "allDay": false
+      "allDay": true
     },
-    "description": "On considère un radiateur adapté pour une pièce d'environ 20m2. L'appel de puissance est maximal à l'allumage pour que le pièce soit à température puis, selon la température extérieure, l'isolation, la taille de la pièce, le radiateur appelle une puissance maximale par intermittence. Nous avons choisi de ne pas représenter ces appels de puissance brefs étant donné qu'ils ne sont pas prévisibles mais seulement le pic de montée en température (2000 Watt à l'allumage puis 200 Watt)."
+    "description": "On considère un radiateur adapté pour une pièce d'environ 20m2. L'appel de puissance est maximal à l'allumage pour que le pièce soit à température puis, selon la température extérieure, l'isolation, la taille de la pièce, le radiateur appelle une puissance maximale par intermittence. Nous avons choisi de ne pas représenter ces appels de puissance brefs étant donné qu'ils ne sont pas prévisibles mais seulement le pic de montée en température (1800 Watt à l'allumage puis 100 Watt)."
   },
   {
     "slug": "four",
