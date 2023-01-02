@@ -91,7 +91,7 @@ export default function Appliance(props) {
             .index
         }
         addOccurence={props.addOccurence}
-        deleteOccurence={props.eleteOccurence}
+        deleteOccurence={props.deleteOccurence}
       />
       <Buttons>
         <StyledButtonLink
