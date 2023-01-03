@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react'
 import styled from 'styled-components'
 
-import { getRealHoursFromDecimalHours } from 'utils/formatters'
 import Bloc from './step/Bloc'
 
 const Wrapper = styled.div`
@@ -9,7 +8,16 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column-reverse;
   width: calc(${(props) => props.width}%);
-  height: 25rem;
+  height: 26.25rem;
+  margin-top: -1.25rem;
+  -webkit-mask-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(rgba(0, 0, 0, 0)),
+    color-stop(0.3, rgba(0, 0, 0, 1)),
+    to(rgba(0, 0, 0, 1))
+  );
 `
 
 const Indicator = styled.div`
@@ -25,23 +33,17 @@ export default function Step(props) {
     [props.hour]
   )
 
-  const remToPower = 100 // 1rem = 100W -> 2500W
-  const graphHeight = 2500 / remToPower
-  const blocHeight = props.powerByBlocInKW / remToPower
-  const maxBlocsInHeight = graphHeight / blocHeight
+  const totalPower = useMemo(
+    () => props.step.reduce((acc, cur) => acc + cur.power, 0),
+    [props.step]
+  )
 
   return (
     <Wrapper width={props.width} peak={peak}>
       {props.step.map((bloc, index) => {
-        return (
-          index <= maxBlocsInHeight && (
-            <Bloc key={index} bloc={bloc} peak={peak} blocHeight={blocHeight} />
-          )
-        )
+        return <Bloc key={index} bloc={bloc} peak={peak} />
       })}
-      {props.step.length > maxBlocsInHeight ? (
-        <Indicator>+ {(props.step.length - maxBlocsInHeight) * 10} W</Indicator>
-      ) : null}
+      {totalPower > 2500 ? <Indicator>More</Indicator> : null}
     </Wrapper>
   )
 }
