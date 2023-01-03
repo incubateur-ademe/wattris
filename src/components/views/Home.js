@@ -5,7 +5,7 @@ import Section from 'components/base/Section'
 import Appliances from './home/Appliances'
 import Timeline from './home/Timeline'
 import Score from './home/Score'
-import NewOccurence from './home/NewOccurence'
+import ApplianceModal from './home/ApplianceModal'
 
 const StyledSectionContent = styled(Section.Content)`
   padding-top: 0.5rem;
@@ -29,7 +29,7 @@ export default function Home(props) {
       <StyledSectionContent hoverIframe={props.hoverIframe}>
         <Wrapper>
           <Score />
-          <NewOccurence />
+          <ApplianceModal />
           <Timeline />
         </Wrapper>
         <Appliances />

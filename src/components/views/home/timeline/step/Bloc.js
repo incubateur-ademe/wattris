@@ -23,12 +23,12 @@ export default function Bloc(props) {
       peak={props.peak}
       discret={
         active
-          ? active?.occurence !== props.bloc.index
+          ? active?.appliance !== props.bloc.appliance.slug
           : hover && hover.occurence !== props.bloc.index
       }
       onMouseEnter={() => setHover({ occurence: props.bloc.index })}
       onMouseLeave={() => setHover(null)}
-      onClick={() => setActive({ occurence: props.bloc.index })}
-    />
+      onClick={() => setActive({ appliance: props.bloc.appliance.slug })}
+    ></Wrapper>
   )
 }

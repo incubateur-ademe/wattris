@@ -10,18 +10,11 @@ export function DataProvider(props) {
   const [hover, setHover] = useState(null)
   const [active, setActive] = useState(null)
 
-  const addOccurence = () => {
-    const appliance = appliances[0]
-    setOccurences((prevOccurences) => [
-      ...prevOccurences,
-      {
-        slug: appliance.slug,
-        start: appliance.defaultOccurence.start,
-        duration: appliance.defaultOccurence.duration,
-        allDay: appliance.defaultOccurence.allDay,
-      },
-    ])
-    setActive({ occurence: occurences.length, new: true })
+  const [appliancesListOpen, setAppliancesListOpen] = useState(false)
+
+  const addOccurence = (occurence) => {
+    setOccurences((prevOccurences) => [...prevOccurences, occurence])
+    setActive({ appliance: occurence.slug, new: true })
   }
 
   const editOccurence = ({ occurenceIndex, newOccurence }) => {
@@ -37,6 +30,13 @@ export function DataProvider(props) {
       prevOccurences.filter((occurence, index) => index !== occurenceIndex)
     )
   }
+
+  const deleteAllOccurencesOfAppliance = ({ appliance }) => {
+    setOccurences((prevOccurences) =>
+      prevOccurences.filter((occurence) => occurence.slug !== appliance.slug)
+    )
+  }
+
   return (
     <DataContext.Provider
       value={{
@@ -50,6 +50,9 @@ export function DataProvider(props) {
         addOccurence,
         editOccurence,
         deleteOccurence,
+        deleteAllOccurencesOfAppliance,
+        appliancesListOpen,
+        setAppliancesListOpen,
       }}
     >
       {props.children}

@@ -16,9 +16,15 @@ const peakSteps = () => {
     .reduce((acc, cur) => [...acc, ...cur], [])
 }
 
+export function usePeaks(occurences) {
+  const { appliances } = useContext(DataContext)
+  return occurences.map((occurence) => getPeak(occurence, appliances))
+}
 export function usePeak(occurence) {
   const { appliances } = useContext(DataContext)
-
+  return getPeak(occurence, appliances)
+}
+function getPeak(occurence, appliances) {
   if (!occurence) {
     return false
   }
@@ -123,7 +129,6 @@ export function getAllBlocsForStep({
           appliance,
           start: occurence.start,
           duration: occurence.duration,
-          allDay: occurence.allDay,
         }),
         index,
       }
@@ -132,10 +137,11 @@ export function getAllBlocsForStep({
     .sort((a, b) => a.appliance.power - b.appliance.power)
 }
 
-export function getPowerForStep({ step, appliance, start, duration, allDay }) {
-  if (allDay) {
+export function getPowerForStep({ step, appliance, start, duration }) {
+  if (start === 0 && duration === 24) {
     return appliance.power
   }
+
   let end = start + duration
   end = end > 24 ? end - (24 + stepDurationInMinute / 60) : end
 

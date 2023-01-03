@@ -10,50 +10,40 @@ const Wrapper = styled.div`
   align-items: center;
   gap: 0.5rem;
   height: 1.25rem;
-  margin-bottom: 0.5rem;
 `
-const Tick = styled.div`
-  font-size: 0.75rem;
-`
+
 const Track = styled.div`
   position: relative;
   width: 100%;
   height: 0.0625rem;
-  margin: 0 ${(props) => (props.large ? 1.75 : 1)}rem;
+  margin: 0 1.75rem;
 
   &:before {
     content: '';
     position: absolute;
     top: 0;
     bottom: 0;
-    left: ${(props) => (props.large ? -1.75 : -1)}rem;
-    right: ${(props) => (props.large ? -1.75 : -1)}rem;
+    left: -1.75rem;
+    right: -1.75rem;
     background-color: ${(props) => props.theme.colors.background};
   }
 `
-const NumberThumb = styled.div`
+const Thumb = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: ${(props) => (props.large ? 4 : 2.75)}rem;
-  height: 1.5rem;
-  padding: 0.5rem;
+  width: ${(props) => (props.large ? 4.25 : 3)}rem;
+  height: 1.25rem;
   font-size: ${(props) => (props.large ? 0.875 : 0.75)}rem;
+  font-weight: 300;
+  white-space: nowrap;
   color: ${(props) => props.theme.colors[props.peak ? 'error' : 'main']};
   background-color: ${(props) => props.color || props.theme.colors.background};
   border-radius: 0.5rem;
 `
-const Thumb = styled.div`
-  width: 1rem;
-  height: 1rem;
-  background-color: ${(props) => props.color || props.theme.colors.background};
-  border-radius: 1rem;
-`
-
 export default function Slider(props) {
   return (
-    <Wrapper className={props.className} large={props.large}>
-      <Tick>0h</Tick>
+    <Wrapper className={props.className}>
       <Range
         step={0.5}
         min={0}
@@ -64,18 +54,20 @@ export default function Slider(props) {
           <Track {...props}>{children}</Track>
         )}
         renderThumb={({ props: anotherProps }) => (
-          <NumberThumb
+          <Thumb
             {...anotherProps}
             color={props.color}
-            large={props.large}
             aria-label={props.ariaLabel}
             peak={props.peak}
+            large={props.large}
           >
-            {getRealHoursFromDecimalHours(props.start)}
-          </NumberThumb>
+            <span>
+              {props.large ? 'à ' : ''}
+              <strong>{getRealHoursFromDecimalHours(props.start)}</strong>
+            </span>
+          </Thumb>
         )}
       />
-      <Tick>{props.large ? 'Minuit' : '24h'}</Tick>
     </Wrapper>
   )
 }
