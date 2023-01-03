@@ -23,7 +23,7 @@
       "start": 8,
       "duration": 14
     },
-    "durationSelector": false
+    "durationSelector": false,
     "description": "On considère un radiateur adapté pour une pièce d'environ 20m2. L'appel de puissance est maximal à l'allumage pour que le pièce soit à température puis, selon la température extérieure, l'isolation, la taille de la pièce, le radiateur appelle une puissance maximale par intermittence. Nous avons choisi de ne pas représenter ces appels de puissance brefs étant donné qu'ils ne sont pas prévisibles mais seulement le pic de montée en température (1800 Watt à l'allumage puis 100 Watt)."
   },
   {

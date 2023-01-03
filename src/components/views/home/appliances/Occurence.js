@@ -1,11 +1,11 @@
 import React, { useContext, useMemo } from 'react'
 import styled from 'styled-components'
 
+import { usePeak } from 'hooks/useAppliances'
 import DataContext from 'components/providers/DataProvider'
 import StartSelector from 'components/misc/StartSelector'
 import StartAndEndSelector from 'components/misc/StartAndEndSelector'
 import DeleteButton from 'components/misc/DeleteButton'
-import Checkbox from 'components/base/Checkbox'
 
 const Wrapper = styled.div`
   position: relative;
@@ -49,12 +49,8 @@ export default function Occurence(props) {
     [props.occurence, appliances]
   )
 
-  const peak = useMemo(
-    () =>
-      (props.occurence.start >= 8 && props.occurence.start < 13) ||
-      (props.occurence.start >= 18 && props.occurence.start < 20),
-    [props.occurence]
-  )
+  const peak = usePeak(props.occurence)
+
   return (
     <Wrapper
       discret={

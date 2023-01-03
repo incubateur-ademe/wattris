@@ -1,6 +1,7 @@
 import React, { useContext, useMemo } from 'react'
 import styled from 'styled-components'
 
+import { usePeak } from 'hooks/useAppliances'
 import DataContext from 'components/providers/DataProvider'
 import Appliance from './applianceModal/Appliance'
 import List from './applianceModal/List'
@@ -64,12 +65,7 @@ export default function ApplianceModal() {
   )
 
   const peaks = useMemo(
-    () =>
-      occurencesOfAppliance.map(
-        (occurence) =>
-          (occurence?.start >= 8 && occurence?.start < 13) ||
-          (occurence?.start >= 18 && occurence?.start < 20)
-      ),
+    () => occurencesOfAppliance.map((occurence) => usePeak(occurence)),
     [occurencesOfAppliance]
   )
 
