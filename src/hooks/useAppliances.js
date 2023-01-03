@@ -16,9 +16,15 @@ const peakSteps = () => {
     .reduce((acc, cur) => [...acc, ...cur], [])
 }
 
+export function usePeaks(occurences) {
+  const { appliances } = useContext(DataContext)
+  return occurences.map((occurence) => getPeak(occurence, appliances))
+}
 export function usePeak(occurence) {
   const { appliances } = useContext(DataContext)
-
+  return getPeak(occurence, appliances)
+}
+function getPeak(occurence, appliances) {
   if (!occurence) {
     return false
   }

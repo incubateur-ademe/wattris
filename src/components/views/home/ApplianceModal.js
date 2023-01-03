@@ -1,7 +1,7 @@
 import React, { useContext, useMemo } from 'react'
 import styled from 'styled-components'
 
-import { usePeak } from 'hooks/useAppliances'
+import { usePeaks } from 'hooks/useAppliances'
 import DataContext from 'components/providers/DataProvider'
 import Appliance from './applianceModal/Appliance'
 import List from './applianceModal/List'
@@ -64,10 +64,7 @@ export default function ApplianceModal() {
     [appliance, occurences]
   )
 
-  const peaks = useMemo(
-    () => occurencesOfAppliance.map((occurence) => usePeak(occurence)),
-    [occurencesOfAppliance]
-  )
+  const peaks = usePeaks(occurencesOfAppliance)
 
   const allPeaks = useMemo(() => !peaks.includes(false), [peaks])
 
