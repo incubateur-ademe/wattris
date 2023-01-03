@@ -1,6 +1,7 @@
 import React, { useContext, useMemo, useState, useEffect } from 'react'
 import styled from 'styled-components'
 
+import { usePeak } from 'hooks/useAppliances'
 import DataContext from 'components/providers/DataProvider'
 import Button from 'components/base/Button'
 import ButtonLink from 'components/base/ButtonLink'
@@ -135,12 +136,7 @@ export default function Occurence() {
     [occurence, appliances]
   )
 
-  const peak = useMemo(
-    () =>
-      (occurence?.start >= 8 && occurence?.start < 13) ||
-      (occurence?.start >= 18 && occurence?.start < 20),
-    [occurence]
-  )
+  const peak = usePeak(occurence)
 
   const [description, setDescription] = useState(false)
 

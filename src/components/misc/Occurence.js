@@ -1,6 +1,7 @@
 import React, { useContext, useMemo } from 'react'
 import styled from 'styled-components'
 
+import { usePeak } from 'hooks/useAppliances'
 import DataContext from 'components/providers/DataProvider'
 import StartSelector from './occurence/StartSelector'
 import DurationSelector from './occurence/DurationSelector'
@@ -100,12 +101,8 @@ export default function Occurence(props) {
     [props.occurence, appliances]
   )
 
-  const peak = useMemo(
-    () =>
-      (props.occurence.start >= 8 && props.occurence.start < 13) ||
-      (props.occurence.start >= 18 && props.occurence.start < 20),
-    [props.occurence]
-  )
+  const peak = usePeak(props.occurence)
+
   return (
     <Wrapper
       discret={
