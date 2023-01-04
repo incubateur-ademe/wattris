@@ -154,7 +154,7 @@
     "slug": "chauffeeau",
     "name": "Chauffe-eau",
     "initialPower": 2000,
-    "initialPowerLength": 5,
+    "initialPowerLength": 10,
     "power": 20,
     "defaultOccurence": {
       "start": 23.5,
