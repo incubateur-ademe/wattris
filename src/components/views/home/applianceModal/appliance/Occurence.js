@@ -11,6 +11,7 @@ const Wrapper = styled.div`
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem;
+  padding-bottom: ${(props) => (props.smallDuration ? 1.75 : 0.75)}rem;
   background-color: ${(props) =>
     props.peakIsSameAsAppliance
       ? 'rgba(255, 255, 255, 0.2)'
@@ -46,6 +47,9 @@ export default function Occurence(props) {
     <Wrapper
       peak={props.peak}
       peakIsSameAsAppliance={props.allPeaks === props.peak}
+      smallDuration={
+        !props.appliance.durationSelector && props.occurence.duration <= 4
+      }
     >
       {props.appliance.durationSelector ? (
         <>
@@ -84,6 +88,7 @@ export default function Occurence(props) {
           <StartAndEndSelector
             start={props.occurence.start}
             duration={props.occurence.duration}
+            smallDuration={props.occurence.duration <= 4}
             peak={props.peak}
             onChange={([start, end]) => {
               let duration = end - start
