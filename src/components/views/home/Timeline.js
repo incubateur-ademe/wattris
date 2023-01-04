@@ -9,6 +9,14 @@ const Wrapper = styled.div`
   position: relative;
   flex: 1;
   display: flex;
+  -webkit-mask-image: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(rgba(0, 0, 0, 0)),
+    color-stop(0.3, rgba(0, 0, 0, 1)),
+    to(rgba(0, 0, 0, 1))
+  );
 `
 export default function Timeline() {
   const { steps, stepDurationInMinute, powerByBlocInKW } = useAllBlocsByStep()
