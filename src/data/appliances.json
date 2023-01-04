@@ -1,7 +1,7 @@
 [
   {
     "slug": "lavelinge",
-    "name": "Lave linge",
+    "name": "Lave-linge",
     "initialPower": 2000,
     "initialPowerLength": 15,
     "power": 64,
@@ -11,7 +11,7 @@
       "allDay": false
     },
     "durationSelector": true,
-    "description": "L'appel de puissance est maximal au début du cycle du lave linge pour chauffer l'eau, puis reste inférieur à 100 Watt sur le reste du cycle (2000 Watt puis 64 Watt)."
+    "description": "L'appel de puissance est maximal au début du cycle du lave-linge pour chauffer l'eau, puis reste inférieur à 100 Watt sur le reste du cycle (2000 Watt puis 64 Watt)."
   },
   {
     "slug": "radiateur",
@@ -54,7 +54,7 @@
   },
   {
     "slug": "lavevaisselle",
-    "name": "Lave vaisselle",
+    "name": "Lave-vaisselle",
     "initialPower": 2000,
     "initialPowerLength": 25,
     "power": 140,
@@ -64,11 +64,11 @@
       "allDay": false
     },
     "durationSelector": true,
-    "description": "L'appel de puissance est maximal au début du cycle du lave vaisselle pour chauffer l'eau, puis reste inférieur à 150 Watt environ sur le reste du cycle (2000 Watt)."
+    "description": "L'appel de puissance est maximal au début du cycle du lave-vaisselle pour chauffer l'eau, puis reste inférieur à 150 Watt environ sur le reste du cycle (2000 Watt)."
   },
   {
     "slug": "sechelinge",
-    "name": "Sèche linge",
+    "name": "Sèche-linge",
     "power": 1800,
     "defaultOccurence": {
       "start": 15,
