@@ -1,12 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Select from 'components/base/Select'
-import Code from './configurator/Code'
-
 import useIframe from 'hooks/useIframe'
-import MagicLink from 'components/base/MagicLink'
 import Section from 'components/base/Section'
+import Code from './configurator/Code'
 
 const Wrapper = styled.div`
   width: 100%;
@@ -29,7 +26,6 @@ export default function Configurator(props) {
             onMouseLeave={() => props.setHoverIframe(false)}
           >
             <Title>Intégrez Wattris sur votre site</Title>
-
             <Code />
           </Wrapper>
         </Section.Content>
