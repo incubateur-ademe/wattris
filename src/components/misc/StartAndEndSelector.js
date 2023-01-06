@@ -54,7 +54,7 @@ const SmallThumb = styled.div`
 `
 const NumberLabel = styled.div`
   position: absolute;
-  top: 1.25rem;
+  top: ${(props) => (props.large ? -1.5 : 1.5)}em;
   left: ${(props) => props.labelStyle.left || '-0.75rem'};
   transform: ${(props) => props.labelStyle.transform};
   visibility: ${(props) => props.labelStyle.visibility};

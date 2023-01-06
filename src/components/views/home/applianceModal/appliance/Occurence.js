@@ -10,8 +10,8 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.75rem;
-  padding-bottom: ${(props) => (props.smallDuration ? 1.75 : 0.75)}rem;
+  padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+  margin-top: 0.5rem;
   background-color: ${(props) =>
     props.peakIsSameAsAppliance
       ? 'rgba(255, 255, 255, 0.2)'
@@ -47,9 +47,6 @@ export default function Occurence(props) {
     <Wrapper
       peak={props.peak}
       peakIsSameAsAppliance={props.allPeaks === props.peak}
-      smallDuration={
-        !props.appliance.durationSelector && props.occurence.duration <= 4
-      }
     >
       {props.appliance.durationSelector ? (
         <>

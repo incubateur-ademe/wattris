@@ -9,8 +9,8 @@ import DeleteButton from 'components/misc/DeleteButton'
 
 const Wrapper = styled.div`
   position: relative;
-  padding: 0.75rem 0.75rem;
-  padding-bottom: ${(props) => (props.smallDuration ? 1.75 : 0.75)}rem;
+  padding: 0.75rem;
+  padding-bottom: 1.5rem;
   color: ${(props) => props.theme.colors.background};
   background-color: ${(props) =>
     props.theme.colors[props.peak ? 'error' : 'main']};
@@ -63,9 +63,6 @@ export default function Occurence(props) {
       allDay={props.occurence.duration === 24}
       onMouseEnter={() => setHover({ occurence: props.index })}
       onMouseLeave={() => setHover(null)}
-      smallDuration={
-        !appliance.durationSelector && props.occurence.duration <= 8
-      }
     >
       <Title onClick={() => setActive({ appliance: appliance.slug })}>
         {appliance.name}
