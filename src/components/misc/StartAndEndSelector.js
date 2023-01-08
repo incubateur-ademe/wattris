@@ -1,6 +1,6 @@
 import React, { useRef } from 'react'
 import styled from 'styled-components'
-import { Range } from 'react-range'
+import { Range, getTrackBackground } from 'react-range'
 
 import { getRealHoursFromDecimalHours } from 'utils/formatters'
 
@@ -24,7 +24,7 @@ const Track = styled.div`
     bottom: 0;
     left: -1.75rem;
     right: -1.75rem;
-    background-color: ${(props) => props.theme.colors.background};
+    background: ${(props) => props.background};
   }
 `
 const Thumb = styled.div`
@@ -45,6 +45,7 @@ const Thumb = styled.div`
 export default function Slider(props) {
   const thumbs = [props.start, props.start + props.duration]
   const rangeRef = useRef()
+
   return (
     <Wrapper className={props.className}>
       <Range
@@ -56,7 +57,24 @@ export default function Slider(props) {
         ref={rangeRef}
         onChange={props.onChange}
         renderTrack={({ props, children }) => (
-          <Track {...props}>{children}</Track>
+          <Track
+            {...props}
+            background={getTrackBackground({
+              values: thumbs,
+              colors:
+                thumbs[0] > thumbs[1]
+                  ? ['#fff', 'rgba(255, 255, 255, 0.3)', '#fff']
+                  : [
+                      'rgba(255, 255, 255, 0.3)',
+                      '#fff',
+                      'rgba(255, 255, 255, 0.3)',
+                    ],
+              min: 0,
+              max: 24,
+            })}
+          >
+            {children}
+          </Track>
         )}
         renderThumb={({ index, props: anotherProps }) => (
           <Thumb
