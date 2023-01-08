@@ -68,7 +68,6 @@ export default function Occurence(props) {
       </Title>
       <DeleteButton
         small
-        visible={hover && hover.occurence === props.index}
         onClick={() =>
           deleteOccurence({
             occurenceIndex: props.index,
