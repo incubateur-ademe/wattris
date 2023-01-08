@@ -6,6 +6,7 @@ import Appliances from './home/Appliances'
 import Timeline from './home/Timeline'
 import Score from './home/Score'
 import ApplianceModal from './home/ApplianceModal'
+import ExportSimulation from './home/ExportSimulation'
 
 const StyledSectionContent = styled(Section.Content)`
   padding-top: 0.5rem;
@@ -33,6 +34,7 @@ export default function Home(props) {
           <Timeline />
         </Wrapper>
         <Appliances />
+        <ExportSimulation />
       </StyledSectionContent>
     </Section>
   )
