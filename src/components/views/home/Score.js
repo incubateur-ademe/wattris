@@ -198,8 +198,8 @@ export default function Score() {
               ? 'Votre consommation risque de mettre le réseau en tension. Essayez de déplacer vos appareils en dehors des périodes de tension.'
               : 'Votre consommation met très fortement le réseau en tension. Essayez de déplacer vos appareils en dehors des périodes de tension.'}
           </Description>
-          <StyledMagicLink to='https://www.monecowatt.fr/ecogestes'>
-            Découvrir des éco-gestes
+          <StyledMagicLink to='https://agirpourlatransition.ademe.fr/particuliers/maison/economies-denergie'>
+            Découvrez comment faire des économies d'énergie
           </StyledMagicLink>
         </Content>
       )}

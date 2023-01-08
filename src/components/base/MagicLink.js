@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
-import { useRouter } from 'next/router'
 
 const Svg = styled.svg`
   display: inline-block;
@@ -14,8 +13,6 @@ const Svg = styled.svg`
   }
 `
 export default function MagicLink(props) {
-  const router = useRouter()
-
   return !props.to ? (
     <button
       className={props.className}
