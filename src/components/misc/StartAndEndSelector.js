@@ -48,7 +48,7 @@ export default function Slider(props) {
   return (
     <Wrapper className={props.className}>
       <Range
-        draggableTrack
+        allowOverlap
         step={0.5}
         min={0}
         max={24}
