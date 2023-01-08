@@ -7,10 +7,6 @@ const Svg = styled.svg`
   width: 0.75em;
   height: auto;
   margin-left: 0.3em;
-
-  path {
-    fill: ${(props) => props.iconColor || props.theme.colors.main};
-  }
 `
 export default function MagicLink(props) {
   return !props.to ? (

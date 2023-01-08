@@ -115,6 +115,19 @@ const Description = styled.p`
 const StyledMagicLink = styled(MagicLink)`
   font-size: 0.75rem;
   color: inherit;
+
+  path {
+    fill: ${(props) =>
+      props.theme.colors[
+        props.percent
+          ? props.percent < 0.4
+            ? 'main'
+            : props.percent < 0.8
+            ? 'warning'
+            : 'error'
+          : 'main'
+      ]};
+  }
 `
 export default function Score() {
   const { occurences } = useContext(DataContext)
@@ -198,7 +211,10 @@ export default function Score() {
               ? 'Votre consommation risque de mettre le réseau en tension. Essayez de déplacer vos appareils en dehors des périodes de tension.'
               : 'Votre consommation met très fortement le réseau en tension. Essayez de déplacer vos appareils en dehors des périodes de tension.'}
           </Description>
-          <StyledMagicLink to='https://agirpourlatransition.ademe.fr/particuliers/maison/economies-denergie'>
+          <StyledMagicLink
+            to='https://agirpourlatransition.ademe.fr/particuliers/maison/economies-denergie'
+            percent={percent}
+          >
             Découvrez comment faire des économies d'énergie
           </StyledMagicLink>
         </Content>
