@@ -30,7 +30,7 @@ export default function Index() {
             Simulez la consommation électrique de votre foyer, découvrez quels
             appareils consomment beaucoup, et apprenez les bons gestes pour
             réduire la charge du réseau électrique lors des périodes de tension
-            (de 8h à 13h et de 18h à 20h)
+            de 8h à 13h et de 18h à 20h.
           </Text>
         </Section.Content>
       </Section>
