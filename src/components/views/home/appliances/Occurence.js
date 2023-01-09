@@ -28,7 +28,7 @@ const Wrapper = styled.div`
 const Title = styled.p`
   position: relative;
   align-self: center;
-  margin: 0 1.5rem 0.75rem;
+  margin: 0 1rem 0.75rem;
   font-size: 0.875rem;
   text-align: center;
 
@@ -49,15 +49,8 @@ const Title = styled.p`
   }
 `
 export default function Occurence(props) {
-  const {
-    appliances,
-    hover,
-    setHover,
-    active,
-    setActive,
-    editOccurence,
-    deleteOccurence,
-  } = useContext(DataContext)
+  const { appliances, hover, setHover, active, setActive, editOccurence } =
+    useContext(DataContext)
 
   const appliance = useMemo(
     () =>
@@ -81,7 +74,7 @@ export default function Occurence(props) {
       onMouseLeave={() => setHover(null)}
     >
       <Title>
-        {appliance.name} {props.indexInAppliance + 1}
+        {appliance.name} {props.indexInAppliance}
         <svg x='0px' y='0px' viewBox='0 0 512.009 512.009'>
           <path
             d='M397.96,330.099c-13.755,0-24.872,11.118-24.872,24.872v78.125c0,13.73-11.143,24.872-24.872,24.872H74.617
@@ -90,7 +83,6 @@ export default function Occurence(props) {
 			c0,41.139,33.478,74.617,74.617,74.617h273.597c41.139,0,74.617-33.453,74.617-74.617v-78.124
 			C422.832,341.217,411.714,330.099,397.96,330.099z'
           />
-
           <path
             d='M484.193,31.977c-18.057-18.057-41.637-27.161-65.39-27.658c-24.997-0.547-50.143,8.506-69.046,27.434L181.37,200.14
 			c-24.574,24.674-38.105,57.406-38.105,92.177v55.714c0,13.754,11.118,24.872,24.872,24.872h55.714

@@ -95,7 +95,7 @@ export default function Appliances() {
           <Occurence
             key={key[0] + index}
             index={occurence.index}
-            indexInAppliance={index}
+            indexInAppliance={key[1].length > 1 ? index + 1 : null}
             occurence={occurence}
             small
           />
