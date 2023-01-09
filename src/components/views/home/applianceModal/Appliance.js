@@ -53,19 +53,22 @@ const StyledButtonLink = styled(ButtonLink)`
 `
 
 export default function Appliance(props) {
-  const { setActive } = useContext(DataContext)
+  const { setActive, setAppliancesListOpen } = useContext(DataContext)
 
   const [description, setDescription] = useState(false)
 
+  const lastIndex =
+    props.occurencesOfAppliance[props.occurencesOfAppliance.length - 1].index
   return (
     <>
       <DeleteButton
         onClick={() => {
           props.active.new &&
-            props.deleteAllOccurencesOfAppliance({
-              appliance: props.appliance,
+            props.deleteOccurence({
+              occurenceIndex: lastIndex,
             })
           setActive(null)
+          setAppliancesListOpen(true)
         }}
       />
       <DescriptionButton
@@ -87,6 +90,7 @@ export default function Appliance(props) {
       </Occurences>
       <OccurenceButtons
         appliance={props.appliance}
+        lastIndex={lastIndex}
         addOccurence={props.addOccurence}
         deleteOccurence={props.deleteOccurence}
       />
@@ -99,7 +103,7 @@ export default function Appliance(props) {
             props.setActive(null)
           }}
         >
-          {props.active.new ? 'Annuler' : 'Supprimer'}
+          Supprimer{props.occurencesOfAppliance.length > 1 ? ' tous' : ''}
         </StyledButtonLink>
         <StyledButton
           onClick={() => props.setActive(null)}

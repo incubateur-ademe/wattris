@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  height: 1.25rem;
+  min-height: 1.25rem;
 `
 const Track = styled.div`
   position: relative;
@@ -46,7 +46,7 @@ export default function Slider(props) {
   const thumbs = [props.start, props.start + props.duration]
   const rangeRef = useRef()
   return (
-    <Wrapper className={props.className}>
+    <Wrapper className={props.className} onClick={(e) => e.stopPropagation()}>
       <Range
         draggableTrack
         step={0.5}
