@@ -117,6 +117,7 @@ export default function Occurence(props) {
         <StartAndEndSelector
           start={props.occurence.start}
           duration={props.occurence.duration}
+          smallDuration={Math.abs(props.occurence.duration) <= 8}
           peak={peak}
           onChange={([start, end]) => {
             let duration = end - start

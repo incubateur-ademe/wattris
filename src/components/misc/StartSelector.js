@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 const Track = styled.div`
   position: relative;
   width: 100%;
-  height: 0.0625rem;
+  height: 0.1rem;
   margin: 0 1.75rem;
 
   &:before {
