@@ -9,7 +9,7 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  height: 1.25rem;
+  min-height: 1.25rem;
 `
 
 const Track = styled.div`
@@ -101,7 +101,7 @@ export default function Slider(props) {
   const rangeRef = useRef()
 
   return (
-    <Wrapper className={props.className}>
+    <Wrapper className={props.className} onClick={(e) => e.stopPropagation()}>
       <Range
         allowOverlap
         step={0.5}
