@@ -16,10 +16,10 @@ export default function ExportSimulation() {
     <Button.Wrapper>
       <Button
         onClick={() => {
-          var element = document.createElement('a')
+          let element = document.createElement('a')
           element.setAttribute(
             'href',
-            'data:text/plain;charset=utf-8,' + JSON.stringify(occurences)
+            'data:application/json;charset=utf-8,' + JSON.stringify(occurences)
           )
           element.setAttribute('download', 'simulation-wattris.json')
           element.style.display = 'none'
