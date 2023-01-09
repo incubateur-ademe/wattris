@@ -64,7 +64,7 @@ export default function Occurence(props) {
       onMouseLeave={() => setHover(null)}
     >
       <Title onClick={() => setActive({ appliance: appliance.slug })}>
-        {appliance.name}
+        {appliance.name} {props.indexInAppliance + 1}
       </Title>
       <DeleteButton
         small

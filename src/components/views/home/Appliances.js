@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useMemo } from 'react'
 import styled, { keyframes } from 'styled-components'
 
 import DataContext from 'components/providers/DataProvider'
@@ -75,11 +75,32 @@ export default function Appliances() {
     useContext(DataContext)
   const { introduction } = useContext(ModalContext)
 
+  const occurencesByAppliance =
+    occurences.length &&
+    occurences
+      .map((occurence, index) => ({ ...occurence, index }))
+      .reduce(
+        (acc, cur) =>
+          acc[cur.slug]
+            ? { ...acc, [cur.slug]: [...acc[cur.slug], cur] }
+            : { ...acc, [cur.slug]: [cur] },
+        {}
+      )
+
+  console.log(Object.entries(occurencesByAppliance))
   return (
     <Wrapper>
-      {occurences.map((occurence, index) => (
-        <Occurence key={index} index={index} occurence={occurence} small />
-      ))}
+      {Object.entries(occurencesByAppliance).map((key) =>
+        key[1].map((occurence, index) => (
+          <Occurence
+            key={key[0] + index}
+            index={occurence.index}
+            indexInAppliance={index}
+            occurence={occurence}
+            small
+          />
+        ))
+      )}
       <AddOccurenceButton
         onClick={() => setAppliancesListOpen(true)}
         blink={!occurences.length && !appliancesListOpen}
