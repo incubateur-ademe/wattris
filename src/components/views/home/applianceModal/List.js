@@ -25,8 +25,9 @@ const Appliance = styled.button`
   align-items: center;
   min-height: 4.5rem;
   padding: 0.5rem;
-  color: ${(props) => props.theme.colors.main};
-  background-color: ${(props) => props.theme.colors.background};
+  color: ${(props) => props.theme.colors[props.hollow ? 'background' : 'main']};
+  background-color: ${(props) =>
+    props.theme.colors[props.hollow ? 'main' : 'background']};
   border: 0.125rem solid ${(props) => props.theme.colors.background};
   border-radius: 0.5rem;
   cursor: pointer;
@@ -56,7 +57,7 @@ export default function List() {
         {appliances.map((appliance) => (
           <Appliance
             key={appliance.slug}
-            disabled={occurences.find(
+            hollow={occurences.find(
               (occurence) => occurence.slug === appliance.slug
             )}
             onClick={() => {
