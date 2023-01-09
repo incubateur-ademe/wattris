@@ -89,16 +89,14 @@ export default function Occurence(props) {
             peak={props.peak}
             onChange={([start, end]) => {
               let duration = end - start
-              if (duration >= 0.5) {
-                editOccurence({
-                  occurenceIndex: props.occurence.index,
-                  newOccurence: {
-                    ...props.occurence,
-                    start,
-                    duration,
-                  },
-                })
-              }
+              editOccurence({
+                occurenceIndex: props.occurence.index,
+                newOccurence: {
+                  ...props.occurence,
+                  start,
+                  duration,
+                },
+              })
             }}
             large
           />

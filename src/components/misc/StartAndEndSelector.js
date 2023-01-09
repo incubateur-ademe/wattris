@@ -99,10 +99,11 @@ const ThumbLabel = (props) => {
 export default function Slider(props) {
   const thumbs = [props.start, props.start + props.duration]
   const rangeRef = useRef()
+
   return (
     <Wrapper className={props.className}>
       <Range
-        draggableTrack
+        allowOverlap
         step={0.5}
         min={0}
         max={24}
@@ -111,17 +112,20 @@ export default function Slider(props) {
         onChange={props.onChange}
         renderTrack={({ props, children }) => (
           <Track
+            {...props}
             background={getTrackBackground({
               values: thumbs,
-              colors: [
-                'rgba(255, 255, 255, 0.5)',
-                'rgba(255, 255, 255)',
-                'rgba(255, 255, 255, 0.5)',
-              ],
+              colors:
+                thumbs[0] > thumbs[1]
+                  ? ['#fff', 'rgba(255, 255, 255, 0.3)', '#fff']
+                  : [
+                      'rgba(255, 255, 255, 0.3)',
+                      '#fff',
+                      'rgba(255, 255, 255, 0.3)',
+                    ],
               min: 0,
               max: 24,
             })}
-            {...props}
           >
             {children}
           </Track>
