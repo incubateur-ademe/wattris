@@ -7,7 +7,9 @@ const ModalContext = React.createContext({})
 
 export function ModalProvider(props) {
   const [co2e, setCo2e] = useState(false)
-  const [introduction, setIntroduction] = useState(!process.env.NODE_ENV)
+  const [introduction, setIntroduction] = useState(
+    process.env.NODE_ENV === 'production'
+  )
 
   return (
     <ModalContext.Provider
