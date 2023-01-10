@@ -53,6 +53,7 @@ const SmallThumb = styled.div`
   justify-content: 'center';
   align-items: 'center';
   background-color: ${(props) => props.theme.colors.background};
+  pointer-events: auto;
 `
 const NumberLabel = styled.div`
   position: absolute;
