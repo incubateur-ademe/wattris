@@ -35,6 +35,7 @@ const Title = styled.p`
 
   ${(props) => props.theme.mq.small} {
     font-size: 0.75rem;
+    margin-left: 0.5rem;
   }
 
   svg {
