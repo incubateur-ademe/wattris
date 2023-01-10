@@ -18,6 +18,7 @@ const Track = styled.div`
   width: 100%;
   height: 0.1rem;
   margin: 0 1.75rem;
+  pointer-events: none;
 
   &:before {
     content: '';
@@ -41,6 +42,7 @@ const Thumb = styled.div`
   color: ${(props) => props.theme.colors[props.peak ? 'error' : 'main']};
   background-color: ${(props) => props.color || props.theme.colors.background};
   border-radius: 0.5rem;
+  pointer-events: auto;
 `
 export default function Slider(props) {
   return (
