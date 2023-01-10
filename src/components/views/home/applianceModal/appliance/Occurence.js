@@ -81,25 +81,28 @@ export default function Occurence(props) {
         </>
       ) : (
         <>
-          <Text>Je le lance</Text>
-          <StartAndEndSelector
-            start={props.occurence.start}
-            duration={props.occurence.duration}
-            smallDuration={Math.abs(props.occurence.duration) <= 4}
-            peak={props.peak}
-            onChange={([start, end]) => {
-              let duration = end - start
-              editOccurence({
-                occurenceIndex: props.occurence.index,
-                newOccurence: {
-                  ...props.occurence,
-                  start,
-                  duration,
-                },
-              })
-            }}
-            large
-          />
+          <span>
+            <Text>Je le lance</Text>
+            <StartAndEndSelector
+              start={props.occurence.start}
+              duration={props.occurence.duration}
+              peak={props.peak}
+              onChange={([start, end]) => {
+                let duration = end - start
+                if (duration >= 0.5) {
+                  editOccurence({
+                    occurenceIndex: props.occurence.index,
+                    newOccurence: {
+                      ...props.occurence,
+                      start,
+                      duration,
+                    },
+                  })
+                }
+              }}
+              large
+            />
+          </span>
         </>
       )}
     </Wrapper>
