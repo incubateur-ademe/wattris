@@ -12,7 +12,8 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 0.75rem 0.75rem;
+  padding: 0.75rem;
+  padding-bottom: 1.5rem;
   color: ${(props) => props.theme.colors.background};
   background-color: ${(props) =>
     props.theme.colors[props.peak ? 'error' : 'main']};
