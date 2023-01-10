@@ -103,39 +103,16 @@ export default function Occurence(props) {
           />
         </svg>
       </Title>
-
-      {appliance.durationSelector ? (
-        <StartSelector
-          start={props.occurence.start}
-          peak={peak}
-          onChange={([start]) => {
-            editOccurence({
-              occurenceIndex: props.index,
-              newOccurence: { ...props.occurence, start },
-            })
-          }}
-        />
-      ) : (
-        <StartAndEndSelector
-          start={props.occurence.start}
-          duration={props.occurence.duration}
-          smallDuration={Math.abs(props.occurence.duration) <= 8}
-          peak={peak}
-          onChange={([start, end]) => {
-            let duration = end - start
-            if (duration >= 0.5) {
-              editOccurence({
-                occurenceIndex: props.index,
-                newOccurence: {
-                  ...props.occurence,
-                  start,
-                  duration,
-                },
-              })
-            }
-          }}
-        />
-      )}
+      <StartSelector
+        start={props.occurence.start}
+        peak={peak}
+        onChange={([start]) => {
+          editOccurence({
+            occurenceIndex: props.index,
+            newOccurence: { ...props.occurence, start },
+          })
+        }}
+      />
     </Wrapper>
   )
 }

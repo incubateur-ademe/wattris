@@ -97,7 +97,11 @@ const ThumbLabel = (props) => {
 }
 
 export default function Slider(props) {
-  const thumbs = [props.start, props.start + props.duration]
+  const endThumb =
+    props.start + props.duration === 24
+      ? 24
+      : (props.start + props.duration) % 24
+  const thumbs = [props.start, endThumb]
   const rangeRef = useRef()
 
   return (
