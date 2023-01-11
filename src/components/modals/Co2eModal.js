@@ -8,6 +8,7 @@ const Title = styled.h2``
 const Text = styled.p``
 export default function Co2eModal() {
   const { co2e: open, setCo2e: setOpen } = useContext(ModalContext)
+
   return (
     <Modal open={open} setOpen={setOpen}>
       <Title>

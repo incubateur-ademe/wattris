@@ -10,7 +10,8 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.75rem;
+  padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+  margin-top: 0.5rem;
   background-color: ${(props) =>
     props.peakIsSameAsAppliance
       ? 'rgba(255, 255, 255, 0.2)'
@@ -84,19 +85,18 @@ export default function Occurence(props) {
           <StartAndEndSelector
             start={props.occurence.start}
             duration={props.occurence.duration}
+            smallDuration={Math.abs(props.occurence.duration) <= 4}
             peak={props.peak}
             onChange={([start, end]) => {
               let duration = end - start
-              if (duration >= 0.5) {
-                editOccurence({
-                  occurenceIndex: props.occurence.index,
-                  newOccurence: {
-                    ...props.occurence,
-                    start,
-                    duration,
-                  },
-                })
-              }
+              editOccurence({
+                occurenceIndex: props.occurence.index,
+                newOccurence: {
+                  ...props.occurence,
+                  start,
+                  duration,
+                },
+              })
             }}
             large
           />
