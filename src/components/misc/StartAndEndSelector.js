@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Range, getTrackBackground, useThumbOverlap } from 'react-range'
 
 import { getRealHoursFromDecimalHours } from 'utils/formatters'
+import useMounted from 'hooks/useMounted'
 
 const Wrapper = styled.div`
   flex: 1;
@@ -100,6 +101,8 @@ const ThumbLabel = (props) => {
 }
 
 export default function Slider(props) {
+  const mounted = useMounted()
+
   const endThumb =
     props.start + props.duration === 24
       ? 24
@@ -114,7 +117,7 @@ export default function Slider(props) {
         step={0.5}
         min={0}
         max={24}
-        values={thumbs}
+        values={mounted ? thumbs : [0, 0]}
         ref={rangeRef}
         onChange={props.onChange}
         renderTrack={({ props, children }) => (
