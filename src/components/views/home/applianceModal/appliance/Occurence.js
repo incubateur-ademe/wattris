@@ -82,7 +82,9 @@ export default function Occurence(props) {
         </>
       ) : (
         <>
-          <Text>Je le lance</Text>
+          <Text>
+            Je {props.appliance.slug === 'radiateur' ? 'chauffe' : 'le lance'}
+          </Text>
           <StartAndEndSelector
             start={props.occurence.start}
             duration={props.occurence.duration}
