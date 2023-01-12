@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Range, getTrackBackground, useThumbOverlap } from 'react-range'
 
 import { getRealHoursFromDecimalHours } from 'utils/formatters'
+import useMounted from 'hooks/useMounted'
 
 const Wrapper = styled.div`
   flex: 1;
@@ -17,6 +18,7 @@ const Track = styled.div`
   width: 100%;
   height: 1rem;
   margin: 0 1.75rem;
+  pointer-events: none;
 
   &:before {
     content: '';
@@ -42,6 +44,7 @@ const Thumb = styled.div`
   color: ${(props) => props.theme.colors[props.peak ? 'error' : 'main']};
   background-color: ${(props) => props.color || props.theme.colors.background};
   border-radius: 0.5rem;
+  pointer-events: auto;
 `
 const SmallThumb = styled.div`
   width: 0.5rem;
@@ -51,6 +54,7 @@ const SmallThumb = styled.div`
   justify-content: 'center';
   align-items: 'center';
   background-color: ${(props) => props.theme.colors.background};
+  pointer-events: auto;
 `
 const NumberLabel = styled.div`
   position: absolute;
@@ -97,7 +101,13 @@ const ThumbLabel = (props) => {
 }
 
 export default function Slider(props) {
-  const thumbs = [props.start, props.start + props.duration]
+  const mounted = useMounted()
+
+  const endThumb =
+    props.start + props.duration === 24
+      ? 24
+      : (props.start + props.duration) % 24
+  const thumbs = [props.start, endThumb]
   const rangeRef = useRef()
 
   return (
@@ -107,7 +117,7 @@ export default function Slider(props) {
         step={0.5}
         min={0}
         max={24}
-        values={thumbs}
+        values={mounted ? thumbs : [0, 0]}
         ref={rangeRef}
         onChange={props.onChange}
         renderTrack={({ props, children }) => (

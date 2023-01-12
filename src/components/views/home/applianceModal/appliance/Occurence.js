@@ -32,8 +32,10 @@ const Wrapper = styled.div`
     }
   }
 
-  ${(props) => props.theme.mq.small} {
-    flex-direction: column;
+  &:first-child {
+    ${(props) => props.theme.mq.small} {
+      flex-direction: column;
+    }
   }
 `
 const Text = styled.p`
@@ -80,7 +82,7 @@ export default function Occurence(props) {
           </span>
         </>
       ) : (
-        <>
+        <span>
           <Text>Je le lance</Text>
           <StartAndEndSelector
             start={props.occurence.start}
@@ -100,7 +102,7 @@ export default function Occurence(props) {
             }}
             large
           />
-        </>
+        </span>
       )}
     </Wrapper>
   )

@@ -10,6 +10,7 @@ const Wrapper = styled.div`
   align-items: center;
   gap: 0.5rem;
   height: 1.25rem;
+  margin-top: ${(props) => (props.large ? 0 : 0.5)}rem;
 `
 
 const Track = styled.div`
@@ -17,14 +18,15 @@ const Track = styled.div`
   width: 100%;
   height: 0.1rem;
   margin: 0 1.75rem;
+  pointer-events: none;
 
   &:before {
     content: '';
     position: absolute;
     top: 0;
     bottom: 0;
-    left: -1.75rem;
-    right: -1.75rem;
+    left: ${(props) => (props.large ? -1.75 : -1.5)}rem;
+    right: ${(props) => (props.large ? -1.75 : -1.5)}rem;
     background-color: ${(props) => props.theme.colors.background};
   }
 `
@@ -40,10 +42,11 @@ const Thumb = styled.div`
   color: ${(props) => props.theme.colors[props.peak ? 'error' : 'main']};
   background-color: ${(props) => props.color || props.theme.colors.background};
   border-radius: 0.5rem;
+  pointer-events: auto;
 `
 export default function Slider(props) {
   return (
-    <Wrapper className={props.className}>
+    <Wrapper className={props.className} onClick={(e) => e.stopPropagation()}>
       <Range
         step={0.5}
         min={0}
