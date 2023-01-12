@@ -237,8 +237,8 @@
     "description": "L'appel de puissance est continu tout au long du fonctionnement de la box TV (13 Watt)."
   },
   {
-    "slug": "chargeursmartphone",
-    "name": "Chargeur Smartphone",
+    "slug": "chargeurtelephoneportable",
+    "name": "Chargeur téléphone portable",
     "power": 5,
     "defaultOccurence": {
       "start": 21,
