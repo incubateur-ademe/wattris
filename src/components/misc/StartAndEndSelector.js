@@ -48,22 +48,19 @@ const Thumb = styled.div`
   pointer-events: auto;
 `
 const SmallThumb = styled.div`
-  width: 0.75rem;
+  width: 0.5rem;
   height: 1rem;
-  border: 0.25rem solid ${(props) => props.theme.colors.background};
   border-radius: 0.25rem;
   display: 'flex';
   justify-content: 'center';
   align-items: 'center';
-  background-color: ${(props) =>
-    props.theme.colors[props.peak ? 'error' : 'main']};
+  background-color: ${(props) => props.theme.colors.background};
   pointer-events: auto;
 `
 const NumberLabel = styled.div`
   position: absolute;
-  top: ${(props) => (props.isMobile ? -2.25 : -1.5)}em;
-  left: ${(props) =>
-    props.labelStyle.left || (props.index === 0 ? '-2rem' : '-1.5rem')};
+  top: ${(props) => (props.isMobile ? -1.75 : -1.5)}em;
+  left: ${(props) => props.labelStyle.left || '-1.75rem'};
   transform: ${(props) => props.labelStyle.transform};
   visibility: ${(props) => props.labelStyle.visibility};
   display: flex;
@@ -96,7 +93,6 @@ const ThumbLabel = (props) => {
         aria-label={props.ariaLabel}
         peak={props.peak}
         isMobile={props.isMobile}
-        index={props.index}
       >
         {props.isMobile && Object.entries(labelStyle).length === 0 ? (
           <>{props.index === 0 ? 'de' : 'à'} </>
