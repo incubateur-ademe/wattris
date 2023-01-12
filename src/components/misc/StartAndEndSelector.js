@@ -60,7 +60,7 @@ const SmallThumb = styled.div`
 const NumberLabel = styled.div`
   position: absolute;
   top: ${(props) => (props.isMobile ? -1.75 : -1.5)}em;
-  left: ${(props) => props.labelStyle.left || '-1.25rem'};
+  left: ${(props) => props.labelStyle.left || '-1.75rem'};
   transform: ${(props) => props.labelStyle.transform};
   visibility: ${(props) => props.labelStyle.visibility};
   display: flex;
@@ -94,6 +94,11 @@ const ThumbLabel = (props) => {
         peak={props.peak}
         isMobile={props.isMobile}
       >
+        {props.isMobile && Object.entries(labelStyle).length === 0 ? (
+          <>{props.index === 0 ? 'de' : 'à'} </>
+        ) : (
+          ''
+        )}
         {labelValue}
       </NumberLabel>
     )
