@@ -26,7 +26,6 @@ export default function ContactModal() {
     <StyledModal open={open} setOpen={setOpen}>
       {open || iframe ? (
         <iframe
-          class='airtable-embed'
           src={`https://airtable.com/embed/shrp4omaHLOXGZ2mu?prefill_simulation=${JSON.stringify(
             occurences
           )}&hide_simulation=true`}
