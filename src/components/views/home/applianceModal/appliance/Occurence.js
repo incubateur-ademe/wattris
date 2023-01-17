@@ -3,15 +3,16 @@ import styled from 'styled-components'
 
 import DataContext from 'components/providers/DataProvider'
 import StartSelector from 'components/misc/StartSelector'
+import DeleteButton from 'components/misc/DeleteButton'
 import StartAndEndSelector from 'components/misc/StartAndEndSelector'
 import DurationSelector from './occurence/DurationSelector'
 
 const Wrapper = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem 0.75rem 0.5rem 0.75rem;
-  margin-top: 0.5rem;
+  padding: 0.75rem 1.5rem 0.75rem 0.75rem;
   background-color: ${(props) =>
     props.peakIsSameAsAppliance
       ? 'rgba(255, 255, 255, 0.2)'
@@ -43,7 +44,7 @@ const Text = styled.p`
   font-size: 0.75rem;
 `
 export default function Occurence(props) {
-  const { editOccurence } = useContext(DataContext)
+  const { editOccurence, deleteOccurence } = useContext(DataContext)
 
   return (
     <Wrapper
@@ -82,8 +83,10 @@ export default function Occurence(props) {
           </span>
         </>
       ) : (
-        <span>
-          <Text>Je le lance</Text>
+        <>
+          <Text>
+            Je {props.appliance.slug === 'radiateur' ? 'chauffe' : 'le lance'}
+          </Text>
           <StartAndEndSelector
             start={props.occurence.start}
             duration={props.occurence.duration}
@@ -102,7 +105,17 @@ export default function Occurence(props) {
             }}
             large
           />
-        </span>
+        </>
+      )}
+      {props.multiple && (
+        <DeleteButton
+          small
+          onClick={() =>
+            deleteOccurence({
+              occurenceIndex: props.occurence.index,
+            })
+          }
+        />
       )}
     </Wrapper>
   )

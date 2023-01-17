@@ -84,6 +84,7 @@ export default function Appliance(props) {
             occurence={occurence}
             peak={props.peaks[index]}
             allPeaks={props.allPeaks}
+            multiple={props.occurencesOfAppliance.length > 1}
           />
         ))}
       </Occurences>
