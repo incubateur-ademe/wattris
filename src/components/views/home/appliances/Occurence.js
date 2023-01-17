@@ -12,7 +12,8 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 0.75rem 0.75rem;
+  padding: 0.75rem;
+  padding-bottom: 1.5rem;
   color: ${(props) => props.theme.colors.background};
   background-color: ${(props) =>
     props.theme.colors[props.peak ? 'error' : 'main']};
@@ -34,6 +35,7 @@ const Title = styled.p`
 
   ${(props) => props.theme.mq.small} {
     font-size: 0.75rem;
+    margin-left: 0.5rem;
   }
 
   svg {
@@ -93,39 +95,16 @@ export default function Occurence(props) {
           />
         </svg>
       </Title>
-
-      {appliance.durationSelector ? (
-        <StartSelector
-          start={props.occurence.start}
-          peak={peak}
-          onChange={([start]) => {
-            editOccurence({
-              occurenceIndex: props.index,
-              newOccurence: { ...props.occurence, start },
-            })
-          }}
-        />
-      ) : (
-        <StartAndEndSelector
-          start={props.occurence.start}
-          duration={props.occurence.duration}
-          smallDuration={Math.abs(props.occurence.duration) <= 8}
-          peak={peak}
-          onChange={([start, end]) => {
-            let duration = end - start
-            if (duration >= 0.5) {
-              editOccurence({
-                occurenceIndex: props.index,
-                newOccurence: {
-                  ...props.occurence,
-                  start,
-                  duration,
-                },
-              })
-            }
-          }}
-        />
-      )}
+      <StartSelector
+        start={props.occurence.start}
+        peak={peak}
+        onChange={([start]) => {
+          editOccurence({
+            occurenceIndex: props.index,
+            newOccurence: { ...props.occurence, start },
+          })
+        }}
+      />
     </Wrapper>
   )
 }

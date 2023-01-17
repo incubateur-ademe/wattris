@@ -11,7 +11,7 @@ export default function Seo(props) {
       `Wattris, le jeu pour éviter les coupures d'électricité cet hiver !`,
     description:
       props.description ||
-      `Simulez la consommation électrique de votre foyer, découvrez quels appareils consomment beaucoup, et apprenez les bons gestes pour réduire la charge du réseau électrique`,
+      `Simulez la consommation électrique de votre foyer, découvrez quels appareils consomment beaucoup et apprenez les bons gestes pour réduire la charge du réseau électrique`,
     image: `https://wattris.ademe.fr/${props.image || 'metaimage.png'}`,
     url: `https://wattris.ademe.fr/${router.asPath}`,
   }

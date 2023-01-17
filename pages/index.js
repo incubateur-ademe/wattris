@@ -28,7 +28,7 @@ export default function Index() {
           </Title>
           <Text>
             Simulez la consommation électrique de votre foyer, découvrez quels
-            appareils consomment beaucoup, et apprenez les bons gestes pour
+            appareils consomment beaucoup et apprenez les bons gestes pour
             réduire la charge du réseau électrique lors des périodes de tension
             de 8h à 13h et de 18h à 20h.
           </Text>

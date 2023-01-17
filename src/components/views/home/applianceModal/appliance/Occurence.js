@@ -33,8 +33,10 @@ const Wrapper = styled.div`
     }
   }
 
-  ${(props) => props.theme.mq.small} {
-    flex-direction: column;
+  &:first-child {
+    ${(props) => props.theme.mq.small} {
+      flex-direction: column;
+    }
   }
 `
 const Text = styled.p`
