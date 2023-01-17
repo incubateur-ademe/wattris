@@ -84,7 +84,7 @@
     "power": 1000,
     "defaultOccurence": {
       "start": 18,
-      "duration": 0.09,
+      "duration": 0.0833333333333339,
       "allDay": false
     },
     "durationSelector": true,
@@ -108,7 +108,7 @@
     "power": 1300,
     "defaultOccurence": {
       "start": 12,
-      "duration": 0.09,
+      "duration": 0.0833333333333339,
       "allDay": false
     },
     "durationSelector": true,
@@ -120,7 +120,7 @@
     "power": 2000,
     "defaultOccurence": {
       "start": 8,
-      "duration": 0.09,
+      "duration": 0.0833333333333339,
       "allDay": false
     },
     "durationSelector": true,
