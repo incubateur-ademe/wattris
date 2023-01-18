@@ -71,7 +71,15 @@ export default function Occurence(props) {
       }
       peak={peak}
       allDay={props.occurence.duration === 24}
-      onClick={() => setActive({ appliance: appliance.slug })}
+      onClick={() => {
+        setActive({ appliance: appliance.slug })
+        window?._paq?.push([
+          'trackEvent',
+          'Interaction',
+          'Click tuile',
+          `${appliance.slug} (${props.index})`,
+        ])
+      }}
       onMouseEnter={() => setHover({ occurence: props.index })}
       onMouseLeave={() => setHover(null)}
     >
@@ -103,6 +111,7 @@ export default function Occurence(props) {
             occurenceIndex: props.index,
             newOccurence: { ...props.occurence, start },
           })
+          window?._paq?.push(['trackEvent', 'Interaction', 'Slider tuile'])
         }}
       />
     </Wrapper>

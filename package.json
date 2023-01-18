@@ -11,28 +11,28 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@socialgouv/matomo-next": "^1.4.0",
-    "@tanstack/react-query": "^4.20.4",
-    "axios": "^1.2.1",
+    "@socialgouv/matomo-next": "^1.6.1",
+    "@tanstack/react-query": "^4.22.0",
+    "axios": "^1.2.2",
     "copy-to-clipboard": "^3.3.3",
     "fuse.js": "^6.6.2",
     "iframe-resizer-react": "^1.1.0",
     "matomo-tracker": "^2.2.4",
-    "next": "^13.0.7",
+    "next": "^13.1.2",
     "next-query-params": "^4.1.0",
-    "next-sitemap": "^3.1.42",
+    "next-sitemap": "^3.1.45",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-range": "^1.8.14",
-    "react-use-query-param-string": "^2.0.3",
+    "react-use-query-param-string": "^2.0.10",
     "styled-components": "^5.3.6",
     "styled-normalize": "^8.0.7",
     "twemoji": "^14.0.2",
     "use-query-params": "^2.1.2"
   },
   "devDependencies": {
-    "eslint": "8.30.0",
-    "eslint-config-next": "13.0.7",
+    "eslint": "8.32.0",
+    "eslint-config-next": "13.1.2",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1"
   }
