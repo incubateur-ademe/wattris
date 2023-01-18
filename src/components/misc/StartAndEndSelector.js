@@ -84,6 +84,11 @@ const ThumbLabel = (props) => {
     ' - ',
     (value) => `${getRealHoursFromDecimalHours(value)}`
   )
+  const formatedLabelValue = labelValue.includes(' - ')
+    ? `${getRealHoursFromDecimalHours(
+        props.values[0]
+      )} - ${getRealHoursFromDecimalHours(props.values[1])}`
+    : labelValue
   return (
     (props.smallDuration || props.isMobile) && (
       <NumberLabel
@@ -99,7 +104,7 @@ const ThumbLabel = (props) => {
         ) : (
           ''
         )}
-        {labelValue}
+        {formatedLabelValue}
       </NumberLabel>
     )
   )
