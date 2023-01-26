@@ -28,13 +28,19 @@ export default function OccurenceButtons(props) {
   return (
     <Wrapper>
       <Button
-        onClick={() =>
+        onClick={() => {
           props.addOccurence({
             slug: props.appliance.slug,
             start: props.appliance.defaultOccurence.start,
             duration: props.appliance.defaultOccurence.duration,
           })
-        }
+          window?._paq?.push([
+            'trackEvent',
+            'Interaction',
+            'Ajouter occurence',
+            props.appliance.slug,
+          ])
+        }}
       >
         <svg
           width='9'

@@ -72,7 +72,15 @@ export default function Appliance(props) {
         }}
       />
       <DescriptionButton
-        onClick={() => setDescription((prevDescription) => !prevDescription)}
+        onClick={() => {
+          setDescription((prevDescription) => !prevDescription)
+          window?._paq?.push([
+            'trackEvent',
+            'Interaction',
+            'Voir description',
+            props.appliance.slug,
+          ])
+        }}
       />
       <Title>{props.appliance.name}</Title>
       {description && <Description>{props.appliance.description}</Description>}

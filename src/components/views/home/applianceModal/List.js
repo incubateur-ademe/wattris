@@ -67,6 +67,12 @@ export default function List() {
                 duration: appliance.defaultOccurence.duration,
               })
               setAppliancesListOpen(false)
+              window?._paq?.push([
+                'trackEvent',
+                'Interaction',
+                'Ajouter appareil',
+                appliance.slug,
+              ])
             }}
           >
             {appliance.name}

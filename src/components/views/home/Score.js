@@ -212,6 +212,13 @@ export default function Score() {
               : 'Votre consommation met très fortement le réseau en tension et des coupures sont possibles. Essayer de décaler le fonctionnement de vos appareils en dehors des périodes de tension.'}
           </Description>
           <StyledMagicLink
+            onClick={() =>
+              window?._paq?.push([
+                'trackEvent',
+                'Interaction',
+                'Lien ecogestes',
+              ])
+            }
             to='https://agirpourlatransition.ademe.fr/particuliers/maison/economies-denergie'
             percent={percent}
           >

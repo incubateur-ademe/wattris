@@ -28,7 +28,15 @@ export default function Bloc(props) {
       }
       onMouseEnter={() => setHover({ occurence: props.bloc.index })}
       onMouseLeave={() => setHover(null)}
-      onClick={() => setActive({ appliance: props.bloc.appliance.slug })}
+      onClick={() => {
+        setActive({ appliance: props.bloc.appliance.slug })
+        window?._paq?.push([
+          'trackEvent',
+          'Interaction',
+          'Click graphique',
+          `${props.bloc.appliance.slug} (${props.bloc.index})`,
+        ])
+      }}
     ></Wrapper>
   )
 }
