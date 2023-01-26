@@ -165,16 +165,14 @@
   {
     "slug": "ballondeauchaude",
     "name": "Ballon d'eau chaude",
-    "initialPower": 2000,
-    "initialPowerLength": 10,
-    "power": 20,
+    "power": 2250,
     "defaultOccurence": {
       "start": 23.5,
-      "duration": 8,
+      "duration": 2,
       "allDay": false
     },
     "durationSelector": true,
-    "description": "Le ballon d'eau chaude est réglé pour fonctionner pendant les heures creuses (le plus souvent la nuit). L'appel de puissance est maximal au départ pour chauffer l'eau ayant refroidi dans la journée (2000 Watt puis 20 Watt)."
+    "description": "Le ballon d'eau chaude est réglé pour fonctionner pendant les heures creuses (le plus souvent la nuit). L'appel de puissance est maximal au départ pour chauffer l'eau ayant refroidi dans la journée (2250 Watt)."
   },
   {
     "slug": "ampouleled",
