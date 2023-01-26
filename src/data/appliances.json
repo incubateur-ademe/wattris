@@ -163,8 +163,8 @@
     "description": "L'appel de puissance est maximal tout au long de l'utilisation du fer à repasser (2000 Watt)."
   },
   {
-    "slug": "chauffeeau",
-    "name": "Chauffe-eau",
+    "slug": "ballondeauchaude",
+    "name": "Ballon d'eau chaude",
     "initialPower": 2000,
     "initialPowerLength": 10,
     "power": 20,
