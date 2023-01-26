@@ -141,14 +141,14 @@
   {
     "slug": "television",
     "name": "Télévision",
-    "power": 120,
+    "power": 80,
     "defaultOccurence": {
       "start": 20,
       "duration": 1,
       "allDay": false
     },
     "durationSelector": false,
-    "description": "L'appel de puissance est maximal tout au long de l'utilisation de la télévision (120 Watt). (A savoir que la puissance appelée varie entre 60 et 200 Watt selon la taille de la TV.)"
+    "description": "L'appel de puissance est maximal tout au long de l'utilisation de la télévision (80 Watt). (A savoir que la puissance appelée varie entre 60 et 200 Watt selon la taille et la technologie de la TV.)"
   },
   {
     "slug": "ferarepasser",
