@@ -295,5 +295,17 @@
     },
     "durationSelector": false,
     "description": "L'appel de puissance est maximal tout au long de l'utilisation de l'ordinateur (tour et écran) (76 Watt)."
+  },
+  {
+    "slug": "appareilsenveille",
+    "name": "Appareils en veille",
+    "power": 45,
+    "defaultOccurence": {
+      "start": 0,
+      "duration": 24,
+      "allDay": false
+    },
+    "durationSelector": false,
+    "description": "Correspond à tous vos appareils en veille, vos appareils branchés. En moyenne, c'est 30 appareils par logement à raison d'1,5W par appareil."
   }
 ]
