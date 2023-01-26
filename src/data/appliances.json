@@ -115,6 +115,18 @@
     "description": "L'appel de puissance est maximal tout au long de l'utilisation de la bouilloire (1300 Watt)."
   },
   {
+    "slug": "cafetiere",
+    "name": "Cafetière",
+    "power": 800,
+    "defaultOccurence": {
+      "start": 10,
+      "duration": 0.0833333333333339,
+      "allDay": false
+    },
+    "durationSelector": true,
+    "description": "L'appel de puissance est maximal tout au long de l'utilisation de la cafetière (800 Watt)."
+  },
+  {
     "slug": "sechecheveux",
     "name": "Sèche-cheveux",
     "power": 2000,
