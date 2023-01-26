@@ -178,15 +178,15 @@
   },
   {
     "slug": "ampouleled",
-    "name": "Ampoule (LED)",
-    "power": 10,
+    "name": "Ampoule LED",
+    "power": 7,
     "defaultOccurence": {
       "start": 19,
       "duration": 4,
       "allDay": false
     },
     "durationSelector": false,
-    "description": "L'appel de puissance est maximal dès lors de que la lumière est allumée (10 Watt)."
+    "description": "L'appel de puissance est maximal dès lors de que la lumière est allumée (7 Watt)."
   },
   {
     "slug": "refrigerateur",
