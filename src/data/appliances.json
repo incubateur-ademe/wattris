@@ -304,6 +304,6 @@
       "allDay": false
     },
     "durationSelector": false,
-    "description": "Correspond à tous vos appareils en veille, vos appareils branchés. En moyenne, c'est 30 appareils par logement à raison d'1,5W par appareil."
+    "description": "Cela correspond à tous vos appareils en veille, vos appareils branchés. En moyenne, la puissance moyenne des appareils en veille est de 45 Watt par logement."
   }
 ]
