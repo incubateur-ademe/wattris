@@ -115,6 +115,18 @@
     "description": "L'appel de puissance est maximal tout au long de l'utilisation de la bouilloire (1300 Watt)."
   },
   {
+    "slug": "cafetiere",
+    "name": "Cafetière",
+    "power": 800,
+    "defaultOccurence": {
+      "start": 10,
+      "duration": 0.0833333333333339,
+      "allDay": false
+    },
+    "durationSelector": true,
+    "description": "L'appel de puissance est maximal tout au long de l'utilisation de la cafetière (800 Watt)."
+  },
+  {
     "slug": "sechecheveux",
     "name": "Sèche-cheveux",
     "power": 2000,
@@ -129,14 +141,14 @@
   {
     "slug": "television",
     "name": "Télévision",
-    "power": 120,
+    "power": 80,
     "defaultOccurence": {
       "start": 20,
       "duration": 1,
       "allDay": false
     },
     "durationSelector": false,
-    "description": "L'appel de puissance est maximal tout au long de l'utilisation de la télévision (120 Watt). (A savoir que la puissance appelée varie entre 60 et 200 Watt selon la taille de la TV.)"
+    "description": "L'appel de puissance est maximal tout au long de l'utilisation de la télévision (80 Watt). (A savoir que la puissance appelée varie entre 60 et 200 Watt selon la taille et la technologie de la TV.)"
   },
   {
     "slug": "ferarepasser",
@@ -151,30 +163,40 @@
     "description": "L'appel de puissance est maximal tout au long de l'utilisation du fer à repasser (2000 Watt)."
   },
   {
-    "slug": "chauffeeau",
-    "name": "Chauffe-eau",
-    "initialPower": 2000,
-    "initialPowerLength": 10,
-    "power": 20,
+    "slug": "ballondeauchaude",
+    "name": "Ballon d'eau chaude",
+    "power": 2250,
     "defaultOccurence": {
       "start": 23.5,
-      "duration": 8,
+      "duration": 2,
       "allDay": false
     },
     "durationSelector": true,
-    "description": "Le ballon d'eau chaude est réglé pour fonctionner pendant les heures creuses (le plus souvent la nuit). L'appel de puissance est maximal au départ pour chauffer l'eau ayant refroidi dans la journée (2000 Watt puis 20 Watt)."
+    "description": "Le ballon d'eau chaude est réglé pour fonctionner pendant les heures creuses (le plus souvent la nuit). L'appel de puissance est maximal au départ pour chauffer l'eau ayant refroidi dans la journée (2250 Watt)."
   },
   {
     "slug": "ampouleled",
-    "name": "Ampoule (LED)",
-    "power": 10,
+    "name": "Ampoule LED",
+    "power": 7,
     "defaultOccurence": {
       "start": 19,
       "duration": 4,
       "allDay": false
     },
     "durationSelector": false,
-    "description": "L'appel de puissance est maximal dès lors de que la lumière est allumée (10 Watt)."
+    "description": "L'appel de puissance est maximal dès lors de que la lumière est allumée (7 Watt)."
+  },
+  {
+    "slug": "ampoulehalogene",
+    "name": "Ampoule halogène",
+    "power": 45,
+    "defaultOccurence": {
+      "start": 19,
+      "duration": 4,
+      "allDay": false
+    },
+    "durationSelector": false,
+    "description": "L'appel de puissance est maximal dès lors de que la lumière est allumée (45 Watt)."
   },
   {
     "slug": "refrigerateur",
@@ -271,5 +293,17 @@
     },
     "durationSelector": false,
     "description": "L'appel de puissance est maximal tout au long de l'utilisation de l'ordinateur (tour et écran) (76 Watt)."
+  },
+  {
+    "slug": "appareilsenveille",
+    "name": "Appareils en veille",
+    "power": 45,
+    "defaultOccurence": {
+      "start": 0,
+      "duration": 24,
+      "allDay": false
+    },
+    "durationSelector": false,
+    "description": "Cela correspond à tous vos appareils en veille, vos appareils branchés. En moyenne, la puissance moyenne des appareils en veille est de 45 Watt par logement."
   }
 ]
