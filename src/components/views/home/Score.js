@@ -208,7 +208,7 @@ export default function Score() {
             {percent < 0.4
               ? 'Consommation faible pendant les périodes de tension. Votre consommation ne met pas le réseau électrique en tension.'
               : percent < 0.8
-              ? 'Consommation importante pendant les périodes de tension. Votre consommation risque de mettre le réseau électrique en tension. Essayer de décaler le fonctionnement de certains appareils.'
+              ? 'Consommation importante pendant les périodes de tension. Votre consommation risque de mettre le réseau électrique en tension. Essayez de décaler le fonctionnement de certains appareils.'
               : 'Consommation très importante pendant les périodes de tension. Votre consommation met très fortement le réseau électrique en tension et des coupures sont possibles. Essayez de décaler le fonctionnement de vos appareils.'}
           </Description>
           <StyledMagicLink
