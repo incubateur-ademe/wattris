@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const Wrapper = styled.div`
   position: absolute;
   z-index: 10;
-  bottom: ${(props) => (props.position / 2500) * 100}%;
+  bottom: ${(props) => (props.position / props.visiblePowerOnGraph) * 100}%;
   left: 0;
   width: 100%;
   height: 0.0625rem;
@@ -41,6 +41,7 @@ export default function Ticks(props) {
         position={0}
         onMouseEnter={() => props.setHover(true)}
         onMouseLeave={() => props.setHover(false)}
+        visiblePowerOnGraph={props.visiblePowerOnGraph}
       >
         <span>0</span>
         <svg
@@ -52,23 +53,19 @@ export default function Ticks(props) {
           <path d='M5.16973 7L0.219727 2.05L1.63973 0.639999L7.99973 7L1.63973 13.36L0.219727 11.95L5.16973 7Z' />
         </svg>
       </Wrapper>
-      <Wrapper
-        hover={props.hover}
-        position={1000}
-        onMouseEnter={() => props.setHover(true)}
-        onMouseLeave={() => props.setHover(false)}
-      >
-        <span>1000&nbsp;W</span>
-      </Wrapper>
-
-      <Wrapper
-        hover={props.hover}
-        position={2000}
-        onMouseEnter={() => props.setHover(true)}
-        onMouseLeave={() => props.setHover(false)}
-      >
-        <span>2000&nbsp;W</span>
-      </Wrapper>
+      {Array.from(Array(Math.floor(props.visiblePowerOnGraph / 1000))).map(
+        (kW, index) => (
+          <Wrapper
+            hover={props.hover}
+            position={(index + 1) * 1000}
+            onMouseEnter={() => props.setHover(true)}
+            onMouseLeave={() => props.setHover(false)}
+            visiblePowerOnGraph={props.visiblePowerOnGraph}
+          >
+            <span>{(index + 1) * 1000}&nbsp;W</span>
+          </Wrapper>
+        )
+      )}
     </>
   )
 }

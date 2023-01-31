@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext, useMemo } from 'react'
 import styled from 'styled-components'
 
 import { useAllBlocsByStep } from 'hooks/useAppliances'
+import DataContext from 'components/providers/DataProvider'
 import Axis from './timeline/Axis'
 import Step from './timeline/Step'
 
@@ -21,19 +22,26 @@ const Steps = styled.div`
   );
 `
 export default function Timeline() {
-  const { steps, stepDurationInMinute, powerByBlocInKW } = useAllBlocsByStep()
+  const { occurences } = useContext(DataContext)
+  const { steps, stepDurationInMinute } = useAllBlocsByStep()
+
+  const visiblePowerOnGraph = useMemo(() => {
+    const numRadiateur = occurences.filter(
+      (occurence) => occurence.slug === 'radiateur'
+    ).length
+    return 2500 + numRadiateur * 1000
+  }, [occurences])
 
   return (
     <Wrapper>
-      <Axis />
+      <Axis visiblePowerOnGraph={visiblePowerOnGraph} />
       <Steps>
         {steps.map((step, index) => (
           <Step
             key={index}
             step={step}
             hour={(index / 60) * stepDurationInMinute}
-            width={(100 / 24) * (60 / stepDurationInMinute)}
-            powerByBlocInKW={powerByBlocInKW}
+            visiblePowerOnGraph={visiblePowerOnGraph}
           />
         ))}
       </Steps>

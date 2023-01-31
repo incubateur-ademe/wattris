@@ -87,7 +87,6 @@ export default function Appliances() {
         {}
       )
 
-  console.log(Object.entries(occurencesByAppliance))
   return (
     <Wrapper>
       {Object.entries(occurencesByAppliance).map((key) =>

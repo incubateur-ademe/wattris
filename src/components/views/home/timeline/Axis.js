@@ -45,11 +45,15 @@ const Yaxis = styled.div`
   opacity: ${(props) => (props.hover ? 1 : 0)};
   transition: opacity 300ms ease-out;
 `
-export default function Axis() {
+export default function Axis(props) {
   const [hover, setHover] = useState(false)
   return (
     <Wrapper>
-      <Ticks hover={hover} setHover={setHover} />
+      <Ticks
+        hover={hover}
+        setHover={setHover}
+        visiblePowerOnGraph={props.visiblePowerOnGraph}
+      />
       <Yaxis hover={hover} />
       <Ylegend hover={hover}>Puissance appelée</Ylegend>
       <Xlegend hover={hover}>Heure de la journée</Xlegend>

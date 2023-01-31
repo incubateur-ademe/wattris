@@ -5,17 +5,11 @@ import Bloc from './step/Bloc'
 
 const Wrapper = styled.div`
   position: relative;
+  flex: 1;
   display: flex;
   flex-direction: column-reverse;
-  width: calc(${(props) => props.width}%);
   height: 26.25rem;
   margin-top: -1.25rem;
-`
-
-const Indicator = styled.div`
-  position: absolute;
-  bottom: calc(100% - 0.25rem);
-  font-size: 0.75rem;
 `
 export default function Step(props) {
   const peak = useMemo(
@@ -25,17 +19,18 @@ export default function Step(props) {
     [props.hour]
   )
 
-  const totalPower = useMemo(
-    () => props.step.reduce((acc, cur) => acc + cur.power, 0),
-    [props.step]
-  )
-
   return (
-    <Wrapper width={props.width} peak={peak}>
+    <Wrapper peak={peak}>
       {props.step.map((bloc, index) => {
-        return <Bloc key={index} bloc={bloc} peak={peak} />
+        return (
+          <Bloc
+            key={index}
+            bloc={bloc}
+            peak={peak}
+            visiblePowerOnGraph={props.visiblePowerOnGraph}
+          />
+        )
       })}
-      {totalPower > 2500 ? <Indicator>More</Indicator> : null}
     </Wrapper>
   )
 }

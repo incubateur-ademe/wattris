@@ -3,7 +3,6 @@ import { useContext, useMemo } from 'react'
 import DataContext from 'components/providers/DataProvider'
 
 const stepDurationInMinute = 5
-const powerByBlocInKW = 10
 const peakSteps = () => {
   const peaks = [8, 9, 10, 11, 12, 18, 19]
   const numStepsInAnHour = 60 / stepDurationInMinute
@@ -72,13 +71,12 @@ export function useAllBlocsByStep() {
           appliances,
           occurences,
           step: index,
-          powerByBlocInKW,
         })
       ),
     [appliances, occurences]
   )
 
-  return { steps, stepDurationInMinute, powerByBlocInKW }
+  return { steps, stepDurationInMinute }
 }
 
 export function useAllPowerOfPeaks() {
@@ -88,18 +86,15 @@ export function useAllPowerOfPeaks() {
       peakSteps()
         .map((hour) =>
           occurences
-            .map(
-              (occurence) =>
-                Math.ceil(
-                  getPowerForStep({
-                    step: hour,
-                    appliance: appliances.find(
-                      (appliance) => appliance.slug === occurence.slug
-                    ),
-                    start: occurence.start,
-                    duration: occurence.duration,
-                  }) / powerByBlocInKW
-                ) * powerByBlocInKW
+            .map((occurence) =>
+              getPowerForStep({
+                step: hour,
+                appliance: appliances.find(
+                  (appliance) => appliance.slug === occurence.slug
+                ),
+                start: occurence.start,
+                duration: occurence.duration,
+              })
             )
             .map((occurence) => occurence / (60 / stepDurationInMinute))
             .reduce((acc, cur) => acc + cur, 0)
@@ -110,12 +105,7 @@ export function useAllPowerOfPeaks() {
   return power
 }
 
-export function getAllBlocsForStep({
-  appliances,
-  occurences,
-  step,
-  powerByBlocInKW,
-}) {
+export function getAllBlocsForStep({ appliances, occurences, step }) {
   return occurences
     .map((occurence, index) => {
       const appliance = appliances.find(
