@@ -23,8 +23,8 @@ export default function Index() {
       <Section>
         <Section.Content>
           <Title>
-            Wattris, le jeu pour éviter les coupures d'électricité cet
-            hiver&#8239;!
+            Wattris, le simulateur pour vous aider à consommer de l'électricité
+            au bon moment&#8239;!
           </Title>
           <Text>
             Simulez la consommation électrique de votre foyer, découvrez quels

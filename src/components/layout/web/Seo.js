@@ -8,7 +8,7 @@ export default function Seo(props) {
   const { title, description, image, url } = {
     title:
       props.title ||
-      `Wattris, le jeu pour éviter les coupures d'électricité cet hiver !`,
+      `Wattris, le simulateur pour vous aider à consommer de l'électricité au bon moment`,
     description:
       props.description ||
       `Simulez la consommation électrique de votre foyer, découvrez quels appareils consomment beaucoup et apprenez les bons gestes pour réduire la charge du réseau électrique`,
