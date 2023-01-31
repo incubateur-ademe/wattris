@@ -30,15 +30,15 @@
     "slug": "four",
     "name": "Four électrique",
     "initialPower": 2000,
-    "initialPowerLength": 12,
-    "power": 140,
+    "initialPowerLength": 15,
+    "power": 450,
     "defaultOccurence": {
       "start": 19,
       "duration": 1,
       "allDay": false
     },
     "durationSelector": true,
-    "description": "L'appel de puissance est maximal au début du cycle, puis les appels de puissance sont intermittents pour maintenir le four à la bonne température. Nous avons choisi de ne pas représenter ces appels de puissance brefs étant donné qu'ils ne sont pas prévisibles (2000 Watt puis 140 Watt)."
+    "description": "L'appel de puissance est maximal au début du cycle, puis les appels de puissance sont intermittents pour maintenir le four à la bonne température. Nous avons choisi de ne pas représenter ces appels de puissance brefs étant donné qu'ils ne sont pas prévisibles (2000 Watt puis 450 Watt)."
   },
   {
     "slug": "aspirateur",
