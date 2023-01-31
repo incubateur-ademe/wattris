@@ -198,18 +198,14 @@ export default function Score() {
               : percent < 0.8
               ? 'importante'
               : 'très importante'}
-            <span>
-              {' '}
-              pendant les périodes de tension (
-              <strong>{Math.round(power / 100) / 10} kWh</strong>)
-            </span>
+            <span> pendant les périodes de tension</span>
           </Label>
           <Description percent={percent}>
             {percent < 0.4
-              ? 'Consommation faible pendant les périodes de tension. Votre consommation ne met pas le réseau électrique en tension.'
+              ? 'Votre consommation ne met pas le réseau électrique en tension.'
               : percent < 0.8
-              ? 'Consommation importante pendant les périodes de tension. Votre consommation risque de mettre le réseau électrique en tension. Essayez de décaler le fonctionnement de certains appareils.'
-              : 'Consommation très importante pendant les périodes de tension. Votre consommation met très fortement le réseau électrique en tension et des coupures sont possibles. Essayez de décaler le fonctionnement de vos appareils.'}
+              ? 'Votre consommation risque de mettre le réseau électrique en tension. Essayez de décaler le fonctionnement de certains appareils.'
+              : 'Votre consommation met très fortement le réseau électrique en tension et des coupures sont possibles. Essayez de décaler le fonctionnement de vos appareils.'}
           </Description>
           <StyledMagicLink
             onClick={() =>
