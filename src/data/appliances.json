@@ -56,7 +56,9 @@
     "slug": "lavevaisselle",
     "name": "Lave-vaisselle",
     "initialPower": 2000,
-    "initialPowerLength": 25,
+    "initialPowerLength": 15,
+    "endPower": 2000,
+    "endPowerLength": 15,
     "power": 140,
     "defaultOccurence": {
       "start": 10,
