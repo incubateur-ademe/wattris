@@ -11,8 +11,7 @@ const Wrapper = styled.div`
   background-color: ${(props) =>
     props.theme.colors[props.peak ? 'error' : 'main']};
   opacity: ${(props) => (props.discret ? 0.3 : 1)};
-  transition: opacity ${(props) => props.discret && '200ms'} ease-out,
-    min-height 400ms ease-out;
+  transition: opacity ${(props) => props.discret && '200ms'} ease-out;
   cursor: pointer;
 `
 export default function Bloc(props) {
