@@ -153,14 +153,14 @@
   {
     "slug": "ferarepasser",
     "name": "Fer à repasser",
-    "power": 2000,
+    "power": 1000,
     "defaultOccurence": {
       "start": 14,
       "duration": 0.5,
       "allDay": false
     },
     "durationSelector": true,
-    "description": "L'appel de puissance est maximal tout au long de l'utilisation du fer à repasser (2000 Watt)."
+    "description": "Un fer à repasser appelle une puissance maximale (2000 Watt) par intermittence. Ces appels de puissance sont brefs et non prévisibles, nous avons fait l'hypothèse d'un appel de puissance moyen de 1000 Watt sur tout la durée d'utilisation."
   },
   {
     "slug": "ballondeauchaude",
