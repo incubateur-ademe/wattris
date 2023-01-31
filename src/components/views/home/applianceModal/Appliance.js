@@ -24,7 +24,7 @@ const Description = styled.div`
   margin-bottom: 0.75rem;
   font-size: 0.875rem;
   font-style: italic;
-  text-align: center;
+  text-align: left;
 `
 const Buttons = styled.div`
   display: flex;
@@ -83,7 +83,13 @@ export default function Appliance(props) {
         }}
       />
       <Title>{props.appliance.name}</Title>
-      {description && <Description>{props.appliance.description}</Description>}
+      {description && (
+        <Description
+          dangerouslySetInnerHTML={{
+            __html: props.appliance.description,
+          }}
+        />
+      )}
       <Occurences>
         {props.occurencesOfAppliance.map((occurence, index) => (
           <Occurence
