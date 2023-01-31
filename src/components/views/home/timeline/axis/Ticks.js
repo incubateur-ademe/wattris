@@ -56,6 +56,7 @@ export default function Ticks(props) {
       {Array.from(Array(Math.floor(props.visiblePowerOnGraph / 1000))).map(
         (kW, index) => (
           <Wrapper
+            key={index}
             hover={props.hover}
             position={(index + 1) * 1000}
             onMouseEnter={() => props.setHover(true)}
