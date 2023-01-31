@@ -18,7 +18,7 @@
     "name": "Radiateur électrique",
     "initialPower": 1800,
     "initialPowerLength": 90,
-    "power": 100,
+    "power": 1000,
     "defaultOccurence": {
       "start": 8,
       "duration": 14
