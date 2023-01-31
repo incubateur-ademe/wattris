@@ -91,16 +91,16 @@
     "description": "L'appel de puissance est maximal tout au long de l'utilisation du micro-onde (1000 Watt)."
   },
   {
-    "power": 1500,
     "slug": "plaque",
     "name": "Plaque électrique",
+    "power": 750,
     "defaultOccurence": {
       "start": 19,
       "duration": 0.5,
       "allDay": false
     },
     "durationSelector": true,
-    "description": "L'appel de puissance est maximal tout au long de l'utilisation des plaques électriques (1500 Watt)."
+    "description": "Une plaque électrique appelle une puissance maximale (1500 Watt) par intermittence. Ces appels de puissance sont brefs et non prévisibles, nous avons fait l'hypothèse d'un appel de puissance moyen de 1000 Watt sur tout la durée d'utilisation."
   },
   {
     "slug": "bouilloire",
