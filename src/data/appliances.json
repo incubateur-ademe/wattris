@@ -91,9 +91,9 @@
     "description": "L'appel de puissance est maximal tout au long de l'utilisation du micro-onde (1000 Watt)."
   },
   {
-    "slug": "plaques",
-    "name": "Plaques électriques",
     "power": 1500,
+    "slug": "plaque",
+    "name": "Plaque électrique",
     "defaultOccurence": {
       "start": 19,
       "duration": 0.5,
