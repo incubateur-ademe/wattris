@@ -56,7 +56,9 @@
     "slug": "lavevaisselle",
     "name": "Lave-vaisselle",
     "initialPower": 2000,
-    "initialPowerLength": 25,
+    "initialPowerLength": 15,
+    "endPower": 2000,
+    "endPowerLength": 15,
     "power": 140,
     "defaultOccurence": {
       "start": 10,
@@ -64,7 +66,7 @@
       "allDay": false
     },
     "durationSelector": true,
-    "description": "L'appel de puissance est maximal au début du cycle du lave-vaisselle pour chauffer l'eau, puis reste inférieur à 150 Watt environ sur le reste du cycle (2000 Watt)."
+    "description": "L'appel de puissance est maximal (2000 Watt) au début du cycle du lave-vaisselle pour chauffer l'eau, puis reste inférieur à 150 Watt environ sur le reste du cycle avant de repasser à 2000 Watt sur la fin pour le séchage."
   },
   {
     "slug": "sechelinge",
