@@ -100,7 +100,7 @@
       "allDay": false
     },
     "durationSelector": true,
-    "description": "Une plaque électrique appelle une puissance maximale (1500 Watt) par intermittence. Ces appels de puissance sont brefs et non prévisibles, nous avons fait l'hypothèse d'un appel de puissance moyen de 1000 Watt sur tout la durée d'utilisation."
+    "description": "Une plaque électrique appelle une puissance maximale (1500 Watt) par intermittence. Ces appels de puissance sont brefs et non prévisibles, nous avons fait l'hypothèse d'un appel de puissance moyen de 750 Watt sur tout la durée d'utilisation."
   },
   {
     "slug": "bouilloire",
