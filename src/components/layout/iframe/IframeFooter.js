@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import MagicLink from 'components/base/MagicLink'
 import Marianne from 'components/base/Marianne'
 import Ademe from 'components/base/Ademe'
-import Datagir from 'components/base/Datagir'
+import Incubateur from 'components/base/Incubateur'
 
 const Wrapper = styled.footer`
   display: flex;
@@ -39,13 +39,13 @@ export default function IframeFooter() {
         Voir la version détaillée
       </StyledMagicLink>
       <Logos
-        to='https://datagir.ademe.fr/'
-        aria-label='datagir.ademe.fr'
+        to='https://beta.gouv.fr/startups/?incubateur=ademe'
+        aria-label='beta.gouv.incubateur-ademe'
         noIcon
       >
         <Marianne />
         <Ademe />
-        <Datagir />
+        <Incubateur />
       </Logos>
     </Wrapper>
   )

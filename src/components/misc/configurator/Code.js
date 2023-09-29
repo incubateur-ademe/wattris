@@ -60,7 +60,7 @@ export default function Code() {
 
   useEffect(() => {
     setScript(
-      `<script id="datagir-wattris" src="${window?.location.origin}/iframe.js"></script>`
+      `<script id="wattris-ademe" src="${window?.location.origin}/iframe.js"></script>`
     )
   }, [])
 
