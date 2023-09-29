@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import MagicLink from 'components/base/MagicLink'
 import Marianne from 'components/base/Marianne'
 import Ademe from 'components/base/Ademe'
-import Datagir from 'components/base/Datagir'
 
 const Wrapper = styled.footer`
   display: flex;
@@ -38,14 +37,9 @@ export default function IframeFooter() {
       <StyledMagicLink to='https://wattris.ademe.fr/'>
         Voir la version détaillée
       </StyledMagicLink>
-      <Logos
-        to='https://datagir.ademe.fr/'
-        aria-label='datagir.ademe.fr'
-        noIcon
-      >
+      <Logos>
         <Marianne />
         <Ademe />
-        <Datagir />
       </Logos>
     </Wrapper>
   )

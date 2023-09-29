@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import MagicLink from 'components/base/MagicLink'
 import Marianne from 'components/base/Marianne'
 import Ademe from 'components/base/Ademe'
-import Datagir from 'components/base/Datagir'
 
 const LogosWrapper = styled.div`
   display: flex;
@@ -35,14 +34,9 @@ export default function Footer(props) {
   return (
     <>
       <LogosWrapper>
-        <Logos
-          to='https://datagir.ademe.fr/'
-          aria-label='datagir.ademe.fr'
-          noIcon
-        >
+        <Logos>
           <Marianne />
           <Ademe />
-          <Datagir />
         </Logos>
       </LogosWrapper>
       <Accessibility>Accessibilité : non conforme</Accessibility>
