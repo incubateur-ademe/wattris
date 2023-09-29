@@ -23,17 +23,20 @@ export default function IntroductionModal() {
     <Modal open={open} setOpen={setOpen}>
       <StyledLogo permanent />
       <Text>
-        Il fait froid dehors et nos besoins d’électricité sont trop importants
-        surtout <strong>entre 8h et 13h</strong> puis{' '}
-        <strong>entre 18h et 20h</strong>.
+        Consommer de l’électricité au bon moment, c’est utiliser ses appareils
+        quand les centrales produisent de l’électricité en émettant le moins de
+        CO2.
       </Text>
       <Text>
-        Pour éviter les coupures, il faut changer ses habitudes et décaler le
-        fonctionnement de quelques appareils.
+        En évitant de mettre en fonctionnement certains appareils{' '}
+        <strong>entre 7h et 11h</strong> puis <strong>entre 18h et 20h</strong>,
+        on évite de consommer de l'énergie tous en même temps. Produire et
+        consommer de l’électricité zéro CO2 devient alors plus facile !
       </Text>
       <Text>
-        Grâce à ce simulateur, évaluez les gestes qui vous correspondent le
-        mieux et qui auront le plus d’impacts.
+        Grâce à ce simulateur, découvrez les appareils qui consomment le plus
+        chez vous et ceux dont vous pouvez décaler l'utilisation pour participer
+        à limiter le changement climatique.
       </Text>
       <Button.Wrapper>
         <Button onClick={() => setOpen(false)}>C'est parti !</Button>
