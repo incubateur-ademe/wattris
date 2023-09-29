@@ -12,7 +12,7 @@ const Title = styled.p`
 const AppliancesList = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: 1.5rem;
 
   ${(props) => props.theme.mq.small} {
     gap: 0.75rem;
