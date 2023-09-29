@@ -44,19 +44,19 @@ export default function Hours(props) {
       </Hour>
       <Hour
         hover={props.hover}
-        position={8}
+        position={7}
         onMouseEnter={() => props.setHover(true)}
         onMouseLeave={() => props.setHover(false)}
       >
-        8h
+        7h
       </Hour>
       <Hour
         hover={props.hover}
-        position={13}
+        position={11}
         onMouseEnter={() => props.setHover(true)}
         onMouseLeave={() => props.setHover(false)}
       >
-        13h
+        11h
       </Hour>
       <Hour
         hover={props.hover}
