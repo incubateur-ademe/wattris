@@ -15,12 +15,16 @@ const StyledLogo = styled(Logo)`
 const Text = styled.p`
   text-align: center;
 `
+
 export default function IntroductionModal() {
-  const { introduction: open, setIntroduction: setOpen } =
-    useContext(ModalContext)
+  const {
+    introduction: introductionOpen,
+    setIntroduction: setIntroductionOpen,
+    setProfils: setProfilsOpen,
+  } = useContext(ModalContext)
 
   return (
-    <Modal open={open} setOpen={setOpen}>
+    <Modal open={introductionOpen} setOpen={setIntroductionOpen}>
       <StyledLogo permanent />
       <Text>
         Consommer de l’électricité au bon moment, c’est utiliser ses appareils
@@ -38,8 +42,19 @@ export default function IntroductionModal() {
         chez vous et ceux dont vous pouvez décaler l'utilisation pour participer
         à limiter le changement climatique.
       </Text>
-      <Button.Wrapper>
-        <Button onClick={() => setOpen(false)}>C'est parti !</Button>
+      <Button.Wrapper vertical>
+        <Button onClick={() => setIntroductionOpen(false)}>
+          Je sélectionne mes appareils
+        </Button>
+        <Button
+          hollow
+          onClick={() => {
+            setIntroductionOpen(false)
+            setProfilsOpen(true)
+          }}
+        >
+          Je pars d'un profil-type
+        </Button>
       </Button.Wrapper>
     </Modal>
   )

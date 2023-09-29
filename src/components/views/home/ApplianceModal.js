@@ -23,7 +23,7 @@ const Wrapper = styled.div`
   transform: translateX(-50%);
   display: flex;
   flex-direction: column;
-  width: 28.5rem;
+  width: 36rem;
   padding: 1rem 1.25rem;
   color: ${(props) => props.theme.colors.background};
   background-color: ${(props) =>
