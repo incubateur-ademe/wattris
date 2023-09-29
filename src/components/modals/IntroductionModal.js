@@ -15,12 +15,16 @@ const StyledLogo = styled(Logo)`
 const Text = styled.p`
   text-align: center;
 `
+
 export default function IntroductionModal() {
-  const { introduction: open, setIntroduction: setOpen } =
-    useContext(ModalContext)
+  const {
+    introduction: introductionOpen,
+    setIntroduction: setIntroductionOpen,
+    setProfils: setProfilsOpen,
+  } = useContext(ModalContext)
 
   return (
-    <Modal open={open} setOpen={setOpen}>
+    <Modal open={introductionOpen} setOpen={setIntroductionOpen}>
       <StyledLogo permanent />
       <Text>
         Il fait froid dehors et nos besoins d’électricité sont trop importants
@@ -35,8 +39,19 @@ export default function IntroductionModal() {
         Grâce à ce simulateur, évaluez les gestes qui vous correspondent le
         mieux et qui auront le plus d’impacts.
       </Text>
-      <Button.Wrapper>
-        <Button onClick={() => setOpen(false)}>C'est parti !</Button>
+      <Button.Wrapper vertical>
+        <Button onClick={() => setIntroductionOpen(false)}>
+          Je sélectionne mes appareils
+        </Button>
+        <Button
+          hollow
+          onClick={() => {
+            setIntroductionOpen(false)
+            setProfilsOpen(true)
+          }}
+        >
+          Je pars d'un profil-type
+        </Button>
       </Button.Wrapper>
     </Modal>
   )
