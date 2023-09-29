@@ -1,6 +1,6 @@
 import { iframeResize } from 'iframe-resizer'
 
-const script = document.getElementById('datagir-wattris')
+const script = document.getElementById('wattris-ademe')
 
 const source = window.location.href.toString()
 
