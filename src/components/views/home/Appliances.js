@@ -4,6 +4,8 @@ import styled, { keyframes } from 'styled-components'
 import DataContext from 'components/providers/DataProvider'
 import ModalContext from 'components/providers/ModalProvider'
 import Occurence from 'components/views/home/appliances/Occurence'
+import Link from 'next/link'
+import Button from 'components/base/Button'
 
 const blink = keyframes`
   from,
@@ -33,9 +35,11 @@ const Wrapper = styled.div`
 `
 const AddOccurenceWrapper = styled.div`
   opacity: ${(props) => (props.visible ? 1 : 0)};
+  display: flex;
+  flex-direction: column;
 `
 
-const AddOccurenceButton = styled.button`
+const AddOccurenceButton = styled(Button)`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -52,8 +56,7 @@ const AddOccurenceButton = styled.button`
   transition: all 300ms ease-out;
   cursor: pointer;
   transition: opacity 500ms 300ms;
-  animation: ${(props) => (props.blink && props.visible ? blink : '')} 2000ms
-    infinite 3000ms;
+  animation: ${(props) => (props.blink ? blink : '')} 2000ms infinite 3000ms;
 
   svg {
     width: 1.5rem;
@@ -80,7 +83,6 @@ const ProfileButton = styled.button`
   align-items: center;
   gap: 0.25rem;
   padding: 0.25rem 0;
-  margin-left: 0.5rem;
   font-size: 0.75rem;
   color: ${(props) => props.theme.colors.main};
   background: transparent;
@@ -132,6 +134,7 @@ export default function Appliances() {
         }
       >
         <AddOccurenceButton
+          to='#home'
           onClick={() => setAppliancesListOpen(true)}
           blink={!occurences.length && !appliancesListOpen}
         >

@@ -26,7 +26,7 @@ const Wrapper = styled.div`
 `
 export default function Home(props) {
   return (
-    <Section>
+    <Section id='home'>
       <StyledSectionContent hoverIframe={props.hoverIframe}>
         <Wrapper>
           <Score />
