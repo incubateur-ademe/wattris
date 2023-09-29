@@ -50,7 +50,7 @@ const AddOccurenceButton = styled.button`
   border-radius: 0.75rem;
   box-shadow: none;
   transition: all 300ms ease-out;
-  cursor: pointer
+  cursor: pointer;
   transition: opacity 500ms 300ms;
   animation: ${(props) => (props.blink && props.visible ? blink : '')} 2000ms
     infinite 3000ms;
