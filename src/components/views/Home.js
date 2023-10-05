@@ -9,7 +9,7 @@ import ApplianceModal from './home/ApplianceModal'
 import ExportSimulation from './home/ExportSimulation'
 
 const StyledSectionContent = styled(Section.Content)`
-  padding-top: 0.5rem;
+  padding-top: 2rem;
   border: 0.125rem solid
     ${(props) => props.theme.colors[props.hoverIframe ? 'main' : 'background']};
   border-radius: 1rem;

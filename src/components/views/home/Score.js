@@ -21,7 +21,7 @@ const warning = keyframes`
 `
 const Wrapper = styled.div`
   position: absolute;
-  top: 0rem;
+  top: -1.5rem;
   left: 0.5rem;
   display: flex;
   align-items: center;
@@ -31,9 +31,7 @@ const Wrapper = styled.div`
 
   ${(props) => props.theme.mq.medium} {
     position: relative;
-    margin-bottom: 1rem;
-  }
-  ${(props) => props.theme.mq.medium} {
+    top: -0.5rem;
     margin-bottom: 2rem;
   }
 `
@@ -100,9 +98,9 @@ const Label = styled.p`
   }
 `
 const Description = styled.p`
-  max-width: ${(props) => (props.percent < 0.4 ? 20 : 26)}rem;
+  max-width: ${(props) => (props.percent < 0.4 ? 20 : 24)}rem;
   margin-bottom: 0;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
 
   ${(props) => props.theme.mq.medium} {
     max-width: ${(props) => (props.percent < 0.4 ? 14 : 23)}rem;
