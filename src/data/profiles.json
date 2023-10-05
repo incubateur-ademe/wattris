@@ -1,0 +1,226 @@
+{
+  "personne_seule": {
+    "titre": "Personne seule, absente dans la journée",
+    "emoji": "🙋",
+    "data": [
+      {
+        "slug": "aspirateur",
+        "start": 18,
+        "duration": 0.25
+      },
+      {
+        "slug": "microonde",
+        "start": 19,
+        "duration": 0.0833333333333339,
+        "index": 1
+      },
+      {
+        "slug": "radiateur",
+        "start": 8,
+        "duration": 14
+      },
+      {
+        "slug": "ballondeauchaude",
+        "start": 23.5,
+        "duration": 2
+      },
+      {
+        "slug": "refrigerateurcombine",
+        "start": 0,
+        "duration": 24
+      },
+      {
+        "slug": "chargeurtelephoneportable",
+        "start": 21,
+        "duration": 3
+      },
+      {
+        "slug": "boxinternet",
+        "start": 0,
+        "duration": 24
+      },
+      {
+        "slug": "chargeurordinateur",
+        "start": 18.5,
+        "duration": 5.5,
+        "index": 7
+      },
+      {
+        "slug": "appareilsenveille",
+        "start": 0,
+        "duration": 24
+      }
+    ]
+  },
+  "couple_enfants": {
+    "titre": "Deux personnes et enfants",
+    "emoji": "👨‍👩‍👧",
+    "data": [
+      {
+        "slug": "aspirateur",
+        "start": 18,
+        "duration": 0.25
+      },
+      {
+        "slug": "microonde",
+        "start": 19,
+        "duration": 0.0833333333333339,
+        "index": 1
+      },
+      {
+        "slug": "radiateur",
+        "start": 8,
+        "duration": 14
+      },
+      {
+        "slug": "ballondeauchaude",
+        "start": 23.5,
+        "duration": 2
+      },
+      {
+        "slug": "chargeurtelephoneportable",
+        "start": 17,
+        "duration": 3,
+        "index": 4
+      },
+      {
+        "slug": "boxinternet",
+        "start": 0,
+        "duration": 24
+      },
+      {
+        "slug": "chargeurordinateur",
+        "start": 18.5,
+        "duration": 4.5,
+        "index": 7
+      },
+      {
+        "slug": "appareilsenveille",
+        "start": 0,
+        "duration": 24
+      },
+      {
+        "slug": "cafetiere",
+        "start": 7.5,
+        "duration": 0.0833333333333339,
+        "index": 9
+      },
+      {
+        "slug": "refrigerateur",
+        "start": 0,
+        "duration": 24
+      },
+      {
+        "slug": "congelateur",
+        "start": 0,
+        "duration": 24
+      },
+      {
+        "slug": "lavelinge",
+        "start": 19.5,
+        "duration": 1.5,
+        "index": 11
+      },
+      {
+        "slug": "lavevaisselle",
+        "start": 20,
+        "duration": 2,
+        "index": 12
+      }
+    ]
+  },
+  "couple_télétravail": {
+    "titre": "Deux personnes sans enfant, télétravail",
+    "emoji": "👬",
+    "data": [
+      {
+        "slug": "aspirateur",
+        "start": 18,
+        "duration": 0.25
+      },
+      {
+        "slug": "microonde",
+        "start": 19,
+        "duration": 0.0833333333333339,
+        "index": 1
+      },
+      {
+        "slug": "radiateur",
+        "start": 8,
+        "duration": 14
+      },
+      {
+        "slug": "ballondeauchaude",
+        "start": 23.5,
+        "duration": 2
+      },
+      {
+        "slug": "chargeurtelephoneportable",
+        "start": 17,
+        "duration": 3,
+        "index": 4
+      },
+      {
+        "slug": "boxinternet",
+        "start": 0,
+        "duration": 24
+      },
+      {
+        "slug": "chargeurordinateur",
+        "start": 18.5,
+        "duration": 5.5,
+        "index": 6
+      },
+      {
+        "slug": "appareilsenveille",
+        "start": 0,
+        "duration": 24
+      },
+      {
+        "slug": "cafetiere",
+        "start": 7.5,
+        "duration": 0.0833333333333339,
+        "index": 9
+      },
+      {
+        "slug": "refrigerateur",
+        "start": 0,
+        "duration": 24
+      },
+      {
+        "slug": "congelateur",
+        "start": 0,
+        "duration": 24
+      },
+      {
+        "slug": "lavelinge",
+        "start": 19.5,
+        "duration": 1.5,
+        "index": 11
+      },
+      {
+        "slug": "lavevaisselle",
+        "start": 20,
+        "duration": 2,
+        "index": 12
+      },
+      {
+        "slug": "television",
+        "start": 18.5,
+        "duration": 4,
+        "index": 13
+      },
+      {
+        "slug": "ferarepasser",
+        "start": 8,
+        "duration": 0.5,
+        "index": 14
+      },
+      {
+        "slug": "sechecheveux",
+        "start": 8,
+        "duration": 0.0833333333333339
+      }
+    ]
+  }
+}

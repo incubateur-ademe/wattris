@@ -20,7 +20,7 @@ const Indicator = styled.div`
 export default function Step(props) {
   const peak = useMemo(
     () =>
-      (props.hour >= 8 && props.hour < 13) ||
+      (props.hour >= 7 && props.hour < 11) ||
       (props.hour >= 18 && props.hour < 20),
     [props.hour]
   )

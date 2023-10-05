@@ -20,7 +20,7 @@ const Peak = styled.div`
 const PeakIndicator = styled.div`
   position: absolute;
   bottom: calc(100% + 1.5rem);
-  left: ${(props) => (12.9 / 24) * 100}%;
+  left: ${(props) => (10.75 / 24) * 100}%;
   right: ${(props) => (5.75 / 24) * 100}%;
   font-size: 0.75rem;
   font-weight: 300;
@@ -40,10 +40,10 @@ const PeakIndicator = styled.div`
 const Arrow = styled.div`
   position: absolute;
   bottom: calc(100% + 1.5rem);
-  left: ${(props) => ((props.right ? 17.25 : 12.5) / 24) * 100}%;
-  right: ${(props) => ((props.right ? 5.25 : 10.1) / 24) * 100}%;
+  left: ${(props) => ((props.right ? 16.5 : 11) / 24) * 100}%;
+  right: ${(props) => ((props.right ? 6 : 11.5) / 24) * 100}%;
   height: 0.05rem;
-  transform: rotate(${(props) => (props.right ? 37.5 : -35)}deg);
+  transform: rotate(${(props) => (props.right ? 32.5 : -30)}deg);
   transform-origin: ${(props) => (props.right ? 'left' : 'right')};
   background: ${(props) => props.theme.colors.textLighter};
 
@@ -66,7 +66,7 @@ const Arrow = styled.div`
 export default function Peaks(props) {
   return (
     <>
-      <Peak position={8} duration={5} hover={props.hover} />
+      <Peak position={7} duration={4} hover={props.hover} />
       <Peak position={18} duration={2} hover={props.hover} />
       <PeakIndicator
         hover={props.hover}

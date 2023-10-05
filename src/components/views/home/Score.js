@@ -131,14 +131,18 @@ const StyledMagicLink = styled(MagicLink)`
 `
 export default function Score() {
   const { occurences } = useContext(DataContext)
-  const { introduction } = useContext(ModalContext)
+  const { introduction, profils } = useContext(ModalContext)
 
   const power = useAllPowerOfPeaks()
 
   const percent = power / maxPower
 
   return (
-    <Wrapper visible={!introduction}>
+    <Wrapper
+      visible={
+        (!introduction && !profils) || (profils && occurences.length > 0)
+      }
+    >
       <Gauge
         width='80'
         height='120'
@@ -202,10 +206,10 @@ export default function Score() {
           </Label>
           <Description percent={percent}>
             {percent < 0.4
-              ? 'Votre consommation ne met pas le réseau électrique en tension.'
+              ? 'Votre consommation est modérée. L’énergie nucléaire et les énergies renouvelables suffisent à répondre aux besoins d’électricité sans avoir besoin de faire fonctionner des centrales à gaz émettant du CO2.'
               : percent < 0.8
-              ? 'Votre consommation risque de mettre le réseau électrique en tension. Essayez de décaler le fonctionnement de certains appareils.'
-              : 'Votre consommation met très fortement le réseau électrique en tension et des coupures sont possibles. Essayez de décaler le fonctionnement de vos appareils.'}
+              ? 'Votre consommation est importante. L’énergie nucléaire et les énergies renouvelables ne suffisent pas toujours à répondre aux besoins d’électricité compensés alors par des centrales à gaz émettant du CO2. Essayez de décaler l’utilisation de certains appareils en dehors des périodes de tension.'
+              : 'Votre consommation est très importante. Il est nécessaire de faire fonctionner des centrales à gaz émettant du CO2. Décaler le plus possible l’utilisation de vos appareils en dehors des périodes de tension.'}
           </Description>
           <StyledMagicLink
             onClick={() =>
