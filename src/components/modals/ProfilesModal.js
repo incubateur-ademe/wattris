@@ -43,7 +43,7 @@ const Profile = styled.button`
   }
 
   &:hover {
-    outline: 0.125rem solid ${(props) => props.theme.colors.main};
+    box-shadow: 0 0 0 0.1rem ${(props) => props.theme.colors.main};
   }
 `
 const ProfileTitle = styled.div``
