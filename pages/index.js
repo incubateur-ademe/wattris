@@ -15,6 +15,9 @@ const Text = styled.p`
   max-width: 40rem;
   margin: 0 auto 2rem;
   text-align: center;
+  ${(props) => props.theme.mq.medium} {
+    margin-bottom: 0rem;
+  }
 `
 export default function Index() {
   const [hoverIframe, setHoverIframe] = useState(false)
