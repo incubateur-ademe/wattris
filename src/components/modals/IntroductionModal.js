@@ -29,13 +29,13 @@ export default function IntroductionModal() {
       <Text>
         Consommer de l’électricité au bon moment, c’est utiliser ses appareils
         quand les centrales produisent de l’électricité en émettant le moins de
-        CO2.
+        CO<sub>2</sub>.
       </Text>
       <Text>
         En évitant de mettre en fonctionnement certains appareils{' '}
         <strong>entre 7h et 11h</strong> puis <strong>entre 18h et 20h</strong>,
         on évite de consommer de l'énergie tous en même temps. Produire et
-        consommer de l’électricité zéro CO2 devient alors plus facile !
+        consommer de l’électricité zéro CO₂ devient alors plus facile !
       </Text>
       <Text>
         Grâce à ce simulateur, découvrez les appareils qui consomment le plus

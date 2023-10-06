@@ -204,10 +204,10 @@ export default function Score() {
           </Label>
           <Description percent={percent}>
             {percent < 0.4
-              ? 'Votre consommation est modérée. L’énergie nucléaire et les énergies renouvelables suffisent à répondre aux besoins d’électricité sans avoir besoin de faire fonctionner des centrales à gaz émettant du CO2.'
+              ? 'Votre consommation est modérée. L’énergie nucléaire et les énergies renouvelables suffisent à répondre aux besoins d’électricité sans avoir besoin de faire fonctionner des centrales à gaz émettant du CO₂.'
               : percent < 0.8
-              ? 'Votre consommation est importante. L’énergie nucléaire et les énergies renouvelables ne suffisent pas toujours à répondre aux besoins d’électricité compensés alors par des centrales à gaz émettant du CO2. Essayez de décaler l’utilisation de certains appareils en dehors des périodes de tension.'
-              : 'Votre consommation est très importante. Il est nécessaire de faire fonctionner des centrales à gaz émettant du CO2. Décaler le plus possible l’utilisation de vos appareils en dehors des périodes de tension.'}
+              ? 'Votre consommation est importante. L’énergie nucléaire et les énergies renouvelables ne suffisent pas toujours à répondre aux besoins d’électricité compensés alors par des centrales à gaz émettant du CO₂. Essayez de décaler l’utilisation de certains appareils en dehors des périodes de tension.'
+              : 'Votre consommation est très importante. Il est nécessaire de faire fonctionner des centrales à gaz émettant du CO₂. Décaler le plus possible l’utilisation de vos appareils en dehors des périodes de tension.'}
           </Description>
           <StyledMagicLink
             onClick={() =>
