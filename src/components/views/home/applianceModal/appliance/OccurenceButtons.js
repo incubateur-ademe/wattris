@@ -54,7 +54,7 @@ export default function OccurenceButtons(props) {
             fill='#476C9B'
           />
         </svg>{' '}
-        Ajouter un appareil
+        Ajouter un appareil / une utilisation
       </Button>
     </Wrapper>
   )

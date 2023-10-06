@@ -53,7 +53,7 @@
     ]
   },
   "couple_enfants": {
-    "titre": "Deux personnes et enfants",
+    "titre": "Deux personnes avec un ou plusieurs enfants",
     "emoji": "👨‍👩‍👧",
     "data": [
       {
@@ -130,8 +130,8 @@
     ]
   },
   "couple_télétravail": {
-    "titre": "Deux personnes sans enfant, télétravail",
-    "emoji": "👬",
+    "titre": "Deux personnes sans enfant, en télétravail",
+    "emoji": "💻",
     "data": [
       {
         "slug": "aspirateur",

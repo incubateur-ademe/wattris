@@ -11,6 +11,11 @@ export function DataProvider(props) {
   const [active, setActive] = useState(null)
 
   const [appliancesListOpen, setAppliancesListOpen] = useState(false)
+  const [sortAppliancesByPower, setSortAppliancesByPower] = useState(false)
+
+  const sortedAppliances = sortAppliancesByPower
+    ? appliances.sort((a, b) => b.power - a.power)
+    : appliances.sort((a, b) => a.name.localeCompare(b.name))
 
   const addOccurence = (occurence) => {
     setOccurences((prevOccurences) => [...prevOccurences, occurence])
@@ -53,6 +58,9 @@ export function DataProvider(props) {
         deleteAllOccurencesOfAppliance,
         appliancesListOpen,
         setAppliancesListOpen,
+        sortAppliancesByPower,
+        setSortAppliancesByPower,
+        sortedAppliances,
       }}
     >
       {props.children}

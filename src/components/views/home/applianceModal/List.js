@@ -1,8 +1,10 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 import DataContext from 'components/providers/DataProvider'
 import DeleteButton from 'components/misc/DeleteButton'
+import ButtonLink from 'components/base/ButtonLink'
+import { unstable_renderSubtreeIntoContainer } from 'react-dom'
 
 const Title = styled.p`
   margin-bottom: 0.75rem;
@@ -32,7 +34,7 @@ const Appliance = styled.button`
   border-radius: 0.5rem;
   cursor: pointer;
   pointer-events: ${(props) => (props.disabled ? 'none' : 'inherit')};
-  opacity: ${(props) => (props.disabled ? 0.3 : 1)};
+  opacity: ${(props) => (props.disabled ? 0.3 : props.hollow ? 0.8 : 1)};
   transition: all 200ms ease-out;
 
   ${(props) => props.theme.mq.small} {
@@ -45,16 +47,48 @@ const Appliance = styled.button`
     border: 0.125rem solid ${(props) => props.theme.colors.background};
   }
 `
+const SortWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 0.5rem;
+`
+
+const SortButton = styled(ButtonLink)`
+  font-size: 0.875rem;
+  color: ${(props) => props.theme.colors.background};
+`
 export default function List() {
-  const { setAppliancesListOpen, appliances, occurences, addOccurence } =
-    useContext(DataContext)
+  const {
+    setAppliancesListOpen,
+    occurences,
+    addOccurence,
+    sortAppliancesByPower,
+    setSortAppliancesByPower,
+    sortedAppliances,
+  } = useContext(DataContext)
 
   return (
     <>
       <DeleteButton onClick={() => setAppliancesListOpen(false)} />
       <Title>Choisissez l'appareil à ajouter</Title>
+      <SortWrapper>
+        Trier par&nbsp;
+        <SortButton
+          onClick={() => {
+            setSortAppliancesByPower(!sortAppliancesByPower)
+            window?._paq?.push([
+              'trackEvent',
+              'Interaction',
+              'Ordonner la liste des appareils',
+            ])
+          }}
+        >
+          {sortAppliancesByPower ? 'ordre alphabétique' : 'puissance maximale'}
+        </SortButton>
+      </SortWrapper>
       <AppliancesList>
-        {appliances.map((appliance) => (
+        {sortedAppliances.map((appliance) => (
           <Appliance
             key={appliance.slug}
             hollow={occurences.find(

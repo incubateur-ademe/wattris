@@ -43,7 +43,7 @@ const Profile = styled.button`
   }
 
   &:hover {
-    outline: 0.125rem solid ${(props) => props.theme.colors.main};
+    box-shadow: 0 0 0 0.1rem ${(props) => props.theme.colors.main};
   }
 `
 const ProfileTitle = styled.div``
@@ -61,7 +61,7 @@ export default function ProfilesModal() {
   return (
     <Modal open={profilsOpen} setOpen={setProfilsOpen}>
       <Title>Je choisis un foyer-type</Title>
-      <Text>Sélectionnez le profil qui vous correspond !</Text>
+      <Text>Sélectionnez le profil qui vous correspond</Text>
       {occurences.length > 0 && (
         <Text>
           <strong>

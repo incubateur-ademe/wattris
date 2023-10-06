@@ -4,10 +4,9 @@ import styled from 'styled-components'
 import { usePeak } from 'hooks/useAppliances'
 import DataContext from 'components/providers/DataProvider'
 import StartSelector from 'components/misc/StartSelector'
-import StartAndEndSelector from 'components/misc/StartAndEndSelector'
-import DeleteButton from 'components/misc/DeleteButton'
+import Link from 'next/link'
 
-const Wrapper = styled.div`
+const Wrapper = styled(Link)`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -64,6 +63,7 @@ export default function Occurence(props) {
 
   return (
     <Wrapper
+      href='#home'
       discret={
         active
           ? active?.occurence !== props.index

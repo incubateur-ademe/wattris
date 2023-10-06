@@ -20,6 +20,10 @@ const Title = styled.p`
   font-weight: bold;
   text-align: center;
 `
+const DescriptionWrapper = styled.div`
+  position: relative;
+`
+
 const Description = styled.div`
   margin-bottom: 0.75rem;
   font-size: 0.875rem;
@@ -55,7 +59,14 @@ const StyledButtonLink = styled(ButtonLink)`
 export default function Appliance(props) {
   const { setActive, setAppliancesListOpen } = useContext(DataContext)
 
-  const [description, setDescription] = useState(false)
+  const [fullDescription, setFullDescription] = useState(false)
+
+  const maxTextLength = 130
+
+  const displayedDescription =
+    props.appliance.description.length < maxTextLength || fullDescription
+      ? props.appliance.description
+      : props.appliance.description.slice(0, maxTextLength) + '...'
 
   const lastIndex =
     props.occurencesOfAppliance[props.occurencesOfAppliance.length - 1].index
@@ -71,25 +82,28 @@ export default function Appliance(props) {
           setAppliancesListOpen(true)
         }}
       />
-      <DescriptionButton
-        onClick={() => {
-          setDescription((prevDescription) => !prevDescription)
-          window?._paq?.push([
-            'trackEvent',
-            'Interaction',
-            'Voir description',
-            props.appliance.slug,
-          ])
-        }}
-      />
       <Title>{props.appliance.name}</Title>
-      {description && (
+      <DescriptionWrapper>
         <Description
           dangerouslySetInnerHTML={{
-            __html: props.appliance.description,
+            __html: displayedDescription,
           }}
         />
-      )}
+        {props.appliance.description.length > maxTextLength && (
+          <DescriptionButton
+            fullDescription={fullDescription}
+            onClick={() => {
+              setFullDescription((prevDescription) => !prevDescription)
+              window?._paq?.push([
+                'trackEvent',
+                'Interaction',
+                'Voir description',
+                props.appliance.slug,
+              ])
+            }}
+          />
+        )}
+      </DescriptionWrapper>
       <Occurences>
         {props.occurencesOfAppliance.map((occurence, index) => (
           <Occurence
