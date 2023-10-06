@@ -1,7 +1,7 @@
 {
   "personne_seule": {
-    "titre": "Personne seule, absente dans la journée",
-    "emoji": "🙋",
+    "titre": "Personne seule, absente de son domicile la journée",
+    "emoji": "👤",
     "data": [
       {
         "slug": "aspirateur",
