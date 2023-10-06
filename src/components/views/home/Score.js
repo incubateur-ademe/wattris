@@ -200,7 +200,7 @@ export default function Score() {
               : percent < 0.8
               ? 'importante'
               : 'très importante'}
-            <span> pendant les périodes de tension</span>
+            <span> pendant les heures de pointe</span>
           </Label>
           <Description percent={percent}>
             {percent < 0.4
