@@ -183,7 +183,7 @@ export default function Score() {
       {occurences.length === 0 ? (
         <Content>
           <Label>
-            Votre foyer ne comporte
+            Votre foyer ne comporte encore
             <br />
             aucun appareil
           </Label>
@@ -200,14 +200,14 @@ export default function Score() {
               : percent < 0.8
               ? 'importante'
               : 'très importante'}
-            <span> pendant les heures de pointe</span>
+            <span> pendant les heures de pointe de consommation</span>
           </Label>
           <Description percent={percent}>
             {percent < 0.4
-              ? 'L’énergie nucléaire et les énergies renouvelables suffisent à répondre aux besoins d’électricité sans avoir besoin de faire fonctionner des centrales à gaz émettant du CO₂.'
+              ? 'Vous aidez à écarter le risque de coupure d’électricité les jours de tension. Gardez ce réflexe toute l’année pour produire de l’électricité sans recourir aux énergies fossiles et sans émettre de CO₂.'
               : percent < 0.8
-              ? 'L’énergie nucléaire et les énergies renouvelables ne suffisent pas toujours à répondre aux besoins d’électricité compensés alors par des centrales à gaz émettant du CO₂. Essayez de décaler l’utilisation de certains appareils en dehors des périodes de tension.'
-              : 'Il est nécessaire de faire fonctionner des centrales à gaz émettant du CO₂. Décaler le plus possible l’utilisation de vos appareils en dehors des périodes de tension.'}
+              ? 'Chauffez moins et décalez l’utilisation de certains appareils pour réduire le risque de coupure les jours de tension. Gardez ce réflexe toute l’année pour produire de l’électricité sans recourir aux énergies fossiles et sans émettre de CO₂.'
+              : 'Utilisez le moins possible vos appareils entre 7h et 11h puis 18h et 20h pour éviter les coupures les jours de tension. Gardez ce réflexe toute l’année pour produire de l’électricité sans recourir aux énergies fossiles et sans émettre de CO₂.'}
           </Description>
           <StyledMagicLink
             onClick={() =>
