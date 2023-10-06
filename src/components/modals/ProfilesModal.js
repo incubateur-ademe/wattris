@@ -61,7 +61,7 @@ export default function ProfilesModal() {
   return (
     <Modal open={profilsOpen} setOpen={setProfilsOpen}>
       <Title>Je choisis un foyer-type</Title>
-      <Text>Sélectionnez le profil qui vous correspond !</Text>
+      <Text>Sélectionnez le profil qui vous correspond</Text>
       {occurences.length > 0 && (
         <Text>
           <strong>
