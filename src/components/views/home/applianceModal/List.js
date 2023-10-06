@@ -34,7 +34,7 @@ const Appliance = styled.button`
   border-radius: 0.5rem;
   cursor: pointer;
   pointer-events: ${(props) => (props.disabled ? 'none' : 'inherit')};
-  opacity: ${(props) => (props.disabled ? 0.3 : 1)};
+  opacity: ${(props) => (props.disabled ? 0.3 : props.hollow ? 0.8 : 1)};
   transition: all 200ms ease-out;
 
   ${(props) => props.theme.mq.small} {
