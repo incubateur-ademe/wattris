@@ -19,7 +19,7 @@ const Peak = styled.div`
 `
 const PeakIndicator = styled.div`
   position: absolute;
-  bottom: calc(100% + 1.5rem);
+  bottom: calc(100% + 1rem);
   left: ${(props) => (10.75 / 24) * 100}%;
   right: ${(props) => (5.75 / 24) * 100}%;
   font-size: 0.75rem;
@@ -34,7 +34,8 @@ const PeakIndicator = styled.div`
     bottom: calc(100% + 0.5rem);
   }
   ${(props) => props.theme.mq.small} {
-    left: ${(props) => (12.5 / 24) * 100}%;
+    left: ${(props) => (11 / 24) * 100}%;
+    font-size: 0.6rem;
   }
 `
 const Arrow = styled.div`
@@ -60,7 +61,7 @@ const Arrow = styled.div`
   }
 
   ${(props) => props.theme.mq.medium} {
-    bottom: calc(100% + 0.5rem);
+    bottom: calc(100% + 0.25rem);
   }
 `
 export default function Peaks(props) {
@@ -73,7 +74,8 @@ export default function Peaks(props) {
         onMouseEnter={() => props.setHover(true)}
         onMouseLeave={() => props.setHover(false)}
       >
-        Périodes de tension
+        Heures de pointe <br />
+        de consommation
       </PeakIndicator>
       <Arrow
         hover={props.hover}
