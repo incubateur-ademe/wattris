@@ -23,14 +23,14 @@ export default function Index() {
       <Section>
         <Section.Content>
           <Title>
-            Wattris, le simulateur pour vous aider à consommer de l'électricité
-            au bon moment&#8239;!
+            Wattris, le simulateur qui vous aide à consommer de l'électricité au
+            bon moment&#8239;!
           </Title>
           <Text>
-            Simulez la consommation électrique de votre foyer, découvrez quels
-            appareils consomment beaucoup et apprenez les bons gestes pour
-            réduire la charge du réseau électrique lors des périodes de tension
-            de 7h à 11h et de 18h à 20h.
+            Simulez les besoins électriques de votre foyer. Découvrez quels
+            appareils consomment le plus. Faites le point sur les bons gestes
+            pour réduire la demande en électricité lors des heures de pointes
+            (de 7h à 11h et de 18h à 20h).
           </Text>
         </Section.Content>
       </Section>
