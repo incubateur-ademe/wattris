@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     if (process.env.NODE_ENV === 'production') {
-      init({ url: 'https://stats.data.gouv.fr', siteId: 276 })
+      init({ url: 'https://stats.beta.gouv.fr', siteId: 88 })
     }
   }, [])
 
