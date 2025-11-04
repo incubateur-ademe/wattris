@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import MagicLink from 'components/base/MagicLink'
 import Marianne from 'components/base/Marianne'
 import Ademe from 'components/base/Ademe'
-import Incubateur from 'components/base/Incubateur'
 
 const LogosWrapper = styled.div`
   display: flex;
@@ -42,7 +41,6 @@ export default function Footer(props) {
         >
           <Marianne />
           <Ademe />
-          <Incubateur />
         </Logos>
       </LogosWrapper>
       <Accessibility>Accessibilité : non conforme</Accessibility>

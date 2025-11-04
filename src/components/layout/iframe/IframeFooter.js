@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import MagicLink from 'components/base/MagicLink'
 import Marianne from 'components/base/Marianne'
 import Ademe from 'components/base/Ademe'
-import Incubateur from 'components/base/Incubateur'
 
 const Wrapper = styled.footer`
   display: flex;
@@ -45,7 +44,6 @@ export default function IframeFooter() {
       >
         <Marianne />
         <Ademe />
-        <Incubateur />
       </Logos>
     </Wrapper>
   )
